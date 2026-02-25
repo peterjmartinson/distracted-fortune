@@ -32,8 +32,8 @@ jobs:
 
       - name: Run WP sync (create/update draft)
         env:
-          WP_URL: ${{ vars.WP_URL }}
-          WP_USER: ${{ vars.WP_USER }}
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
           WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PATH: ${{ github.event_path }}
