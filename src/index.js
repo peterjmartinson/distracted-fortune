@@ -136,6 +136,9 @@ async function createOrUpdateDraftFromDir(postDir, prNumber) {
   const markdown = parsed.content;
 
   // convert markdown -> html
+  console.log('remarkParse:', remarkParse);
+  console.log('remarkRehype:', remarkRehype);
+  console.log('rehypeStringify:', rehypeStringify);
   const vfile = await unified()
     .use(remarkParse)
     .use(remarkRehype)
