@@ -11,9 +11,9 @@
     "form-data": "^3.0.1",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "unified": "^10.0.0",
-    "remark-parse": "^10.0.0",
-    "remark-rehype": "^10.1.0",
+    "unified": "^11.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.0.0",
     "rehype-stringify": "^10.0.0"
   }
 }
