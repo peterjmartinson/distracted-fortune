@@ -11,17 +11,17 @@
  *  - Only operates on content/posts/* /draft.md
  *  - Expects WP_URL, WP_USER, WP_APP_PASSWORD in env
  */
-const fs = require('fs');
-const path = require('path');
-const cp = require('child_process');
-const matter = require('gray-matter');
-const yaml = require('js-yaml');
-const { unified } = require('unified');
-const remarkParse = require('remark-parse');
-const remarkRehype = require('remark-rehype');
-const rehypeStringify = require('rehype-stringify');
-const axios = require('axios');
-const { wpClient } = require('./wp-client');
+import fs from 'fs';
+import path from 'path';
+import cp from 'child_process';
+import matter from 'gray-matter';
+import yaml from 'js-yaml';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import axios from 'axios';
+import { wpClient } from './wp-client.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
