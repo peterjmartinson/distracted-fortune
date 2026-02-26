@@ -78,16 +78,17 @@ function findPostDirsFromFiles(files) {
 }
 
 async function handlePR() {
-  // find base & head from payload
   const pr = event.pull_request;
   if (!pr) {
     console.log('No pull_request in event.');
     return;
   }
-  const baseSha = pr.base.sha;
-  const headSha = pr.head.sha;
-  const changed = gitChangedFiles(baseSha, headSha);
-  const postDirs = findPostDirsFromFiles(changed);
+  const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
+  const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
+  const filesUrl = `https://api.github.com/repos/${owner}/${repo}/pulls/${pr.number}/files`;
+  const filesRes = await axios.get(filesUrl, { headers: { Authorization: `token ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' } });
+  const files = filesRes.data.map(f => f.filename);
+  const postDirs = findPostDirsFromFiles(files);
   if (postDirs.length === 0) {
     console.log('No post draft.md changes detected.');
     return;
