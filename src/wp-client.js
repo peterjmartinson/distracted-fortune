@@ -9,7 +9,8 @@ function makeAuthHeader(user, appPassword) {
 
 function wpClient({ wpUrl, user, appPassword }) {
   const base = wpUrl.replace(/\/+$/, '') + '/wp-json/wp/v2';
-  const auth = makeAuthHeader(user, appPassword);
+  // const auth = makeAuthHeader(user, appPassword);
+  const auth = `Bearer ${appPassword}`;
   const client = axios.create({
     baseURL: base,
     headers: {
