@@ -14,3 +14,4 @@ featured_image: hero.png
 Your markdown content here. Include local images with typical markdown:
 ![Alt text](hero.png)
 
+Here's some more text.  Great job, getting this thing out there!
