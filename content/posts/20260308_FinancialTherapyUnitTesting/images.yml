@@ -1,0 +1,5 @@
+images:
+  - file: front_image.png
+    caption: "A short caption describing what is shown in the image."
+    alt: "A brief description of the image for screen readers."
+    credit: "Photographer or source name"
