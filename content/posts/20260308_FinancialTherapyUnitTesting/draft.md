@@ -16,6 +16,15 @@ Avoidance, not fear
 Problem with the system
 "monitoring" leads to better results
 
+I don't trust [Simplifi](link), or any other of the financial management software.  So, for a few years, I tried just maintaining a vast spreadsheet where I recorded every dollar spent, and used it to forecast where we'd be in a few months.  You know, future planning.
+
+That spreadsheet was a lot of work though.  I found myself spending all my time doing just the accounting part, and very little on the future planning.  So, I stopped trusting that system as well.  Plus the work was too much friction - it was too easy to just stop maintaining it.
+
+
+
+
+
+
 I've tried various systems to monitor and control my finances.  The primary goal was to keep my wife happy and secure, and the secondary goal was to get filthy rich of course.  Let's just say that, hitherto, the latter goal has not yet been met, and the former is doing only a little better.
 
 Since all the systems I've tried take a lot of elbow grease and other fiddling to get clear answers from, they typically evolve into systems of avoidance instead of clarity
