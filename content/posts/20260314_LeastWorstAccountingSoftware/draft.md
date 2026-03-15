@@ -51,4 +51,63 @@ So this brings us back to Simplifi.
 
 ## Simplifi, or whatever, is the least worst
 
-None of these big accounting apps can map the real world exactly.  They MUST go off the rails at some point, and require human intervention
+None of these big accounting apps can map the real world exactly.  They MUST go off the rails at some point, and require human intervention.
+
+The least worst accounting software is whatever sounds good to you in about 15 minutes of searching on the web.  I like Simplifi, so you can start there if you want.
+
+You have to be ready to think it sucks after a few weeks of using it, learn how to spot what's not working, and then figure out how to hack it into something that works better for you.  In the end, it's going to be something of a kludge built off of whatever you first downloaded and installed.  But, it will be *your* kludge.
+
+The software will not bridge the *Gap* for you - you will have to build that bridge yourself.
+
+Here are some hacks I've learned with Simplifi, to make it more my own:
+
+1. Rules, Rules, Rules
+
+In order for the Reports to work the way you need, you need to set up rules.  In the beginning, for every transaction that isn't some one-off ATM stop, create a rule.  
+
+To do so, click on a transaction, then click on "Create Rule".
+
+![Transaction](01_transactions.png)
+
+![Transaction](02_transaction_detail.png)
+
+Here, you generalize the keywords Simplifi uses to identify the transaction in the future, give it a nice name you like, and configure all the things you want Simplifi to do when it sees one.  For example, maybe you guys get pizza every Friday, and you want that categorized as "Entertainment".
+
+![Create Rule](03_create_rule.png)
+
+After you hit "Continue to Review", you have the option of running the rule on all past transactions that fit the pattern.  Do it!
+
+![Finish Rule](04_review_rule.png)
+
+In this way, you are training Simplifi how to read your transactions properly.
+
+2. Set Recurring Bills and Income
+
+If a transaction happens more than once, consider it a bill.  Click on the transaction (see the pattern?), and hit "Mark as Recurring".
+
+![Mark as Recurring](05_mark_recurring.png)
+
+Tell Simplifi how often this one happens, and when it usually happens, and how much it usually is.
+
+![Recurring settings](06_create_series.png)
+
+When you mark regular bills (like your weekly pizza night), you can see how these hit your future cash flow.  To see your projected cash flow, either click on one of your accounts in the Dashboard, or click on Bills & Income, and then Cash Flow.  Pretty neat huh?
+
+![Cash Flow](07_cash_flow.png)
+
+Oh, make sure to also mark any paychecks as Recurring.
+
+3. Use Categories and Tags for Reporting
+
+Each transaction can have one Category, but multiple Tags.  For the past couple weeks, I've been going in and manually marking each transaction with one of two tags:  Want and Need.
+
+When you go to Reports, now you can see the breakdown of what you spent last month based on category, or tags.  For example, last month, I found out we spend a quarter of our income on Wants!
+
+![Report](07_report.png)
+
+The point is, you need to think about these apps like they are pets.  Computer programs are inherently not models of the real world.  But, by training them, you can make them a little more useful for you.
+
+_If you liked this article, please leave a comment below, share it with someone you know, and get on my email list!_ 
+
+
+
