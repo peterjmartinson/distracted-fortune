@@ -1,5 +1,5 @@
 ---
-title: "And Least Worst Accounting Software Is..."
+title: "And The Least Worst Accounting Software Is..."
 date: 2026-03-14T13:00:00-05:00
 excerpt: "You need an app to keep track of all your banking information.  So which to choose?"
 tags:
