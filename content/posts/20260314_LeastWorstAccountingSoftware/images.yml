@@ -1,7 +1,7 @@
 images:
   - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
+    caption: "Reddit is a useful place for information"
+    alt: "A Reddit user having trouble with accounting software"
     credit: "Photographer or source name"
   - file: 01_transactions.png
     caption: "Your list of transactions"
