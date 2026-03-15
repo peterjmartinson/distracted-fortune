@@ -13,7 +13,7 @@ featured_image: front_image.png
 
 All electronic systems of accounting suck, unless you make more than enough money to cover the bills.
 
-My first major attempt at keeping the books was with a vast spreadsheet system.  You know, like [Mister Money Mustache](LINK).
+My first major attempt at keeping the books was with a vast spreadsheet system.  You know, like [Mister Money Mustache](https://www.mrmoneymustache.com/).
 
 I broke a wide sheet into 52 chunks to represent fiscal weeks - they start when I get paid.  Each chunk had a balance rolled over from the previous week, and sections for upcoming income, regular bills, expected costs (like upcoming car repairs), and some other categories.
 
@@ -23,7 +23,7 @@ Rarely did it add up.  And rarely did the process take less than 2 hours.  And r
 
 I tried to speed the process up a few times with functions to automatically categorize things, but still, it was a tedious mess that only kind of worked, and absolutely stressed me out.
 
-Wishing there were an easier system, I remembered an earlier experiment with [Mint](LINK) back in the day, which did everything I wished for.  Mint went bust, so I found the next best thing - [Simplifi](LINK).
+Wishing there were an easier system, I remembered an earlier experiment with [Mint](https://en.wikipedia.org/wiki/Intuit_Mint) back in the day, which did everything I wished for.  Mint went bust, so I found the next best thing - [Simplifi](https://simplifi.quicken.com/).
 
 ## The Gap
 
@@ -35,9 +35,9 @@ Here's how it works.  In math, you have a bunch of statements of bulletproof tru
 
 But whence this triumvirate of truth?
 
-Well, that's debatable.  We hope the come straight from [*The Book*](LINK).  That they're the rules God used when He separated the Light from the Darkness.  That they're the true building blocks of nature.
+Well, that's debatable.  We hope the come straight from [*The Book*](https://en.wikipedia.org/wiki/The_Man_Who_Loved_Only_Numbers).  That they're the rules God used when He separated the Light from the Darkness.  That they're the true building blocks of nature.
 
-However, they are NOT handed down from the Creator.  They're invented by people, usually in order to make the later derived proofs work out.  And, in the history of math, we've identified a few that are just wrong.  For example, Euclid's [parallel postulate](LINK).
+However, they are NOT handed down from the Creator.  They're invented by people, usually in order to make the later derived proofs work out.  And, in the history of math, we've identified a few that are just wrong.  For example, Euclid's [parallel postulate](https://archive.schillerinstitute.com/fidelio_archive/2004/fidv13n01-02-2004SpSu/fidv13n01-02-2004SpSu_100-abraham_kastner_on_the_conceptio.pdf).
 
 So what do you get with a set of theorems proved true, according to an invented set of axioms, postulates, and definitions?  You get Star Wars.  Or Star Trek.
 
