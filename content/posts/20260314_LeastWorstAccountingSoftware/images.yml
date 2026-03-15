@@ -1,0 +1,38 @@
+images:
+  - file: front_image.png
+    caption: "Reddit is a useful place for information"
+    alt: "A Reddit user having trouble with accounting software"
+    credit: "Photographer or source name"
+  - file: 01_transactions.png
+    caption: "Your list of transactions"
+    alt: "Your list of transactions"
+    credit: "Screenshot"
+  - file: 02_transaction_detail.png
+    caption: "Information about a single transaction"
+    alt: "Information about a single transaction"
+    credit: "Screenshot"
+  - file: 03_create_rule.png
+    caption: "Creating a new rule.  Get rid of a bunch of the suggested keywords, or it will be too specific to be useful"
+    alt: "Creating a new rule.  Get rid of a bunch of the suggested keywords, or it will be too specific to be useful"
+    credit: "Screenshot"
+  - file: 04_review_rule.png
+    caption: "Review the rule, and make sure to run rule on all previous transactions"
+    alt: "Review the rule, and make sure to run rule on all previous transactions"
+    credit: "Screenshot"
+  - file: 05_mark_recurring.png
+    caption: "Another transaction - Mark as Recurring is in upper right corner"
+    alt: "Another transaction - Mark as Recurring is in upper right corner"
+    credit: "Screenshot"
+  - file: 06_create_series.png
+    caption: "Settings for a recurring bill, or income"
+    alt: "Settings for a recurring bill, or income"
+    credit: "Screenshot"
+  - file: 07_case_flow.png
+    caption: "Cash Flow shows how much money you're losing on stupid things"
+    alt: "Cash Flow shows how much money you're losing on stupid things"
+    credit: "Screenshot"
+  - file: 07_report.png
+    caption: "Reports are awesome.  This one looks at my custom tags."
+    alt: "Reports are awesome.  This one looks at my custom tags."
+    credit: "Screenshot"
+
