@@ -10,9 +10,10 @@ Overview
 
 Files of interest
 - `.github/workflows/wp-sync.yml` — workflow to run on PR events.
-- `src/index.js` — main script: converts Markdown → HTML, uploads media, creates/updates posts.
+- `src/index.js` — thin entry point: reads environment, wires the WP client and PR helpers, then delegates to `sync.js`.
+- `src/sync.js` — core sync logic: extracts and uploads images, builds Gutenberg blocks, converts Markdown → HTML, creates/updates WP posts.
 - `src/wp-client.js` — WP REST helper.
-- `package.json` — dependencies.
+- `package.json` — dependencies and `npm test` script.
 
 Frontmatter fields supported (in draft.md)
 - title: string
@@ -38,3 +39,13 @@ featured_image: hero.jpg
 
 Your markdown content here. Include local images with typical markdown:
 ![Alt text](hero.jpg)
+
+Body images are automatically uploaded to the WP Media Library and replaced with
+Gutenberg `<!-- wp:image -->` blocks in the post content, so they render correctly
+in both the Gutenberg editor and the front-end without any manual edits.
+Captions and alt text come from the companion `images.yml` file (alt text written
+in the markdown takes precedence over the `images.yml` value).
+
+Running tests
+Run `npm test` from the repo root. Tests use Node's built-in test runner (Node ≥ 18
+required) and rely on fixture files under `test/fixtures/`.

@@ -1,0 +1,5 @@
+images:
+  - file: hero.png
+    title: Transaction Detail
+    alt: Transaction screenshot
+    caption: Figure 1
