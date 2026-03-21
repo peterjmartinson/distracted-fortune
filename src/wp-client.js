@@ -61,7 +61,12 @@ function wpClient({ wpUrl, user, appPassword }) {
     async getPost(id) {
       const res = await client.get(`/posts/${id}`);
       return res.data;
-    }
+    },
+
+    async attachMediaToPost(mediaId, postId) {
+      const res = await client.post(`/media/${mediaId}`, { post: postId });
+      return res.data;
+    },
   };
 }
 
