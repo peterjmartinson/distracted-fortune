@@ -1,5 +1,5 @@
 images:
-  - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
-    credit: "Photographer or source name"
+  - file: the_future.jpg
+    caption: "The AI Assistant"
+    alt: "A lady at home talks to someone on the screen while doing work."
+    credit: ""
