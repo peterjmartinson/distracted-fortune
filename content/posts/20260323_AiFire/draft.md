@@ -11,30 +11,92 @@ categories:
 featured_image: front_image.png
 ---
 
-When I write articles, or do pretty much anything else, I talk it over with some AI - usually [Google's Gemini](https://gemini.google.com).
+This post is pretty much going to be a list of ways I use AI in my general life, which I do every day.  I've found these programs to dramatically help me overcome blocks, get things done, and make sense of my world.
 
-For example, you're reading this on a Wordpress blog.  But I'm writing it in my text editor on my computer.  After I'm done penning the draft on [Vim](LINK), I'll commit my changes with [Git](LINK), push the changes to [GitHub](LINK), and open a Pull Request.  As soon as I do that, GitHub will publish the draft on my blog, along with all my images.
+I remember when ChatGPT first stormed the ramparts back in 2022.  I felt great apprehension, that they would steal my creatitivity and render myself just a stick of meat.
 
-This process takes code to work.  Some code to log in on Wordpress, some code to insert images properly.  Some code to tell GitHub when and how to publish the draft.  Even some code to create the initial draft on my computer.
+However, when I first started creating this blog, I got hooked.  I certainly wrote all the articles, but I used the AIs to get things over the goal line.  Whenever I got stuck writing or looking for ideas, I would just paste my draft and my frustrations into Google Gemini, and it would IMMEDIATELY spit out ideas.
 
-I didn't write any of this code - my LLM did!  I opened Visual Studio Code, and told the GitHub Copilot Chat exactly what I wanted to happen, it gave me an initial proposal, we went back and forth making it just right, and then it just wrote all the JavaScript and other instructions to make it work.
+In fact, the name Distracted Fortune came out of just such a brainstorming session.  I told it who was the target audience (you, dear reader!), and what the intended story was, and then demanded 25 short titles.  Over and over again.  I don't remember it ever coughing up exactly "Distracted Fortune", but the ideas it did spit out led to the title.
 
-In this article, I hope to convince you to start using these programs yourself, and give you some ideas of how I use them to grow my ability to handle this damn nuts world that regularily overwhelms me.
+The main ways I use these programs is to generate ideas, research products, overcome blocks, stay on task, and of course, write programs.  I'll go over each in turn.
 
-## Overcome the Fear
+## The AI Toolbox
 
-At first I was suspicious of using Gemini, ChatGPT, Grok, Claude, or any other AI to help me do things.  I was afraid it would zap my creativity, and render me a useless vegetable.
+There are a few AI chat bots you could turn to.  I find they each have their strengths and weaknesses, their own personalities.  Here's how I choose:
 
-But then someone told me I should use one to plan out a vacation.  I told Gemini where we were going, who's in my family, what we like to do, and other details of the trip.  Gemini then gave me a full itinerary, including "secret" items to order at one of the restaurants it suggested.
+1. Google Gemini
 
-We didn't do half those things.  But what I got out of Gemini was a general layout of times involved to do things, distances we'd have to travel, suggestions on what to bring due to the weather forecast, etc.  In short, a scaffold I could use as a start, to put together my own plan.
+This is the generalist, my first stop.  I have a few specific prompts stored in its memory so it can refer to specific aspects of my life and travails when answering questions.  It can also search the web, save things in Google Keep, adjust or check my Google Calendar, and integrate with my Google Home smart devices.
 
-It didn't steal my creativity - it helped me get started using my creativity.
+Also, full disclosure, I have a premium account here because I pay for Google Storage.  So, you might not get as much mileage with Gemini as I do.
 
-## Other ways I use AI
+2. Grok
 
-Here are a few things I do to get the most out of these things.
+Grok is like my crazy conspiracy theorist buddy.  It has realtime access to all of X (nee Twitter), so it's my primary news source.  I go here if I need a rundown on a specific story.
 
-1. Tell it to remember things about me.
+3. Github Copilot
 
-Sure, when these programs finally take over and begin to enslave us, this will probably come back to bite me.  But, I tell Gemini to remember details of my life and personality I don't want to keep repeating.  Gemini - and the other LLMs - come with storage capacity.  Every time I interact with it now, in the background, it adds all these memories as a prefix to my prompt, so it has extra knowledge in context.
+This is my programming buddy.  I have it integrated into my Visual Studio Code, so I can tell it what I want a program to do, and it will just write it all up for me.  It's also available directly on GitHub, where it can review my code repositories, create issues, and do other programmy things.
+
+4. ChatGPT
+
+I use this one mostly at work.  It's also a generalist, can search the web, and give me code snippets.  However, I find it has the ability to think a little deeper than the other three.
+
+Sometimes, if I don't trust an answer from one of these, I will put the whole conversation into another.  I recently reorganized my whole family finance review system, and had to shop the discussion back and forth to all four of these.
+
+## Generate Ideas
+
+"Hey Program, give me a few ideas for a date with my wife next Friday, during the day."
+
+Yes, I have a bit of a date palsy.  But Gemini does not!  Within moments, it will hunt through Maps to find locations open on the day and time within walking distance, see if they're open, and see if any of the places have something interesting scheduled.  Then, it will list them out, along with suggestions how to make each spot extra fun.
+
+You see, these programs don't have emotions, so they don't get hung up on the emotional weight of the ideas.  They just get automatically generated.
+
+## Research Products
+
+"Hey Program, I want a watch I can wear at night so I can see what time it is.  Should be big enough so I can see the time without my glasses, track my sleep, and be cheap as hell.  Give me three options."
+
+Bam!  Three options in three seconds.  No more scouring product reviews and "here's some random junk available on Amazon right now" sites.  The LLMs will give a few leads right away, especially if you tell it a LOT about what you're actually looking for.  Remember, these programs have context windows that can hold around 100,000 words.  They remember your entire conversation.
+
+Tell it what you're looking for, criticize its first, second, third tries.  You'll eventually get to whatever you were looking for out of the billions of possibilities.
+
+## Overcome Blocks
+
+I started writing this article about five times.  Finally, I put my fullest draft into Gemini and told it I thought it just wasn't going in the right direction, sounded too self deprecating, and needed to change.  It suggested I cast AI not as a crutch, but more like "an exoskeleton" that accentuated my abilities.  Then, it gave me a few ideas for an introduction.
+
+I didn't actually use any of those introductions, but it got me moving on the current draft.
+
+If you're ever having trouble starting something, just tell the LLM what's going on, and you need some help.  Sometimes, all you really need is a few novel ideas to get moving.
+
+## Stay on Task
+
+Most LLMs have some kind of memory storage, where you can make it remember important details about you so you don't have to repeat every time you return.
+
+Back when I was building my SigmaK annual filing program, I realized too late that I hadn't pitched it to anybody yet, and I'd sunk a lot of time into it.  After breaking down, gnashing my teeth, shaking my fist at the sky a few times, I came up with a new idea.  I had Gemini help me come up with a memory it could store, which we call both "Prime Directive" and "Golden Rule".
+
+Every three prompts, Gemini must warn me that I'm going down a research hole, and then ask me what person I will discuss the topic with.  "No idea is finished until it's tried on a real person."  It's annoying, but it does get me to move and talk to people as a first step now.
+
+## Write Programs
+
+My boys are into baseball.  They're also into screen time.  Their parents are into NO screen time.
+
+After spending a few mornings prying various devices out of my oldest kid's hands, I came up with an idea.  His "foot in the door" was to explain he just wanted to check the MLB standings from the day before.  I decided to write a program that would print out the standings on paper every morning at 6am.
+
+Really, I had GitHub Copilot write the program for me.  It's since expanded from baseball scores to hockey scores, MLB news, and political news (for Dad).  I even have the Grok API summarize games for me.  You can see the code [here](LINK).
+
+## AI are Tools that Help
+
+The reason for this post isn't to get you to use a new program.  It's to use a special kind of program to get more effective in the real world.
+
+I don't talk to Gemini to keep talking to Gemini.  I talk to Gemini, so I can be more present with my kids, talk more clearly with my wife, and have better control of where my money goes.
+
+Use these things as tools.  These programs are what we always hoped search engines would be: a way to cut through the noise and find the signal.
+
+_If you liked this article, please leave a comment below, share it with someone you know, and get on my email list!_ 
+
+
+
+
+
+
