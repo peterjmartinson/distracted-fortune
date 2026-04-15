@@ -14,19 +14,19 @@ featured_image: front_image.png
 
 While wintering in Vermont this past New Year's Day, I built a product that all the LLMs told me would sell like crazy.
 
-Each year, all publicly traded companies file a report [with the SEC](LINK edgar) affectionately called the 10-K.  It's a document packed with lawyerly language intended to comply with federal regulations while keeping all company hopes and fears secret.
+Each year, all publicly traded companies file a report [with the SEC](https://www.sec.gov/search-filings) affectionately called the 10-K.  It's a document packed with lawyerly language intended to comply with federal regulations while keeping all company hopes and fears secret.
 
 One section, Item 1A, lays out all the risks the company foresees in the coming year.  For example, all companies that deal in physical products saw risk in the Trump Tariffs last year.  Some companies don't see any risk, and they'll say that.
 
-Because these companies are all joint stock companies, they're afraid of the stock owners pulling cash due to perceived weaknesses.  Therefore, the Item 1A reads a bit like a script from the Netflix series [Succession](LINK) - lots of words, maximum ambiguity.
+Because these companies are all joint stock companies, they're afraid of the stock owners pulling cash due to perceived weaknesses.  Therefore, the Item 1A reads a bit like a script from the Netflix series [Succession](https://www.imdb.com/title/tt7660850/) - lots of words, maximum ambiguity.
 
 One big analyst job at hedge funds and other investment houses is to compare these sections year over year for a given company, and identify subtle differences that betray underlying problems or strengths.  These risk factors then inform the next investment steps in that company.
 
 But it's tedious work.
 
-Enter: [SigmaK](LINK)
+Enter: [SigmaK](https://github.com/peterjmartinson/sigmak)
 
-I built a system that uses a vector database and an LLM to hunt down differences automatically.  It took about a month of evenings working with GitHub Copilot to build a working system.  A few weeks ago, I sent example reports to a few people and put up a [LinkedIn post](LINK) about it.
+I built a system that uses a vector database and an LLM to hunt down differences automatically.  It took about a month of evenings working with GitHub Copilot to build a working system.  A few weeks ago, I sent example reports to a few people and put up a [LinkedIn post](https://www.linkedin.com/posts/peterjmartinson_sigmak-quantifying-10-k-risk-novelty-ugcPost-7435689607372890112-DpLg?utm_source=share&utm_medium=member_desktop&rcm=ACoAAA2gXSQBtr4MWybMAdavbd4tiMcHhJdqWMY) about it.
 
 And there I sat, with a vector database full of insights and a LinkedIn notification tray that stayed stubbornly empty. I hadn't built a solution; I’d built a monument to my own assumptions.
 
@@ -40,7 +40,7 @@ People don't want this!  At least, I do not know anybody who wants it!
 
 Fed up, I decided to instead come up with a strategy for growing my professional network into a potential client list.  The core of the networking strategy is to hunt for problems.
 
-Long time reader(s) of Distracted Fortune (you know who you are, Rutiger) will remember that one of my first posts was on [Digging for Problems](LINK).  Well, the new plan is a more refined and targeted version of that, minus the hard rock mining component.
+Long time reader(s) of Distracted Fortune (you know who you are, Rutiger) will remember that one of my first posts was on [Digging for Problems](https://distractedfortune.com/cold-calls-your-secret-weapon-for-growth/).  Well, the new plan is a more refined and targeted version of that, minus the hard rock mining component.
 
 ## The Cycle
 
@@ -56,7 +56,7 @@ Two days (and ideally two problems) later, I'll send a "zero-ask" email to the n
 
 Finally, two days later - Friday, if you're counting - I'll send a "technical gift" email.  Whether my new contacts sent a reply or not, I'll send them one sketched out solution to one of their problems.  "I've been thinking about your process, and came up with this solution.  No need to reply, just thought it would help!"  It doesn't even have to be a built solution, just a summary of how to handle it.  This isn't a software license; it’s a blueprint.  It’s me saying, "Here is the math you need to solve this."  It costs me twenty minutes of thinking and costs them zero minutes of onboarding.
 
-GitHub has a thing called "Projects", which looks and acts a lot like a Kanban board.  You might have seen these things in Jira, Trello, Monday, Asana, or some other productivity app.  Basically, it's a set of columns, with notes you can move between those columns.  Think, PostIt notes on a white board that you can move around.
+GitHub has a thing called "[Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)", which looks and acts a lot like a Kanban board.  You might have seen these things in Jira, Trello, Monday, Asana, or some other productivity app.  Basically, it's a set of columns, with notes you can move between those columns.  Think, PostIt notes on a white board that you can move around.
 
 My issues are those notes, and I have columns like "Discovery", "Problems Validated", "Warm Contact", "Garbage", etc.  I'll move them around as I send out emails, to keep track of which ones are in what phase.
 
