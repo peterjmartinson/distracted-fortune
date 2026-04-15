@@ -28,9 +28,9 @@ Enter: [SigmaK](LINK)
 
 I built a system that uses a vector database and an LLM to hunt down differences automatically.  It took about a month of evenings working with GitHub Copilot to build a working system.  A few weeks ago, I sent example reports to a few people and put up a [LinkedIn post](LINK) about it.
 
-Crickets.
+And there I sat, with a vector database full of insights and a LinkedIn notification tray that stayed stubbornly empty. I hadn't built a solution; I’d built a monument to my own assumptions.
 
-The lesson here is clear - don't build something that you're not certain people want.
+The lesson was clear - don't build something that you're not certain people want.
 
 ## New Plan - Same as the Old Plan
 
@@ -46,13 +46,15 @@ Long time reader(s) of Distracted Fortune (you know who you are, Rutiger) will r
 
 Being highly motivated for about 10 minutes a day, and highly distractable all other times, I needed a system that would be low friction, cumulative, and atomic.
 
-I worked with all the LLMs critiquing each other to come up with my current plan.  Note - Gemini, Grok, and Github Copilot are pretty nice to each other.  ChatGPT ALWAYS comes up with a way to say where the others fail.  Then, it typically just tells me a variation of what the others say.  Judgy.
+I worked with all the LLMs critiquing each other to come up with my current plan.
+
+(Side Note: The different AIs have distinct personalities. Most are friendly enough, but OpenAI's ChatGPT acts like the overachieving older sibling who can't help but criticize everyone else’s homework. It spends three paragraphs telling me where the others messed up, only to give me the same answer. It's quite judgy.)
 
 On Monday, I'll spend about 30 minutes scouring LinkedIn, Reddit, and X for key words like "manual process", "old excel", "manual entry", "tedious", things like that.  When I find a person talking about a new problem, I add two Issues to my GitHub repo:  a Person issue and a Problem issue.  To link a person to a problem, I'll write the Problem issue number (e.g. #22) on the Person card.
 
 Two days (and ideally two problems) later, I'll send a "zero-ask" email to the new people.  The email basically says "Hi, I'm researching operational pains in [your business domain].  What's one manual process you currently have that feels too brittle to touch?"  The text of the email is added as a comment on their Person card.
 
-Finally, two days later - Friday, if you're counting - I'll send a "technical gift" email.  Whether the warm contacts sent a reply or not, I'll send them one sketched out solution to one of their problems.  "I've been thinking about your process, and came up with this solution.  No need to reply, just thought it would help!"  It doesn't even have to be a built solution, just a summary of how to handle it.
+Finally, two days later - Friday, if you're counting - I'll send a "technical gift" email.  Whether my new contacts sent a reply or not, I'll send them one sketched out solution to one of their problems.  "I've been thinking about your process, and came up with this solution.  No need to reply, just thought it would help!"  It doesn't even have to be a built solution, just a summary of how to handle it.  This isn't a software license; it’s a blueprint.  It’s me saying, "Here is the math you need to solve this."  It costs me twenty minutes of thinking and costs them zero minutes of onboarding.
 
 GitHub has a thing called "Projects", which looks and acts a lot like a Kanban board.  You might have seen these things in Jira, Trello, Monday, Asana, or some other productivity app.  Basically, it's a set of columns, with notes you can move between those columns.  Think, PostIt notes on a white board that you can move around.
 
