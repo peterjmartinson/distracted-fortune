@@ -11,6 +11,7 @@ import fs from 'fs';
 import axios from 'axios';
 import { wpClient } from './wp-client.js';
 import { createOrUpdateDraftFromDir } from './sync.js';
+import { findPostDirsFromFiles } from './find-post-dirs.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -32,15 +33,6 @@ if (!WP_URL || !WP_USER || !WP_APP_PASSWORD) {
 }
 
 const wp = wpClient({ wpUrl: WP_URL, user: WP_USER, appPassword: WP_APP_PASSWORD });
-
-function findPostDirsFromFiles(files) {
-  const set = new Set();
-  for (const f of files) {
-    const m = f.match(/^content\/posts\/([^/]+)\/draft\.md$/);
-    if (m) set.add(`content/posts/${m[1]}`);
-  }
-  return Array.from(set);
-}
 
 function makePrHelpers(token, owner, repo) {
   const headers = {
