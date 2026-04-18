@@ -28,8 +28,6 @@ So, lesson:  Hunt for people, then get them on the phone.  That's when you hunt 
 
 And, one nice benefit is that, even if I don't actually locate a problem, I'll at least be building the network.
 
-
-
 Now, time to get back to work.
 
 Yours,
