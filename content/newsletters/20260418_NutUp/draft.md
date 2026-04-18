@@ -17,6 +17,8 @@ So, screw that.
 
 My new tactic still has the same goal and documentation process - build a network while researching problems, and document on GitHub.  Instead of doing a passive search for problems, I'm going to do an active search for people, and ask them for what used to be called an "informational interview".
 
+Where LinkedIn and X are showcases for peoples' work, the informational interview is the raw person, currently struggling with something like the rest of us.
+
 I first heard about these back when in active job search.  There was [this guy who basically landed an awesome job](https://medium.com/free-code-camp/how-you-can-land-a-6-figure-job-in-tech-with-no-connections-6eed0de26ea4) by just reaching out to people at the company.  His strategy was to hunt people down, then email them asking for information on their job.  People respond to this, because hey, everybody likes being seen as an expert on something!
 
 But the resultant 5-15 minute call is not to learn about the job.  It's to covertly identify a major headache the guy is dealing with at the job.
@@ -26,6 +28,8 @@ After identifying that problem, Tim (the article's author) drafted a PowerPoint 
 So, lesson:  Hunt for people, then get them on the phone.  That's when you hunt for the problems.
 
 And, one nice benefit is that, even if I don't actually locate a problem, I'll at least be building the network.
+
+By this time next week I plan to have scheduled at least two informational interviews.  I'll be documenting both contacts and any unearthed problems in my GitHub repo.  Stay tuned for the update.
 
 Now, time to get back to work.
 
