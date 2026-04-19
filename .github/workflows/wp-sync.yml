@@ -51,10 +51,15 @@ jobs:
       - name: Fetch JWT token
         id: jwt
         run: |
-          TOKEN=$(curl -s -X POST https://distractedfortune.com/wp-json/jwt-auth/v1/token \
+          RESPONSE=$(curl -s -X POST https://distractedfortune.com/wp-json/jwt-auth/v1/token \
             -H 'Content-Type: application/json' \
-            -d "{\"username\":\"${{ secrets.BOT_USERNAME }}\",\"password\":\"${{ secrets.BOT_PASSWORD }}\"}" \
-            | jq -r '.token')
+            -d "{\"username\":\"${{ secrets.BOT_USERNAME }}\",\"password\":\"${{ secrets.BOT_PASSWORD }}\"}")
+          TOKEN=$(echo "$RESPONSE" | jq -r '.token // empty')
+          if [ -z "$TOKEN" ]; then
+            echo "::error::JWT fetch failed. Response: $RESPONSE"
+            echo "::error::Check BOT_USERNAME and BOT_PASSWORD secrets, and that the JWT plugin is active."
+            exit 1
+          fi
           echo "token=$TOKEN" >> $GITHUB_OUTPUT
 
       - name: Run WP sync (create/update draft)
