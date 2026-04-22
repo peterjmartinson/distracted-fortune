@@ -1,0 +1,5 @@
+images:
+  - file: front_image.png
+    caption: "Children singing in Church.  The voice is uniquely human."
+    alt: "A brief description of the image for screen readers."
+    credit: "Photographer or source name"
