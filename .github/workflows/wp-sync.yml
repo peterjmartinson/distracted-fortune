@@ -51,15 +51,40 @@ jobs:
       - name: Fetch JWT token
         id: jwt
         run: |
-          RESPONSE=$(curl -s -X POST https://distractedfortune.com/wp-json/jwt-auth/v1/token \
-            -H 'Content-Type: application/json' \
-            -d "{\"username\":\"${{ secrets.BOT_USERNAME }}\",\"password\":\"${{ secrets.BOT_PASSWORD }}\"}")
-          TOKEN=$(echo "$RESPONSE" | jq -r '.token // empty')
-          if [ -z "$TOKEN" ]; then
-            echo "::error::JWT fetch failed. Response: $RESPONSE"
-            echo "::error::Check BOT_USERNAME and BOT_PASSWORD secrets, and that the JWT plugin is active."
+          set -euo pipefail
+
+          # exit early if secrets are missing
+          if [ -z "${{ secrets.BOT_USERNAME }}" ] || [ -z "${{ secrets.BOT_PASSWORD }}" ]; then
+            echo "::error::BOT_USERNAME or BOT_PASSWORD is missing. If this is a forked PR, secrets are not available to pull_request workflows."
             exit 1
           fi
+
+          # capture response body and http status
+          RESPONSE=$(curl -sS -w "\n%{http_code}" -X POST "https://distractedfortune.com/wp-json/jwt-auth/v1/token" \
+            -H 'Content-Type: application/json' \
+            -d "{\"username\":\"${{ secrets.BOT_USERNAME }}\",\"password\":\"${{ secrets.BOT_PASSWORD }}\"}")
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          # surface HTTP errors
+          if [ "$HTTP_STATUS" -ge 400 ]; then
+            echo "::error::JWT endpoint returned HTTP $HTTP_STATUS. Response body: $BODY"
+            exit 1
+          fi
+
+          # make sure we have JSON before calling jq
+          if ! echo "$BODY" | jq -e . >/dev/null 2>&1; then
+            echo "::error::JWT endpoint returned non-JSON response. Body: $BODY"
+            exit 1
+          fi
+
+          TOKEN=$(echo "$BODY" | jq -r '.token // empty')
+          if [ -z "$TOKEN" ]; then
+            echo "::error::JWT token missing in response. Body: $BODY"
+            exit 1
+          fi
+
+          # export token safely
           echo "token=$TOKEN" >> $GITHUB_OUTPUT
 
       - name: Run WP sync (create/update draft)
