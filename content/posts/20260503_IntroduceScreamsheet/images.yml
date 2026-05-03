@@ -1,0 +1,5 @@
+images:
+  - file: front_image.png
+    caption: "Another day, another Screamsheet.  Will those Phillies ever win a game?"
+    alt: "Another day, another Screamsheet.  Will those Phillies ever win a game?"
+    credit: "Produced by the Screamsheet application.  https://github.com/peterjmartinson/screamsheet"
