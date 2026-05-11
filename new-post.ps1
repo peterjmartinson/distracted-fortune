@@ -78,7 +78,7 @@ if ($PostType -eq "Article") {
     # Newsletter: separate content lane — no WP workflow triggered for now
     $Folder       = "content/newsletters/${DateFolder}_${Pascal}"
     $Branch       = "newsletter/$Kebab"
-    $EmailSubject = "[Distracted Fortune] Raw Thoughts On $ShortTitleRaw"
+    $EmailSubject = "[Distracted Fortune] $ShortTitleRaw"
 }
 
 # ── tags yaml lines (Article only) ──────────────────────────────────────────
@@ -147,6 +147,9 @@ email_subject: "$EmailSubject"
 categories:
   - Newsletter
 ---
+
+Dear Reader,
+
 
 "@
 
