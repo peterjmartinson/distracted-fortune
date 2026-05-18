@@ -1,0 +1,5 @@
+images:
+  - file: front_image.png
+    caption: "This is not what exposure therapy looks like."
+    alt: "This is not what exposure therapy looks like."
+    credit: "Photographer or source name"
