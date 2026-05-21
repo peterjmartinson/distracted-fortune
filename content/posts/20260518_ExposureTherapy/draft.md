@@ -13,7 +13,6 @@ featured_image: MIT_streaker_at_HarvardYale_game.jpg
 
 I've got two major diagnoses to deal with:  ADHD-inattentive, and Anxiety.  They both sprinkle generous heaps of caltrops on my daily path to extraordinary success.
 
-
 Closely connected to anxiety is Fear.  This article is about how to deal with both.
 
 One form of anxiety that really stops my progress, is social anxiety.  Here's how it works.  We live pretty close to a college bar.  During big games or other college events, the line of kids with fake ids stretches down the block around the corner.  They're just kids to me.  I have no problem interacting with college kids.
@@ -22,7 +21,7 @@ But when I try to walk down the sidewalk next to this line of party, my knees bu
 
 My fears take over.  "What if somebody says something to me", "what if I'm dressed like a hobo?", "What if...", there's always something that could happen that could embarrass me in front of all these people.
 
-In the end, who cares?
+In the end, who cares?  For some reason, I do.
 
 But I've mostly gotten over this fear.  The way I did it is through _exposure therapy_.
 
@@ -50,7 +49,7 @@ You grow your confidence.
 
 _DISCLAIMER_ I am a writer sharing my personal experiences and research, not a licensed therapist or a medical professional. If you are dealing with severe anxiety, panic disorders, or trauma, please talk to a professional before trying to rewire your brain. Exposure therapy is a highly effective tool for everyday fears and social anxiety, but it is not a cure-all. Do not use this framework to jump off a roof, wrestle poisonous snakes, or try to navigate an active volcano. Know your limits, use common sense, and seek a qualified guide if you are dealing with the heavy stuff.
 
-I like to think about this as programming myself.  I wrote a while back about how we are really at least three beings in one:  [Beast, Rider, and Marshall](LINK).  The fear comes from that Beast, at which the Rider wheels the steed around and rides it to safety.
+I like to think about this as programming myself.  I wrote a while back about how we are really at least three beings in one:  [Beast, Rider, and Marshall](https://distractedfortune.com/beast-rider-and-marshall-how-to-get-control-of-yourself/).  The fear comes from that Beast, at which the Rider wheels the steed around and rides it to safety.
 
 We can instead wield the Marshall's personality, and rewrite the commands executed by your Rider.
 
@@ -58,11 +57,11 @@ What follows is called a Fear Ladder (or, clinically, an exposure hierarchy).
 
 1. Identify the Fear
 
-Vague fears cannot be targetted.  You need to identify fears, and then identify the fears behind the fears, until you can't go any further.
+Vague fears cannot be targeted.  You need to identify fears, and then identify the fears behind the fears, until you can't go any further.
 
 For me, it's any environment that screams "PARTY TIME" (_surface fear_).  I'm afraid that I will get embarrassed and that it will matter (_deeper fear_).  Really, I'm afraid that I don't deserve love and will be abandoned (_primary fear_).
 
-For you, it may be something else.  Maybe you're really scared of spiders.  Whatever, dig down.  Use your [Morning Pages](LINK) to get to the root.
+For you, it may be something else.  Maybe you're really scared of spiders.  Whatever, dig down.  Use your [Morning Pages](https://distractedfortune.com/unlock-your-subconscious-the-power-of-morning-pages/) to get to the root.
 
 2. Build the Fear Ladder
 
