@@ -34,3 +34,42 @@ test('should_deduplicate_the_same_draft_file', () => {
   ]);
   assert.deepEqual(dirs, ['content/posts/my-post']);
 });
+
+// ---------------------------------------------------------------------------
+// Simulated GitHub Compare API payloads (res.data.files[].filename / .status)
+// Merge commits have empty added/modified arrays in the push event, so
+// handleMerge() uses the Compare API and applies filter+map before calling
+// findPostDirsFromFiles.
+// ---------------------------------------------------------------------------
+
+function filesFromCompareApi(compareFiles) {
+  return compareFiles
+    .filter((f) => f.status === 'added' || f.status === 'modified')
+    .map((f) => f.filename);
+}
+
+test('should_detect_newsletter_draft_added_via_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: 'content/newsletters/20260524_KanbanHomework/draft.md', status: 'added' },
+    { filename: 'README.md', status: 'modified' },
+  ]);
+  const dirs = findPostDirsFromFiles(files);
+  assert.deepEqual(dirs, ['content/newsletters/20260524_KanbanHomework']);
+});
+
+test('should_ignore_removed_files_from_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: 'content/newsletters/20260524_KanbanHomework/draft.md', status: 'removed' },
+  ]);
+  const dirs = findPostDirsFromFiles(files);
+  assert.deepEqual(dirs, []);
+});
+
+test('should_detect_post_draft_modified_via_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: 'content/posts/my-post/draft.md', status: 'modified' },
+    { filename: 'content/posts/my-post/image.png', status: 'added' },
+  ]);
+  const dirs = findPostDirsFromFiles(files);
+  assert.deepEqual(dirs, ['content/posts/my-post']);
+});

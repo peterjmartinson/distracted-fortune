@@ -152,9 +152,30 @@ async function handleMerge() {
   const buttondown = buttondownClient({ apiKey: BUTTONDOWN_API_KEY });
   const prHelpers = makePrHelpers(GITHUB_TOKEN, owner, repo);
 
-  // Collect all changed files across every commit in this push.
-  const commits = event.commits || [];
-  const allFiles = commits.flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
+  // Collect all changed files. Merge commits have empty added/modified arrays
+  // in the push event payload, so prefer the GitHub Compare API. Fall back to
+  // commit file lists only when the Compare API is unavailable.
+  const before = event.before;
+  const after = event.after;
+  let allFiles;
+  if (GITHUB_TOKEN && before && after && !/^0+$/.test(before)) {
+    try {
+      const headers = {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json',
+      };
+      const url = `https://api.github.com/repos/${owner}/${repo}/compare/${before}...${after}`;
+      const res = await axios.get(url, { headers });
+      allFiles = (res.data.files || [])
+        .filter((f) => f.status === 'added' || f.status === 'modified')
+        .map((f) => f.filename);
+    } catch (e) {
+      console.warn(`Compare API failed (${e.message}), falling back to commit file lists.`);
+      allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
+    }
+  } else {
+    allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
+  }
   const dirs = findPostDirsFromFiles(allFiles);
 
   if (dirs.length === 0) {
