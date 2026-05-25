@@ -10,7 +10,7 @@ Dear Reader,
 
 We're trying a new experiment with homework at the Martinson household, one that might just work.
 
-The genesis came when I was calculating the sheer volume of academic regression that happens over a three-month vacation. Left to their own devices, it's just TV, baseball, and ice cream—and the older one is already showing signs that certain subjects require a fight to stick.
+The genesis came when I was calculating the sheer volume of academic regression that happens over a three-month vacation.  Left to their own devices, it's just TV, baseball, and ice cream—and the older one is already showing signs that certain subjects require a fight to stick.
 
 My first thought was, we need to cover all the big subjects that will get rusty.  Not history - the boys love that, and it sticks like the gum they leave everywhere.  But Math, Reading, and languages.  Reading's easy; I can just get them to read a certain number of pages per week of some book, any book.  Math is a little more challenging, but all we really need is some way to generate a bunch of problems for the boys.  French and Latin are tougher.  Maybe we give them translation assignments, get some French baseball news from Montreal or something.
 
