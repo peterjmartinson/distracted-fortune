@@ -19,7 +19,7 @@ There is no multitasking, there is only rapid context switching.  And that quick
 
 The punchline was, work on one thing for a while and don't switch contexts until you're done.
 
-Well, this same problem has surfaced in the age of [agentic engineering](LINK).
+Well, this same problem has surfaced in the age of [agentic engineering](https://www.ibm.com/think/topics/agentic-engineering).
 
 At first, telling a LLM agent like Claude or Codex about the program you wish you could have, then having them build it, feels like a superpower.  All of a sudden, projects that felt like a pie in the sky are now possible to build *TONIGHT*.
 
@@ -48,9 +48,9 @@ The price of context switching can be less than a second, but if you're switchin
 
 ## Double Taxed
 
-For those of us with ADHD, the tax can be an especially heavy burden.  I [wrote a while back](LINK) about how the ADHD brain works.  It takes extra effort to activate interest in someone with inhibited executive function.  This is why it's generally hard for us to focus in places like school or meetings.  But when something is especially interesting, we get engaged.  With only a little more energy, we get so engaged that the entire world can melt away - this is the state of "hyperfocus".
+For those of us with ADHD, the tax can be an especially heavy burden.  I [wrote a while back](https://distractedfortune.com/why-you-wait-until-the-last-minute-and-how-to-get-back-to-work/) about how the ADHD brain works.  It takes extra effort to activate interest in someone with inhibited executive function.  This is why it's generally hard for us to focus in places like school or meetings.  But when something is especially interesting, we get engaged.  With only a little more energy, we get so engaged that the entire world can melt away - this is the state of "hyperfocus".
 
-Programming a computer can be very effective in inducing hyperfocus.  Small, incremental changes layer on capabilities, and it feels a little like [the perfect transparent medium for creativity to manifest](LINK mythical man month).
+Programming a computer can be very effective in inducing hyperfocus.  Small, incremental changes layer on capabilities, and it feels a little like [the perfect transparent medium for creativity to manifest](https://medium.com/keqius-management-notes/the-mythical-man-month-da587977dc19).
 
 Now, say we get interrupted in the middle of a hyperfocus session.  That attention immediately drops below the threshold, and we must now struggle to get interested and engaged in the new activity.  That's not to say we don't like to chit chat, we do!  But when we try to get back to the former activity, it can be extremely hard to get back over that interest threshold, not to mention going back into a hyperfocused state.
 
@@ -82,7 +82,7 @@ Instead of taking the time to write code, your job is to instead spend that time
 
 And, since LLMs are so great at taking a rough idea and smoothing it out into prose, you can go back and forth with the LLM refining the requirements doc.
 
-Spend 10 minutes yapping into a recording device to flesh out your idea.  Just say everything that comes to mind about your idea, including the kind of toilet paper you're about to use (we know where you use your phone).  Then dump that into Gemini and ask it to convert it into a first draft.
+Spend 10 minutes [yapping into a recording device](https://distractedfortune.com/this-one-ability-is-a-superpower-and-you-already-have-it/) to flesh out your idea.  Just say everything that comes to mind about your idea, including the kind of toilet paper you're about to use (we know where you use your phone).  Then dump that into Gemini and ask it to convert it into a first draft.
 
 Then, read through it and flag things you think sound off, or missing, or just not what you want.  Then, stick that version back into the LLM and tell it to rewrite.  Then, stick the doc back in, and tell the LLM to find the problems.  Here's a prompt:
 
@@ -132,7 +132,9 @@ Now that you have your requirements mapped out, and broken into a sequence of is
 
 Wrong.  You have to treat the LLM like a _wunderkind_ junior developer, who might get overwhelmed with a massive project.  Feed the agent one issue at a time.  Force it to complete that one issue, and hand you a fully functional walking skeleton application.
 
-One way to enforce this is to prevent the LLM from committing the changes to your version control system, like Git.  The main coding agents have a way to enforce certain behaviors.  For example, if you use GitHub Copilot in Visual Studio Code (my personal setup), you can put some guardrails into a file called `copilot-instructions.md` located in a `.github` directory at your project root.  GitHub Copilot automatically reads that file before following any prompt, so there you can say something like
+One way to enforce this is to prevent the LLM from committing the changes to your version control system, like Git.  The main coding agents have a way to enforce certain behaviors.  While every AI coding tool handles this differently, you can usually set hard boundaries.
+
+For example, if you use GitHub Copilot in Visual Studio Code (my personal setup), you can put some guardrails into a file called `copilot-instructions.md` located in a `.github` directory at your project root.  GitHub Copilot automatically reads that file before following any prompt, so there you can say something like
 
 ```
 After completing any Issue driven change, present the user with a clean commit
@@ -155,5 +157,4 @@ At the end of the day, the workplace is still filled with distractions.  Even wi
 
 At the end of the day, the workplace is still filled with distractions. Even with these guardrails, managing agents takes real executive function, and you can still burn out. If you find yourself staring out the window, unable to concentrate on the next step, simply get up and walk away. Because you are now running a system instead of just prompting a chatbot, you aren't leaving behind a broken application and a tangled mess of half-finished prompts. You have a stable, runnable walking skeleton, and a failing test waiting to tell you exactly what to do tomorrow.
 
-
-
+_If you liked this article, please subscribe and share with one friend_
