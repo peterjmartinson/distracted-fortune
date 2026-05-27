@@ -10,7 +10,7 @@ tags:
 categories:
   - Article
   - Self Improvement
-featured_image: front_image.png
+featured_image: front_image.jpg
 ---
 
 When I first started this blog about 50 years ago, I thought about writing an article about multitasking.  To be precise, about how multitasking is a myth.
