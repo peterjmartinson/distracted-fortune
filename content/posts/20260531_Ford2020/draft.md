@@ -7,7 +7,7 @@ tags:
 categories:
   - Article
   - Article Review
-featured_image: front_image.png
+featured_image: front_image.jpg
 ---
 
 _The following is a guest article by my son Isaac.  He loves baseball, and knows more about the game than anybody._
