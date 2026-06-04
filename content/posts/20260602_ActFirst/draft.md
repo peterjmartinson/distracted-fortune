@@ -9,7 +9,7 @@ tags:
 categories:
   - Article
   - Self Improvement
-featured_image: front_image.png
+featured_image: Cavalry_Charge_on_the_Southern_Plains.jpg
 ---
 
 The other day, I emailed a guy an invitation to a coffee meeting.  I can't remember the last time I did something like that.  It's out of the blue, a guy I don't know very well, financial type, with the goal of professional networking.
@@ -40,7 +40,7 @@ Maybe there are people like that in the real world, but that's not a sustainable
 
 Confidence doesn't come out of a can, or a special food, or something somebody says to you.  It's demonstrated to your cowering, little rat brain.
 
-Human beings are not animals.  [We're really three beings in one](LINK beast article).  The lowest is what we might consider an animal, like a horse.  That horse gets the jitters when faced with something new or scary.  When you're trying to ride that steed through unknown territory, those jitters can propagate into you, and turn you right around.
+Human beings are not animals.  [We're really three beings in one](https://distractedfortune.com/beast-rider-and-marshall-how-to-get-control-of-yourself/).  The lowest is what we might consider an animal, like a horse.  That horse gets the jitters when faced with something new or scary.  When you're trying to ride that steed through unknown territory, those jitters can propagate into you, and turn you right around.
 
 How do you teach an animal to charge into battle?  Tell him, "It will be ok"?  Hope for the best?  Nope.
 
@@ -56,7 +56,7 @@ The next level of being inside us is that Rider.  When you, the rider, perform a
 
 You are teaching the Beast that he can trust the Rider.
 
-You develop confidence by riding into battle, more and more situations that risk the kind of failure you want to build tolerance for.  In other words, [exposure therapy](LINK my article).
+You develop confidence by riding into battle, more and more situations that risk the kind of failure you want to build tolerance for.  In other words, [exposure therapy](https://distractedfortune.com/what-is-and-how-to-use-exposure-therapy/).
 
 ## The "CHARGE!" Protocol
 
@@ -104,10 +104,3 @@ Stop waiting for your cowering rat-brain to give you permission to be bold, or c
 Listen for the Marshal. Tighten your grip on the reins. Apply the leg pressure.
 
 **CHARGE.**
-
-
-
-
-
-
-
