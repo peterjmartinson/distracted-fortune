@@ -5,7 +5,7 @@ permalink: /Screen Withdrawal/
 excerpt: By leveraging Large Language Models to automate a daily "Screamsheet" of sports scores and news, the author successfully replaced addictive morning screen-time for his children with a tangible, AI-curated paper newspaper. This "vibe coding" project demonstrates how advanced technology can be used to reclaim personal attention and make digital devices practically invisible in the home.
 tags: 
 categories: 
-featured_image: front_image.png
+featured_image: /assets/post-images/front_image_introduce-screamsheet.png
 ---
 
 

@@ -5,7 +5,7 @@ permalink: /how-to-build-a-real-network/
 excerpt: Stop building products nobody needs.  Start hunting for problems instead.  You'll end up with both a product and a market.  I hope.
 tags: 
 categories: 
-featured_image: front_image.png
+featured_image: /assets/post-images/front_image_hunt-for-problems-again.jpg
 ---
 
 

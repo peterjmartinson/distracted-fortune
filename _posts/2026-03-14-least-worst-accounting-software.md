@@ -5,7 +5,7 @@ permalink: /and-the-least-worst-accounting-software-is/
 excerpt: You need an app to keep track of all your banking information.  So which to choose?
 tags: 
 categories: 
-featured_image: front_image.png
+featured_image: /assets/post-images/front_image_least-worst-accounting-software.png
 ---
 
 

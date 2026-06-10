@@ -5,7 +5,7 @@ permalink: /blocked-writers-still-must-write/
 excerpt: I've had writers' block for a few days.  Time to write about ANYTHING!  In this case, the Christian schism of 1054.
 tags: 
 categories: 
-featured_image: front_image.jpg
+featured_image: /assets/post-images/front_image_about-the-schism.jpg
 ---
 
 

@@ -5,7 +5,7 @@ permalink: /context-switching-into-oblivion-how-to-manage-multitasking-in-the-ag
 excerpt: Managing several projects at once, especially with AI Agents, can feel like a superpower.  Until you get overloaded at noon from all the context switching.  Here are some strategies to deal with this and regain control.
 tags: 
 categories: 
-featured_image: front_image.jpg
+featured_image: /assets/post-images/front_image_multitasking-hoax.jpg
 featured: true
 ---
 
