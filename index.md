@@ -8,7 +8,7 @@ title: Home
 {% comment %}
   1. Filter out any broken files or templates that are missing titles.
 {% endcomment %}
-{% assign valid_posts = site.posts | where_exp: "item", "item.title != nil and item.title != ''" %}
+{% assign valid_posts = site.posts | where_exp: "item", "item.title != nil" | where_exp: "item", "item.title != ''" %}
 
 {% comment %}
   2. Look for a post explicitly marked 'featured: true' in its front matter.
