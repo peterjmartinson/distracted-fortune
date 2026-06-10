@@ -24,6 +24,13 @@ test('should_define_post_layout_that_renders_featured_image', () => {
   assert.match(postLayout, /post-featured-image/);
 });
 
+test('should_override_footer_without_duplicate_site_title_heading', () => {
+  const footerInclude = fs.readFileSync(path.join(rootDir, '_includes', 'footer.html'), 'utf8');
+
+  assert.doesNotMatch(footerInclude, /footer-heading/);
+  assert.match(footerInclude, /site\.title \| escape/);
+});
+
 test('should_point_posts_at_existing_featured_image_assets', () => {
   const posts = fs.readdirSync(postsDir).filter((file) => file.endsWith('.md'));
 
