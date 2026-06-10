@@ -1,0 +1,12 @@
+title: Distracted Fortune
+url: "https://distractedfortune.com"
+baseurl: ""
+
+permalink: /:title/
+
+theme: minima
+
+exclude:
+  - README.md
+  - migration.py
+  - content/
