@@ -1,5 +1,5 @@
 --- 
-title: "How I Used AI to Make Technology Disappear (and Saved My Son from "Screen Withdrawal")"
+title: "How I Used AI to Make Technology Disappear (and Saved My Son from \"Screen Withdrawal\")"
 date: 2026-05-03
 permalink: /Screen Withdrawal/
 excerpt: By leveraging Large Language Models to automate a daily "Screamsheet" of sports scores and news, the author successfully replaced addictive morning screen-time for his children with a tangible, AI-curated paper newspaper. This "vibe coding" project demonstrates how advanced technology can be used to reclaim personal attention and make digital devices practically invisible in the home.
