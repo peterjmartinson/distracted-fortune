@@ -7,6 +7,15 @@ permalink: /:title/
 theme: minima
 
 exclude:
+  - .jekyll-cache
+  - .jekyll-metadata
+  - Gemfile
+  - Gemfile.lock
   - README.md
-  - migration.py
+  - _site
   - content/
+  - documentation/ # Excludes your internal documentation files
+  - migration.py
+  - src/           # Excludes your raw migration script assets
+  - test/          # Excludes your test fixtures folder
+  - vendor
