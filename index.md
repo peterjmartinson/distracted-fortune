@@ -3,8 +3,6 @@ layout: default
 title: Home
 ---
 
-<h1>Distracted Fortune</h1>
-
 {% comment %}
   1. Filter out any broken files or templates that are missing titles.
 {% endcomment %}
