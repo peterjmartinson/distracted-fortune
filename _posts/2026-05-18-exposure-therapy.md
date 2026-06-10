@@ -5,7 +5,7 @@ permalink: /what-is-and-how-to-use-exposure-therapy/
 excerpt: The first step is to identify your fears.  To conquer those fears, you need to use exposure therapy.  It takes work, but so does everything else that generates value.
 tags: 
 categories: 
-featured_image: MIT_streaker_at_HarvardYale_game.jpg
+featured_image: /assets/post-images/MIT_streaker_at_HarvardYale_game.jpg
 ---
 
 

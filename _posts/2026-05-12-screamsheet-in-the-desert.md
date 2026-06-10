@@ -5,7 +5,7 @@ permalink: /how-the-desert-helped-me-solve-a-technical-problem/
 excerpt: I spent a week with my family on the Colorado Plateau, fielding baseball questions from my son.  If only I could get my Screamsheets while on vacation!
 tags: 
 categories: 
-featured_image: front_image.jpeg
+featured_image: /assets/post-images/front_image_screamsheet-in-the-desert.jpeg
 ---
 
 

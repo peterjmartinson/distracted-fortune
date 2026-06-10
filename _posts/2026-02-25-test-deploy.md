@@ -5,7 +5,7 @@ permalink: /test-deploy/
 excerpt: A one-line summary for previews.
 tags: 
 categories: 
-featured_image: hero.png
+featured_image: /assets/post-images/hero.png
 ---
 
 

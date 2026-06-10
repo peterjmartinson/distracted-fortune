@@ -5,7 +5,7 @@ permalink: /this-one-ability-is-a-superpower-and-you-already-have-it/
 excerpt: The human voice is back, Baby!  Your voice is the key to both using AI's full power, and superceding its astounding capabilities.
 tags: 
 categories: 
-featured_image: front_image.png
+featured_image: /assets/post-images/front_image_voice-is-back.jpg
 ---
 
 

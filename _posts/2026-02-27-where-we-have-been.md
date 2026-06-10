@@ -5,7 +5,7 @@ permalink: /reviving-a-dead-blog-my-new-strategy/
 excerpt: Distracted Fortune is being resurrected from the dead.
 tags: 
 categories: 
-featured_image: Turk_Mounting_His_Horse_MET_DP851160.jpg
+featured_image: /assets/post-images/Turk_Mounting_His_Horse_MET_DP851160.jpg
 ---
 
 
