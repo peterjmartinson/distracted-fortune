@@ -6,6 +6,7 @@ excerpt: Managing several projects at once, especially with AI Agents, can feel 
 tags: 
 categories: 
 featured_image: front_image.jpg
+featured: true
 ---
 
 
