@@ -33,6 +33,10 @@ title: Home
 <hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 {% endif %}
 
+<section class="subscribe-section">
+  {% include subscribe.html %}
+</section>
+
 <section class="articles-section">
   <h2>All Articles</h2>
   <ul style="list-style-type: none; padding-left: 0; line-height: 1.8;">
