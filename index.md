@@ -29,13 +29,13 @@ title: Home
   {% endif %}
   <p><a href="{{ featured_post.url | relative_url }}">Read more &rarr;</a></p>
 </section>
-
-<hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 {% endif %}
 
 <section class="subscribe-section">
   {% include subscribe.html %}
 </section>
+
+<hr style="border: 0; border-top: 1px solid #eee; margin: 2rem 0;">
 
 <section class="articles-section">
   <h2>All Articles</h2>
