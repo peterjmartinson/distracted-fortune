@@ -6,8 +6,6 @@ permalink: /:title/
 
 theme: minima
 
-google_analytics: G-W52Z9244ZY
-
 exclude:
   - .jekyll-cache
   - .jekyll-metadata
