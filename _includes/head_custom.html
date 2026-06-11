@@ -1,3 +1,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/Icons/favicon_beige_32.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/Icons/favicon_beige_16x16.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/Icons/favicon_bw_180x180.png' | relative_url }}">
+
+{%- if jekyll.environment == 'production' -%}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W52Z9244ZY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-W52Z9244ZY');
+</script>
+{%- endif -%}
