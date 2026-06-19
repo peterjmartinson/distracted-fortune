@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "How to Build a Real Network"
 date: 2026-04-13
 permalink: /how-to-build-a-real-network/

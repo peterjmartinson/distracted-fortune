@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Cold Calls: Your Secret Weapon for Growth"
 date: 2024-06-22
 permalink: /cold-calls-your-secret-weapon-for-growth/
 ---
-Cold Calls Suck: How to Discover True Problems
-==============================================
 
 Once upon a time, I worked with an organization that had to raise funds.  The two biggest parts of the job were talking to people at street corners to gather contact information by selling literature, and then calling those people back afterward.  The point was to either get them to donate money, or come to meetings, or both.
 

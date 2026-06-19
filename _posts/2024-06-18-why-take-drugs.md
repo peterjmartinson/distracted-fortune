@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "Neglect Medications at Your Own Peril!"
 date: 2024-06-18
 permalink: /take-your-meds/

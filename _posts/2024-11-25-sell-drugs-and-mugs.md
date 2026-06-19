@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "From Selling Drugs to Selling Mugs"
 date: 2024-11-25
 permalink: /from-selling-drugs-to-selling-mugs/
 ---
-How Selling Drugs Will Help Sell Mugs
-=====================================
 
 _Disclaimer:  this post contains affiliate links.  If you click on them and buy the products, I'll get a cut of the profit.  They're good products!_
 

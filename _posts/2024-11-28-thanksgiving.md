@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "Let Us Revive the True Spirit of Thanksgiving"
 date: 2024-11-28
 permalink: /let-us-revive-the-true-spirit-of-thanksgiving/

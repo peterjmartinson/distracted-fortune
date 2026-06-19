@@ -1,2 +1,7 @@
 .*.sw*
+*.sw*
 node_modules/
+migration2026/
+_site/
+.sass-cache
+

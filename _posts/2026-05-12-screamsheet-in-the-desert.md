@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "How the Desert Helped Me Solve a Technical Problem"
 date: 2026-05-12
 permalink: /how-the-desert-helped-me-solve-a-technical-problem/

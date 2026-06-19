@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Million Dollar Weekend: The world inside, and the world outside"
 date: 2024-08-17
 permalink: /million-dollar-weekend-the-world-inside-and-the-world-outside/
 ---
-Million Dollar Weekend: The world inside, and the world outside
-===============================================================
 
 _Disclaimer:  this post contains affiliate links.  If you click on them and buy the products, I'll get a cut of the profit._
 

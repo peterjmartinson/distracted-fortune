@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Burn the Ships: How to Force Yourself to Risk Success"
 date: 2025-09-17
 permalink: /burn-the-ships-how-to-force-yourself-to-risk-success/
 ---
-Burn the Ships:  How to trap yourself into doing what you're scared to do
-=========================================================================
 
 In 1519, [Hernán Cortés](https://www.heritage-history.com/index.php?c=resources&s=war-dir&f=wars_aztecs) faced a crisis. His men, fresh off the boat in Iberoamerica, were terrified of the powerful [Aztec death cult](https://qz.com/374994/aztec-sacrifice-was-real-and-its-not-fetishistic-to-be-fascinated-by-it) and plotting to retreat. His answer? He burned the ships.
 

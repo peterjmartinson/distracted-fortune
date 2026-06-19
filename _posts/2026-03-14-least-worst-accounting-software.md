@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "And The Least Worst Accounting Software Is..."
 date: 2026-03-14
 permalink: /and-the-least-worst-accounting-software-is/

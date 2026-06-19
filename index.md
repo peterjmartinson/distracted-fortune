@@ -45,8 +45,13 @@ title: Home
       <span style="font-family: monospace; color: #666; margin-right: 15px; flex-shrink: 0;">{{ post.date | date: "%Y-%m-%d" }}</span>
       <div>
         <strong><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong>
+        {{ site.data.discussion_counts | default: "" }}
+        {% assign key = post.url | relative_url %}
+        {% if counts and counts[key] %}
+        <span style="color:#999; font-size:0.9rem; margin-left:8px;">&middot; {{ counts[key] }} comments</span>
+        {% endif %}
         {% if post.excerpt %}
-        <span style="color: #444; font-size: 0.95rem;"> &mdash; {{ post.excerpt | strip_html | truncatewords: 20 }}</span>
+        <span style="color: #444; font-size: 0.95rem; display:block; margin-top:4px;">{{ post.excerpt | strip_html | truncatewords: 20 }}</span>
         {% endif %}
       </div>
     </li>
