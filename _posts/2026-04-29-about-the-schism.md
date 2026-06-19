@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "Blocked Writers Still Must Write"
 date: 2026-04-29
 permalink: /blocked-writers-still-must-write/

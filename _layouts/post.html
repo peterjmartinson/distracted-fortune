@@ -28,4 +28,54 @@ layout: default
     {% include subscribe.html %}
   </section>
 
+  {% comment %} Giscus comments: lazy-load on user click. Enabled by default unless front-matter sets `comments: false` and only when site.giscus.repo is configured. {% endcomment %}
+  {% if site.giscus.repo and page.comments != false %}
+  <section class="post-comments" style="margin-top: 2rem;">
+    <button id="load-comments-button" style="background:#f5f5f5;border:1px solid #ddd;padding:0.6rem 1rem;border-radius:4px;cursor:pointer;">Show comments</button>
+    <div id="giscus-container" style="margin-top:1rem; display: none;"></div>
+    <script>
+      (function(){
+        var btn = document.getElementById('load-comments-button');
+        var container = document.getElementById('giscus-container');
+        var loaded = false;
+        function loadGiscus(){
+          if(loaded) return;
+          loaded = true;
+          container.style.display = '';
+
+          // 1. Create the script element first
+          var script = document.createElement('script');
+          script.src = 'https://giscus.app/client.js';
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+
+          // 2. Safely attach all data configuration to the script
+          var giscusDiv = document.createElement('div');
+          giscusDiv.className = 'giscus';
+          script.setAttribute('data-repo', '{{ site.giscus.repo }}');
+          script.setAttribute('data-repo-id', '{{ site.giscus.repo_id }}');
+          script.setAttribute('data-category', '{{ site.giscus.category }}');
+          script.setAttribute('data-category-id', '{{ site.giscus.category_id }}');
+          script.setAttribute('data-mapping', '{{ site.giscus.mapping | default: "pathname" }}');
+          script.setAttribute('data-strict', '{{ site.giscus.strict | default: "0" }}');
+          script.setAttribute('data-reactions-enabled', '{{ site.giscus.reactions_enabled | default: "1" }}');
+          script.setAttribute('data-emit-metadata', '{{ site.giscus.metadata | default: "false" }}');
+          script.setAttribute('data-input-position', '{{ site.giscus.input_position | default: "bottom" }}');
+          script.setAttribute('data-theme', '{{ site.giscus.theme | default: "light" }}');
+          script.setAttribute('data-lang', '{{ site.giscus.lang | default: "en" }}');
+          // Optional: provide a stable identifier if front-matter includes `discussion_id`
+          {% if page.discussion_id %}
+          giscusDiv.setAttribute('data-term', '{{ page.discussion_id }}');
+          {% endif %}
+          container.appendChild(giscusDiv);
+
+          // Then include the client script (no data attributes on the script)
+          container.appendChild(script);
+        }
+        btn.addEventListener('click', function(){ loadGiscus(); btn.style.display='none'; });
+      })();
+    </script>
+  </section>
+  {% endif %}
+
 </article>

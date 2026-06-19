@@ -16,6 +16,25 @@ exclude:
   - content/
   - documentation/ # Excludes your internal documentation files
   - migration.py
+  - migration2026
+  - node_modules
+  - package-lock.json
+  - package.json
+  - site
   - src/           # Excludes your raw migration script assets
   - test/          # Excludes your test fixtures folder
   - vendor
+
+# Giscus (GitHub Discussions) comments configuration
+giscus:
+  repo: "peterjmartinson/distracted-fortune"   # repository that hosts Discussions
+  repo_id: "R_kgDORYLCYQ"                                 # optional: GitHub repository ID (more robust)
+  category: "Announcements"                                # optional: Discussions category name
+  category_id: "DIC_kwDORYLCYc4C-9Mq"                             # optional: category ID
+  mapping: "pathname"                         # 'pathname' | 'url' | 'title' | 'discussion_id'
+  strict: "1"
+  reactions_enabled: "1"
+  metadata: "0"
+  input_position: "top"
+  theme: "preferred_color_scheme"
+  lang: "en"

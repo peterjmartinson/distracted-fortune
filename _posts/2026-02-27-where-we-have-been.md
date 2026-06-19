@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "Reviving a Dead Blog: My New Strategy"
 date: 2026-02-27
 permalink: /reviving-a-dead-blog-my-new-strategy/

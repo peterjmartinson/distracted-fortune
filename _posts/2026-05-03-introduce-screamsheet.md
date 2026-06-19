@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "How I Used AI to Make Technology Disappear (and Saved My Son from \"Screen Withdrawal\")"
 date: 2026-05-03
 permalink: /Screen Withdrawal/

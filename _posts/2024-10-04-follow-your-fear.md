@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Focus on Your Fears: A Strategy for Action"
 date: 2024-10-04
 permalink: /focus-on-your-fears-a-strategy-for-action/
 ---
-Focus on Your Fears: A Strategy for Action
-==========================================
 
 Once upon a time - OK, fine.  _All the time_, I'm faced with fears, and risk being a coward.  I'm afraid I can't cover the bills, I'm afraid my wife will think my latest get-rich-scheme will be nuts, I'm afraid the shoes I want will look stupid on my feet.  When there is something I need to do, the biggest impediment to taking action is ALWAYS my fear.
 

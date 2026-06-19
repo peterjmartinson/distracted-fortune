@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "Beyond Logic:  How to Listen to your Little Voice"
 date: 2025-09-02
 permalink: /beyond-logic-how-to-listen-to-your-little-voice/

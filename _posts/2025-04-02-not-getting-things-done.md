@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Why Planning Less May Be a Better Plan"
 date: 2025-04-02
 permalink: /why-planning-less-may-be-a-better-plan/
 ---
-Why Planning Less May Be a Better Plan
-======================================
 
 _Disclaimer:  this post contains affiliate links.  If you click on them and buy the products, I'll get a cut of the profit.  I promise they're good products!_  
 

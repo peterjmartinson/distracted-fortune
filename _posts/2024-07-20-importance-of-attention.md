@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Lost in Likes? Seize Your Own Attention!"
 date: 2024-07-20
 permalink: /lost-in-likes-seize-your-own-attention/
 ---
-Pay Attention!  Mankind's destiny depends on this
-=================================================
 
 Recently, my kid's school held a little book club meeting for the parents.  The topic was [Jonathan Haidt's](https://jonathanhaidt.com/) new book, [The Anxious Generation: How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness](https://www.anxiousgeneration.com/book).  The meeting was what you'd expect from a classical, closet conservative primary school - lots of PhDs singing choir to the melody scored within the book.  The main thesis is that kids who hit adolescence after about 2012 have had what's needed for developing strong character removed from their lives, and replaced by intense addiction to the social draws of the online world, primarily represented by smartphones and online gaming.
 

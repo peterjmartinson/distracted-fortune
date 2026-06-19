@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "What is and How to Use Exposure Therapy"
 date: 2026-05-18
 permalink: /what-is-and-how-to-use-exposure-therapy/

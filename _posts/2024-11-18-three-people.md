@@ -1,13 +1,9 @@
 --- 
+layout: post
 title: "Beast, Rider, and Marshall:  How to Get Control of Yourself"
 date: 2024-11-18
 permalink: /beast-rider-and-marshall-how-to-get-control-of-yourself/
 ---
-The Beast, the Rider, and the Marshall
-======================================
-
-or, how to get control of yourself
-----------------------------------
 
 _Disclaimer:  this post contains affiliate links.  If you click on them and buy the products, I'll get a cut of the profit._
 

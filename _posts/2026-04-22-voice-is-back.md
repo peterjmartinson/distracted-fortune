@@ -1,4 +1,5 @@
 --- 
+layout: post
 title: "This One Ability is a Superpower, and You Already Have It"
 date: 2026-04-22
 permalink: /this-one-ability-is-a-superpower-and-you-already-have-it/

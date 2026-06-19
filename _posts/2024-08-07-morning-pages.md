@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Unlock Your Subconscious: The Power of Morning Pages"
 date: 2024-08-07
 permalink: /unlock-your-subconscious-the-power-of-morning-pages/
 ---
-Write Right When You Wake Up!
-=============================
 
 Your most powerful tool is your creative mind.  It's what separates us from the animals, and contains the power to change the world.  Getting that creativity to kick in, however, is not always easy to do.
 

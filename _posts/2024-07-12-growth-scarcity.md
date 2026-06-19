@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Growth Mindset versus Influencer: Defeat the Beast to Succeed"
 date: 2024-07-12
 permalink: /growth-mindset-versus-influencer-defeat-the-beast-to-succeed/
 ---
-Growth versus Influencer mindset:  How to Defeat the Beast and Succeed
-======================================================================
 
 A couple years ago, some Instagram influencer explained to me the difference between the Growth mindset and the Scarcity mindset.  "The Growth mindset," she said, "is one of abundance.  This mindset is always optimistic and brings energy."  In contrast, the Scarcity mindset is one of lack.  "This mindset is always pessimistic, and sucks energy out of everything around him."
 

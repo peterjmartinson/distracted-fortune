@@ -1,10 +1,9 @@
 --- 
+layout: post
 title: "Why You Wait Until the Last Minute, and How to Get Back to Work"
 date: 2024-12-03
 permalink: /why-you-wait-until-the-last-minute-and-how-to-get-back-to-work/
 ---
-How to Trick Procrastination
-============================
 
 _Disclaimer:  this post contains affiliate links.  If you click on them and buy the products, I'll get a cut of the profit._
 
