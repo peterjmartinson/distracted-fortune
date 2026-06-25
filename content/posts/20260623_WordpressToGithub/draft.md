@@ -8,7 +8,7 @@ tags:
 categories:
   - Article
   - Economics
-featured_image: front_image.png
+featured_image: front_image.jpg
 ---
 
 _May 25th email:  "Your premium web hosting will auto-renew on May 31st for $131.88."_

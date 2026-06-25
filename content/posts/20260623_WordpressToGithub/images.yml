@@ -1,5 +1,5 @@
 images:
-  - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
-    credit: "Photographer or source name"
+  - file: front_image.jpg
+    caption: "Winged Victory of Samothrace"
+    alt: "Winged Victory of Samothrace"
+    credit: "https://commons.wikimedia.org/wiki/File:Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg"
