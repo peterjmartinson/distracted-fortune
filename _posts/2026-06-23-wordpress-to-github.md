@@ -3,7 +3,7 @@ layout: post
 title: "How to Identify the Bottlenecks and Fix the Problem: From WordPress to GitHub"
 date: 2026-06-23
 permalink: /wordpress-to-github/
-excerpt: "Check out the new site!  You don't care that I moved my whole blog from WordPress to Github, but you can appreciate and apply the lessons to your own projects."
+excerpt: "Check out the new site!  You don't care that I moved my whole blog from WordPress to GitHub, but you can appreciate and apply the lessons to your own projects."
 tags:
   - productivity
   - process improvement
@@ -21,31 +21,31 @@ _June 1st email:  "Your premium web hosting will auto-renew on June 14th for $21
 
 _What the hell?_
 
-When I started this blog, WordPress was the way to go.  I already had some experience with the free version when I started my [Stone Telescope](https://stonetelescope.wordpress.com), so I wanted to transfer my skills to the full, "self hosted" version.  And I wanted my own domain, [distractedfortune.com](https://distractedfortune.com).
+When I started this blog, [WordPress](https://wordpress.com/) was the way to go.  I already had some experience with the free version when I started my [Stone Telescope](https://stonetelescope.wordpress.com), so I wanted to transfer my skills to the full, "self hosted" version.  And I wanted my own domain, [distractedfortune.com](https://distractedfortune.com).
 
-I found in Hostinger a one-stop solution with a great introductory price.  $25 per year for two years, including domain, full WordPress hosting, and a business email address.  It was a no brainer, and Distracted Fortune was born.
+I found in [Hostinger](https://www.hostinger.com/) a one-stop solution with a great introductory price.  $25 per year for two years, including domain, full WordPress hosting, and a business email address.  It was a no brainer, and Distracted Fortune was born.
 
 Fast forward to the end of the honeymoon.
 
-In the past few weeks, I moved my blog off Hostinger and WordPress, and onto GitHub Pages.  My domain and email address are still hosted on Hostinger but at a fair price.
+In the past few weeks, I moved my blog off Hostinger and WordPress, and onto [GitHub](https://www.github.com) [Pages](https://docs.github.com/en/pages).  My domain and email address are still hosted on Hostinger but at a fair price.
 
-This article will describe how I came to the decision to make the jump, and what general tactics can be drawn from the experience.  Transferrable skills, if you wills.
+This article will describe how I came to the decision to make the jump, and what general tactics can be drawn from the experience.  Transferable skills, if you wills.
 
 ## 1. Bend the Current Process to Your Will
 
-I compose my articles in the Vim editor using Markdown syntax.  I then save my work on GitHub.  It's a very coder workflow.
+I compose my articles in the [Vim](https://www.vim.org/) editor using [Markdown](http://www.aaronsw.com/weblog/001189) syntax.  I then save my work on GitHub.  It's a very coder workflow.
 
-The problem is, getting those Markdown articles then into WordPress incurs a lot of friction.  Log into the WordPress dashboard, create a new post, copy my Markdown into the clipboard, click into the WordPress "block editor", find the "Markdown" block, paste my text, cut and paste the title into the title section, pick a featured image, go have lunch, pick a category and some tags, write in the excerpt, and finally schedule the thing to publish at a certain time.  And, of course, since it's a web interface, I have to spend time finding where to do a few of these things.
+The problem is, getting those Markdown articles then into WordPress incurs a lot of friction.  Log into the WordPress dashboard, create a new post, copy my Markdown into the clipboard, click into the WordPress "block editor", find the "Markdown" block, paste my text, cut and paste the title into the title section, pick a featured image, go have lunch, pick a category and some tags, write in the excerpt, and finally schedule the thing to publish at a certain time.  And, of course, since it's a web interface, I have to spend time finding where to click to do a few of these things.
 
 It's not impossible, I did it over and over for a long time.  But it's just not optimal.
 
-The way you use Git is, you save your work, commit your changes to the branch, push up to GitHub.com, open a Pull Request, and finally merge the branch to the master branch.  I wanted to make posting the article an automatic action that happened when I raised the PR.
+[The way you use Git is](https://git-scm.com/book/en/v2), you save your work, commit your changes to the branch, push up to GitHub.com, open a Pull Request, and finally merge the branch to the master branch.  I wanted to make posting the article an automatic action that happened when I raised the PR.
 
 In other words, I wanted to create a kind of pipeline.  I write the article the way I want, and it automatically gets sent to WordPress.
 
-Ultimately, I made my coding agent write a GitHub workflow that did just that.  I still had to go into the WordPress editor, make sure nothing was lost in translation, and schedule the publish.  But it reduced a lot of friction.
+Ultimately, I made my coding agent write a [GitHub workflow](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflows) that did just that.  I still had to go into the WordPress editor, make sure nothing was lost in translation, and schedule the publish.  But it reduced a lot of friction.
 
-Later, I added a workflow that also created a newsletter.  The newsletter is targeted at my subscriber(s).  The actual emailing is done with [Jetpack newsletter](LINK).
+Later, I added a workflow that also created a newsletter.  The newsletter is targeted at my subscriber(s).  The actual emailing is done with [Jetpack newsletter](https://jetpack.com/newsletter/).
 
 The pipeline worked.  However, it was a new abstraction layer just to move text from point A to point B.
 
@@ -59,7 +59,7 @@ Next, I want emails to get sent for both newsletters and for regular articles.  
 
 Pain.
 
-So I hunted for an alternative.  Ultimately, I found [Buttondown](LINK).
+So I hunted for an alternative.  Ultimately, I found [Buttondown](https://buttondown.com).
 
 Buttondown is just an emailer.  You basically write up an email, stick in a bunch of recipients, and schedule the send.  You can even import a subscriber list of emails.
 
@@ -73,9 +73,9 @@ That de-linking was my first taste of true freedom.
 
 When I got that balloon bill from Hostinger, I scrambled to find a different webhost.  Sure, maybe they made a billing error, but even $100+ for a blog that doesn't earn any income just doesn't make sense.
 
-Eventually I settled on [Namecheap.com](LINK), which will host your blog for about $3/month.  All I had to do now was extract my WordPress data from Hostinger, and load it onto Namecheap.
+Eventually I settled on [Namecheap.com](https://namecheap.com), which will host your blog for about $3/month.  All I had to do now was extract my WordPress data from Hostinger, and load it onto Namecheap.
 
-Gemini convinced me it would be easy, and, of course, free.
+[Gemini](https://gemini.google.com) convinced me it would be easy, and, of course, free.
 
 It was neither.
 
@@ -89,15 +89,17 @@ My blog was down!
 
 The next day I hunted for solutions.  Finally it dawned on me.  The only thing I needed was some way to display my text articles at my domain (distractedfortune.com).  I didn't really need all the bells and whistles of WordPress.
 
-Maybe I don't need WordPress at all.  I just need a static site generator that's easy to maintain.  Like [GitHub Pages](LINK).
+Maybe I don't need WordPress at all.  I just need a static site generator that's easy to maintain.  Like [GitHub Pages](pages.github.com).
 
 GitHub Pages allows you to design a clean website using code templates.  All changes, like posting a new article, are managed through pull requests.  All my articles and images were already up on my GitHub repository, so this was actually perfect.
 
 I just forgot about the WordPress data, and created a new GitHub Pages site that points to my domain.  There was some monkeying around with code to get things organized and displayed properly.  Some things don't come out of the box:
 
-Commenting - this is done through configuring Giscus.
-Analytics - I used to get all my stats through Jetpack.  But, Google Analytics does the same thing, with more fidelity.
-My Mug Store - I can use Shopify to get this going again, though not a priority.
+* Commenting - this is done through configuring [Giscus](https://giscus.app/).
+
+* Analytics - I used to get all my stats through Jetpack.  But, [Google Analytics](https://marketingplatform.google.com/about/analytics/) does the same thing, with more fidelity.
+
+* My Mug Store - I can use [Shopify](https://shopify.dev/docs/storefronts/themes/tools/github) to get this going again, though not a priority.
 
 ## Lessons to be learned
 
@@ -124,7 +126,6 @@ My newsletter thing was a pain to maintain.  So, I found an alternative.  Findin
 When I finally understood that my blog was really just a collection of simple articles, I realized I didn't actually need all the overhead of WordPress anyhow.  That whole system was just an abstraction on top of the blog I was trying to maintain.
 
 So, strip down what you are actually trying to do, and attempt to see clearly what you need.  Then, ideally, solutions will become apparent.
-
 
 Now take a look at one of your own workflows.  Where are you paying a massive tax to which you've become accustomed, for bells and whistles that you don't even use?
 
