@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { findPostDirsFromFiles } from '../src/find-post-dirs.js';
+import { findPostDirsFromFiles, findArticleFilesFromFiles } from '../src/find-post-dirs.js';
 
 test('should_detect_draft_under_posts_directory', () => {
   const dirs = findPostDirsFromFiles(['content/posts/my-post/draft.md']);
@@ -72,4 +72,52 @@ test('should_detect_post_draft_modified_via_compare_api', () => {
   ]);
   const dirs = findPostDirsFromFiles(files);
   assert.deepEqual(dirs, ['content/posts/my-post']);
+});
+
+// ---------------------------------------------------------------------------
+// findArticleFilesFromFiles — _posts/YYYY-MM-DD-slug.md detection
+// ---------------------------------------------------------------------------
+
+test('should_detect_jekyll_article_in_posts_directory', () => {
+  const files = findArticleFilesFromFiles(['_posts/2026-06-25-my-article.md']);
+  assert.deepEqual(files, ['_posts/2026-06-25-my-article.md']);
+});
+
+test('should_ignore_files_outside_posts_directory', () => {
+  const files = findArticleFilesFromFiles([
+    'content/posts/20260625_MyArticle/draft.md',
+    'README.md',
+    'assets/post-images/hero.jpg',
+  ]);
+  assert.deepEqual(files, []);
+});
+
+test('should_return_empty_array_when_no_posts_files_present', () => {
+  assert.deepEqual(findArticleFilesFromFiles([]), []);
+});
+
+test('should_detect_multiple_article_files_in_one_push', () => {
+  const files = findArticleFilesFromFiles([
+    '_posts/2026-06-01-first.md',
+    '_posts/2026-06-25-second.md',
+    'README.md',
+  ]);
+  assert.deepEqual(files, ['_posts/2026-06-01-first.md', '_posts/2026-06-25-second.md']);
+});
+
+test('should_detect_article_added_via_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: '_posts/2026-06-25-my-article.md', status: 'added' },
+    { filename: 'README.md', status: 'modified' },
+  ]);
+  const articleFiles = findArticleFilesFromFiles(files);
+  assert.deepEqual(articleFiles, ['_posts/2026-06-25-my-article.md']);
+});
+
+test('should_ignore_removed_posts_files_from_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: '_posts/2026-06-25-my-article.md', status: 'removed' },
+  ]);
+  const articleFiles = findArticleFilesFromFiles(files);
+  assert.deepEqual(articleFiles, []);
 });

@@ -68,14 +68,15 @@ if ($PostType -eq "Article") {
 
 $Pascal     = To-Pascal $ShortTitleRaw
 $Kebab      = To-Kebab  $ShortTitleRaw
+$DateFile   = Get-Date -Format "yyyy-MM-dd"
 $DateFolder = Get-Date -Format "yyyyMMdd"
 $DateFront  = Get-Date -Format "yyyy-MM-ddT13:00:00-05:00"
 
 if ($PostType -eq "Article") {
-    $Folder = "content/posts/${DateFolder}_${Pascal}"
-    $Branch = "feature/$Kebab"
+    $PostFile = "_posts/$DateFile-$Kebab.md"
+    $Branch   = "feature/$Kebab"
 } else {
-    # Newsletter: separate content lane — no WP workflow triggered for now
+    # Newsletter: separate content lane
     $Folder       = "content/newsletters/${DateFolder}_${Pascal}"
     $Branch       = "newsletter/$Kebab"
     $EmailSubject = "[Distracted Fortune] $ShortTitleRaw"
@@ -97,45 +98,32 @@ git checkout -b $Branch
 
 # ── create files ──────────────────────────────────────────────────────────────
 
-New-Item -ItemType Directory -Path $Folder -Force | Out-Null
-
 if ($PostType -eq "Article") {
     $DraftContent = @"
 ---
+layout: post
 title: "$FullTitle"
-date: $DateFront
+date: $DateFile
+permalink: /$Kebab/
 excerpt: "$Excerpt"
 tags:
 $($TagsYaml.TrimEnd())
 categories:
   - Article
   - $SecondCat
-featured_image: front_image.png
+featured_image: ""
 ---
 
 "@
 
-    $ImagesContent = @"
-images:
-  - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
-    credit: "Photographer or source name"
-"@
-
-    # Write files with LF line endings so they play nicely with git/markdown
+    # Write file with LF line endings so it plays nicely with git/Jekyll
     [System.IO.File]::WriteAllText(
-        (Join-Path (Get-Location) "$Folder/draft.md"),
+        (Join-Path (Get-Location) $PostFile),
         ($DraftContent -replace "`r`n", "`n")
-    )
-    [System.IO.File]::WriteAllText(
-        (Join-Path (Get-Location) "$Folder/images.yml"),
-        ($ImagesContent -replace "`r`n", "`n")
     )
 
     Write-Host ""
-    Write-Host "Created: $Folder/draft.md"
-    Write-Host "Created: $Folder/images.yml"
+    Write-Host "Created: $PostFile"
     Write-Host ""
 } else {
     # Newsletter: minimal front matter — no excerpt, tags, featured_image, or images.yml
@@ -153,6 +141,8 @@ Dear Reader,
 
 "@
 
+    New-Item -ItemType Directory -Path $Folder -Force | Out-Null
+
     # Write file with LF line endings
     [System.IO.File]::WriteAllText(
         (Join-Path (Get-Location) "$Folder/draft.md"),
@@ -166,4 +156,8 @@ Dear Reader,
 
 # ── open vim ─────────────────────────────────────────────────────────────────
 
-vim "$Folder/draft.md"
+if ($PostType -eq "Article") {
+    vim $PostFile
+} else {
+    vim "$Folder/draft.md"
+}
