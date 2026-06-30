@@ -29,7 +29,7 @@ Fast forward to the end of the honeymoon.
 
 In the past few weeks, I moved my blog off Hostinger and WordPress, and onto [GitHub](https://www.github.com) [Pages](https://docs.github.com/en/pages).  My domain and email address are still hosted on Hostinger but at a fair price.
 
-This article will describe how I came to the decision to make the jump, and what general tactics can be drawn from the experience.  Transferable skills, if you wills.
+This article will describe how I came to the decision to make the jump, and what general tactics can be drawn from the experience.  Transferable skills, if you will.
 
 ## 1. Bend the Current Process to Your Will
 
