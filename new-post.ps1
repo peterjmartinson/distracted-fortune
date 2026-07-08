@@ -44,7 +44,7 @@ if ($PostType -eq "Article") {
     $TagsRaw = Read-Host "Tags (comma-separated, e.g. adhd, focus, productivity)"
 
     Write-Host ""
-    Write-Host "Second category (Article is always included):"
+    Write-Host "Category:"
     Write-Host "  1) Article Review"
     Write-Host "  2) Economics"
     Write-Host "  3) Entrepreneurship"
@@ -52,7 +52,7 @@ if ($PostType -eq "Article") {
     Write-Host ""
     $CatChoice = Read-Host "Pick a number [1-4]"
 
-    $SecondCat = switch ($CatChoice) {
+    $Category = switch ($CatChoice) {
         "1" { "Article Review" }
         "2" { "Economics" }
         "3" { "Entrepreneurship" }
@@ -70,9 +70,11 @@ $Pascal     = To-Pascal $ShortTitleRaw
 $Kebab      = To-Kebab  $ShortTitleRaw
 $DateFolder = Get-Date -Format "yyyyMMdd"
 $DateFront  = Get-Date -Format "yyyy-MM-ddT13:00:00-05:00"
+$DateTitle  = Get-Date -Format "yyyy-MM-dd"
 
 if ($PostType -eq "Article") {
-    $Folder = "content/posts/${DateFolder}_${Pascal}"
+    $Folder = "_posts"
+    $FileName = "${DateTitle}-${Kebab}.md"
     $Branch = "feature/$Kebab"
 } else {
     # Newsletter: separate content lane — no WP workflow triggered for now
@@ -102,14 +104,15 @@ New-Item -ItemType Directory -Path $Folder -Force | Out-Null
 if ($PostType -eq "Article") {
     $DraftContent = @"
 ---
+layout: post
 title: "$FullTitle"
 date: $DateFront
+permalink: /$Kebab/
 excerpt: "$Excerpt"
 tags:
 $($TagsYaml.TrimEnd())
-categories:
-  - Article
-  - $SecondCat
+category:
+  - $Category
 featured_image: front_image.png
 ---
 
@@ -125,17 +128,17 @@ images:
 
     # Write files with LF line endings so they play nicely with git/markdown
     [System.IO.File]::WriteAllText(
-        (Join-Path (Get-Location) "$Folder/draft.md"),
+        (Join-Path (Get-Location) "$Folder/$FileName"),
         ($DraftContent -replace "`r`n", "`n")
     )
-    [System.IO.File]::WriteAllText(
-        (Join-Path (Get-Location) "$Folder/images.yml"),
-        ($ImagesContent -replace "`r`n", "`n")
-    )
+    # [System.IO.File]::WriteAllText(
+    #     (Join-Path (Get-Location) "$Folder/images.yml"),
+    #     ($ImagesContent -replace "`r`n", "`n")
+    # )
 
     Write-Host ""
-    Write-Host "Created: $Folder/draft.md"
-    Write-Host "Created: $Folder/images.yml"
+    Write-Host "Created: $Folder/$FileName"
+    # Write-Host "Created: $Folder/images.yml"
     Write-Host ""
 } else {
     # Newsletter: minimal front matter — no excerpt, tags, featured_image, or images.yml
@@ -166,4 +169,4 @@ Dear Reader,
 
 # ── open vim ─────────────────────────────────────────────────────────────────
 
-vim "$Folder/draft.md"
+vim "$Folder/$FileName"
