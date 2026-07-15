@@ -68,6 +68,7 @@ if ($PostType -eq "Article") {
 
 $Pascal     = To-Pascal $ShortTitleRaw
 $Kebab      = To-Kebab  $ShortTitleRaw
+$DateFile   = Get-Date -Format "yyyy-MM-dd"
 $DateFolder = Get-Date -Format "yyyyMMdd"
 $DateFront  = Get-Date -Format "yyyy-MM-ddT13:00:00-05:00"
 $DateTitle  = Get-Date -Format "yyyy-MM-dd"
@@ -77,7 +78,7 @@ if ($PostType -eq "Article") {
     $FileName = "${DateTitle}-${Kebab}.md"
     $Branch = "feature/$Kebab"
 } else {
-    # Newsletter: separate content lane — no WP workflow triggered for now
+    # Newsletter: separate content lane
     $Folder       = "content/newsletters/${DateFolder}_${Pascal}"
     $Branch       = "newsletter/$Kebab"
     $EmailSubject = "[Distracted Fortune] $ShortTitleRaw"
@@ -99,8 +100,6 @@ git checkout -b $Branch
 
 # ── create files ──────────────────────────────────────────────────────────────
 
-New-Item -ItemType Directory -Path $Folder -Force | Out-Null
-
 if ($PostType -eq "Article") {
     $DraftContent = @"
 ---
@@ -118,15 +117,7 @@ featured_image: front_image.png
 
 "@
 
-    $ImagesContent = @"
-images:
-  - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
-    credit: "Photographer or source name"
-"@
-
-    # Write files with LF line endings so they play nicely with git/markdown
+    # Write file with LF line endings so it plays nicely with git/Jekyll
     [System.IO.File]::WriteAllText(
         (Join-Path (Get-Location) "$Folder/$FileName"),
         ($DraftContent -replace "`r`n", "`n")
@@ -155,6 +146,8 @@ Dear Reader,
 
 
 "@
+
+    New-Item -ItemType Directory -Path $Folder -Force | Out-Null
 
     # Write file with LF line endings
     [System.IO.File]::WriteAllText(

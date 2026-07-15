@@ -48,6 +48,24 @@ export function buildArticleEmail(frontmatter, wpPostUrl) {
 }
 
 /**
+ * Build Buttondown email content for a Jekyll article in `_posts/`.
+ * Reads front matter from the file, constructs the full article URL from
+ * siteUrl + permalink, and delegates to buildArticleEmail.
+ *
+ * @param {string} filePath - path to the `_posts/YYYY-MM-DD-slug.md` file
+ * @param {string} siteUrl - site base URL, e.g. "https://distractedfortune.com"
+ * @returns {Promise<{ subject: string, body: string }>}
+ */
+export async function buildArticleEmailFromFile(filePath, siteUrl) {
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const parsed = matter(raw);
+  const front = parsed.data;
+  const permalink = front.permalink || '/';
+  const articleUrl = siteUrl.replace(/\/$/, '') + permalink;
+  return buildArticleEmail(front, articleUrl);
+}
+
+/**
  * Build Buttondown email content for a newsletter.
  * Converts the full draft.md body to HTML.
  *
