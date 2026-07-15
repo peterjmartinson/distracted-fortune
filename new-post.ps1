@@ -44,7 +44,7 @@ if ($PostType -eq "Article") {
     $TagsRaw = Read-Host "Tags (comma-separated, e.g. adhd, focus, productivity)"
 
     Write-Host ""
-    Write-Host "Second category (Article is always included):"
+    Write-Host "Category:"
     Write-Host "  1) Article Review"
     Write-Host "  2) Economics"
     Write-Host "  3) Entrepreneurship"
@@ -52,7 +52,7 @@ if ($PostType -eq "Article") {
     Write-Host ""
     $CatChoice = Read-Host "Pick a number [1-4]"
 
-    $SecondCat = switch ($CatChoice) {
+    $Category = switch ($CatChoice) {
         "1" { "Article Review" }
         "2" { "Economics" }
         "3" { "Entrepreneurship" }
@@ -71,10 +71,12 @@ $Kebab      = To-Kebab  $ShortTitleRaw
 $DateFile   = Get-Date -Format "yyyy-MM-dd"
 $DateFolder = Get-Date -Format "yyyyMMdd"
 $DateFront  = Get-Date -Format "yyyy-MM-ddT13:00:00-05:00"
+$DateTitle  = Get-Date -Format "yyyy-MM-dd"
 
 if ($PostType -eq "Article") {
-    $PostFile = "_posts/$DateFile-$Kebab.md"
-    $Branch   = "feature/$Kebab"
+    $Folder = "_posts"
+    $FileName = "${DateTitle}-${Kebab}.md"
+    $Branch = "feature/$Kebab"
 } else {
     # Newsletter: separate content lane
     $Folder       = "content/newsletters/${DateFolder}_${Pascal}"
@@ -103,27 +105,31 @@ if ($PostType -eq "Article") {
 ---
 layout: post
 title: "$FullTitle"
-date: $DateFile
+date: $DateFront
 permalink: /$Kebab/
 excerpt: "$Excerpt"
 tags:
 $($TagsYaml.TrimEnd())
-categories:
-  - Article
-  - $SecondCat
-featured_image: ""
+category:
+  - $Category
+featured_image: front_image.png
 ---
 
 "@
 
     # Write file with LF line endings so it plays nicely with git/Jekyll
     [System.IO.File]::WriteAllText(
-        (Join-Path (Get-Location) $PostFile),
+        (Join-Path (Get-Location) "$Folder/$FileName"),
         ($DraftContent -replace "`r`n", "`n")
     )
+    # [System.IO.File]::WriteAllText(
+    #     (Join-Path (Get-Location) "$Folder/images.yml"),
+    #     ($ImagesContent -replace "`r`n", "`n")
+    # )
 
     Write-Host ""
-    Write-Host "Created: $PostFile"
+    Write-Host "Created: $Folder/$FileName"
+    # Write-Host "Created: $Folder/images.yml"
     Write-Host ""
 } else {
     # Newsletter: minimal front matter — no excerpt, tags, featured_image, or images.yml
@@ -156,8 +162,4 @@ Dear Reader,
 
 # ── open vim ─────────────────────────────────────────────────────────────────
 
-if ($PostType -eq "Article") {
-    vim $PostFile
-} else {
-    vim "$Folder/draft.md"
-}
+vim "$Folder/$FileName"
