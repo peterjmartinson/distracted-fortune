@@ -8,7 +8,6 @@ categories:
 featured_image: /assets/post-images/front_image_multitasking-hoax.jpg
 layout: post
 comments: true
-featured: true
 ---
 
 
