@@ -1,12 +1,16 @@
 ---
+layout: post
 title: "Assembling a Lead Magnet"
-date: 2026-06-30T13:00:00-05:00
-email_subject: "[Distracted Fortune] Assembling a Lead Magnet"
+date: 2026-06-30
+permalink: /assembling-a-lead-magnet/
+excerpt: "Building a lead magnet for Distracted Fortune by compiling top articles into an introductory PDF."
+tags:
+  - Lead Magnet
+  - Writing
 categories:
-  - Newsletter
+  - Article
+featured_image: ""
 ---
-
-Dear Reader,
 
 A "lead magnet" is some kind of gift you give people for signing up.
 
@@ -24,7 +28,7 @@ The way it works is, I'm going to pick 3-5 articles from my blog, the ones I thi
 
 Don't worry, I'll send the PDF to you first, so you can print it up for your coffee table.
 
-Below, I'll list a few of the contenders, along with a quick summary of each.  If you would be so kind, please respond to this email with the articles YOU would like to have gotten in an introductory PDF.  What I think is useful may not be what you think is useful.
+Below, I'll list a few of the contenders, along with a quick summary of each.  If you would be so kind, please leave a comment below with the articles YOU would like to have gotten in an introductory PDF.  What I think is useful may not be what you think is useful.
 
 Here we go!
 
@@ -40,7 +44,8 @@ This article explains a lesser known, but far more powerful, definition of "Grow
 
 I think writing Morning Pages is one of the most powerful tools in the arsenal of someone trying to be successful.  It helps you hit the day with a prepared, clear mind, ready to take on anything.
 
+4. Beast, Rider, and Marshall:  How to Get Control of Yourself
 
+We are each three beings in one.  The Beast is the autopilot, eating the second helping you didn't need.  The Rider has the reins of that beast, and tries to guide him in the right direction.  The Marshall is the planner, who decides what direction is right.
 
-
-
+5. 
