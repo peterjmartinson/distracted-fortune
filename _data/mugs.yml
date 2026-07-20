@@ -1,0 +1,26 @@
+- id: 101
+  title: "Euler's Identity Mug"
+  tagline: "The most beautiful equation in mathematics: e^(i*pi) + 1 = 0"
+  price: "$18.00"
+  image: "/assets/post-images/mugs/eulers-identity.jpg"
+  url: "https://distractedfortune.printful.me/product/eulers-identity"
+  featured: true
+  active: true
+
+- id: 102
+  title: "Fermat's Last Theorem Mug"
+  tagline: "I have a truly marvelous mug for this proof, which this margin is too narrow to contain."
+  price: "$18.00"
+  image: "/assets/post-images/mugs/fermats-last-theorem.jpg"
+  url: "https://distractedfortune.printful.me/product/fermats-last-theorem"
+  featured: true
+  active: true
+
+- id: 103
+  title: "Mandelbrot Set Mug"
+  tagline: "Infinite complexity from a simple recursive equation: z_{n+1} = z_n^2 + c"
+  price: "$18.00"
+  image: "/assets/post-images/mugs/mandelbrot-set.jpg"
+  url: "https://distractedfortune.printful.me/product/mandelbrot-set"
+  featured: false
+  active: true
