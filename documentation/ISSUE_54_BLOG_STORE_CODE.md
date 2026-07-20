@@ -1,14 +1,20 @@
 Summary
 -------
 
-Implement the Math Mugs storefront, data architecture, UI components, and automated Printful API sync pipeline on https://distractedfortune.com.
+Implement the Math Mugs storefront, data architecture, and UI components on https://distractedfortune.com.
 
 Motivation
 ----------
 
-- Showcase Math Mugs directly on the blog domain (`distractedfortune.com/mugs/`) with high-resolution photos, math proof taglines, and direct checkout links to Printful Quick Store.
+- Showcase Math Mugs directly on the blog domain (`distractedfortune.com/mugs/`) with high-resolution photos, custom math proof taglines, and direct checkout links to the Printful Quick Store (`distractedfortune.printful.me`).
 - Provide post-footer callout banners encouraging readers of math/tech posts to check out Math Mugs.
-- Automate catalog synchronization via Printful REST API so new mugs published on Printful automatically sync to `_data/mugs.yml` via GitHub Actions without manual site edits.
+- Maintain catalog definitions statically in `_data/mugs.yml` for zero build complexity, maximum reliability, and full control over mathematical taglines and descriptions.
+
+Architecture Decision (Static YAML vs. API Sync)
+-----------------------------------------------
+
+- **Decision**: Maintained `_data/mugs.yml` directly in the repository rather than calling external Printful REST APIs via GitHub Actions.
+- **Rationale**: Printful Quick Store (`distractedfortune.printful.me`) manages checkout, payment processing, manufacturing, and shipping. Static YAML catalog definition guarantees fast Jekyll builds, zero external API point-of-failure risks, and allows rich custom proof taglines for each mug.
 
 Proposed Implementation
 -----------------------
@@ -32,44 +38,29 @@ Store product data cleanly in YAML format:
 - Render a responsive grid of cards sourced from `site.data.mugs`.
 - Each card displays mug image, title, math tagline, price badge, and a **"Buy on Printful"** CTA button opening the Quick Store link in a new tab.
 
-### 3) Navigation Header Link (`_includes/header.html` or `_config.yml`)
-- Add **Mugs** or **Store** to top navigation links for seamless site discoverability.
+### 3) Navigation Header Link (`_includes/header.html` & `_config.yml`)
+- Add **Mugs** to top navigation links for site discoverability.
 
 ### 4) Post Footer Promo Banner (`_includes/mug_promo.html`)
 - Create a subtle callout snippet: *"Enjoyed this post? Check out our Math Mugs!"*
-- Include this snippet in `_layouts/post.html` above or alongside subscription/comment blocks.
-
-### 5) Printful API Sync Script (`scripts/sync_printful_mugs.js`)
-- Similar to `scripts/fetch_discussion_counts.js`, write a Node.js script using `fetch` or standard libraries.
-- Connect to Printful REST API (`https://api.printful.com/store/products`) using `PRINTFUL_API_KEY`.
-- Fetch active store products, extract titles, mockups, prices, and URLs.
-- Update `_data/mugs.yml` with fresh data while preserving custom taglines or manual overrides.
-
-### 6) Automated GitHub Action Workflow (`.github/workflows/printful_sync.yml`)
-- Schedule workflow (e.g., weekly or on manual dispatch).
-- Run `scripts/sync_printful_mugs.js` with secret `PRINTFUL_API_KEY`.
-- Automatically commit updated `_data/mugs.yml` back to repository if changes are detected.
+- Include this snippet in `_layouts/post.html` above subscription/comment blocks.
 
 Files Created / Modified
 ------------------------
 
-- [NEW] `mugs.md` — Store showcase page
-- [NEW] `_layouts/store.html` — Layout template for store grid
-- [NEW] `_data/mugs.yml` — Data store for Math Mugs catalog
-- [NEW] `_includes/mug_promo.html` — Post footer banner template
-- [NEW] `scripts/sync_printful_mugs.js` — Printful API sync script
-- [NEW] `.github/workflows/printful_sync.yml` — GitHub Action automation workflow
-- [MODIFY] `_includes/header.html` — Add Mugs menu link
-- [MODIFY] `_layouts/post.html` — Include mug promo banner
-- [MODIFY] `_config.yml` — Add store configuration settings
+- [x] [NEW] `mugs.md` — Store showcase page
+- [x] [NEW] `_layouts/store.html` — Layout template for store grid
+- [x] [NEW] `_data/mugs.yml` — Data store for Math Mugs catalog
+- [x] [NEW] `_includes/mug_promo.html` — Post footer banner template
+- [x] [NEW] `_includes/header.html` — Top navigation header override with Mugs link
+- [x] [MODIFY] `_layouts/post.html` — Include mug promo banner
+- [x] [MODIFY] `_config.yml` — Add store configuration settings
 
-Implementation Checklist
-------------------------
+Verification Checklist
+----------------------
 
-- [ ] Create `_data/mugs.yml` schema with initial product definitions.
-- [ ] Create `_layouts/store.html` and `mugs.md` page layout.
-- [ ] Add navigation header link for `/mugs/`.
-- [ ] Add `_includes/mug_promo.html` and integrate into `_layouts/post.html`.
-- [ ] Develop `scripts/sync_printful_mugs.js` to query Printful API.
-- [ ] Configure `.github/workflows/printful_sync.yml` with `PRINTFUL_API_KEY` secret support.
-- [ ] Verify local build with `bundle exec jekyll serve` or Node script test.
+- [x] Create `_data/mugs.yml` schema with initial product definitions.
+- [x] Create `_layouts/store.html` and `mugs.md` page layout.
+- [x] Add navigation header link for `/mugs/`.
+- [x] Add `_includes/mug_promo.html` and integrate into `_layouts/post.html`.
+- [x] Verify Jekyll site build locally and visual rendering.
