@@ -6,6 +6,11 @@ permalink: /:title/
 
 theme: minima
 
+header_pages:
+  - mugs.md
+
+printful_store_url: "https://distractedfortune.printful.me"
+
 exclude:
   - .jekyll-cache
   - .jekyll-metadata
