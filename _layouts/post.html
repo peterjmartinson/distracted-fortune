@@ -14,9 +14,8 @@ layout: default
 
   {% if page.featured_image %}
   <div class="post-featured-image" style="margin: 1.5rem 0;">
-    <img src="{{ page.featured_image | relative_url }}"
-         alt="{{ page.title | escape }}"
-         style="max-width: 100%; height: auto; display: block;">
+    <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title | escape }}"
+      style="max-width: 100%; height: auto; display: block;">
   </div>
   {% endif %}
 
@@ -24,26 +23,29 @@ layout: default
     {{ content }}
   </div>
 
-  <section class="post-footer-promo">
-    {% include mug_promo.html %}
-  </section>
-
   <section class="post-footer-signup">
     {% include subscribe.html %}
   </section>
 
-  {% comment %} Giscus comments: lazy-load on user click. Enabled by default unless front-matter sets `comments: false` and only when site.giscus.repo is configured. {% endcomment %}
+  <section class="post-footer-promo">
+    {% include mug_promo.html %}
+  </section>
+
+  {% comment %} Giscus comments: lazy-load on user click. Enabled by default unless front-matter sets `comments: false`
+  and only when site.giscus.repo is configured. {% endcomment %}
   {% if site.giscus.repo and page.comments != false %}
   <section class="post-comments" style="margin-top: 2rem;">
-    <button id="load-comments-button" style="background:#f5f5f5;border:1px solid #ddd;padding:0.6rem 1rem;border-radius:4px;cursor:pointer;">Show comments</button>
+    <button id="load-comments-button"
+      style="background:#f5f5f5;border:1px solid #ddd;padding:0.6rem 1rem;border-radius:4px;cursor:pointer;">Show
+      comments</button>
     <div id="giscus-container" style="margin-top:1rem; display: none;"></div>
     <script>
-      (function(){
+      (function () {
         var btn = document.getElementById('load-comments-button');
         var container = document.getElementById('giscus-container');
         var loaded = false;
-        function loadGiscus(){
-          if(loaded) return;
+        function loadGiscus() {
+          if (loaded) return;
           loaded = true;
           container.style.display = '';
 
@@ -76,7 +78,7 @@ layout: default
           // Then include the client script (no data attributes on the script)
           container.appendChild(script);
         }
-        btn.addEventListener('click', function(){ loadGiscus(); btn.style.display='none'; });
+        btn.addEventListener('click', function () { loadGiscus(); btn.style.display = 'none'; });
       })();
     </script>
   </section>
