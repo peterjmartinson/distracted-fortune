@@ -10,6 +10,7 @@ tags:
 categories:
   - Article
 featured_image: /assets/post-images/front_image_beer_tasting.jpg
+featured: true
 ---
 
 A "lead magnet" is the bribe you give someone for handing over their email address.
