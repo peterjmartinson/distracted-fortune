@@ -19,8 +19,6 @@ In this post, I'm going to describe how cold calls fit into my current business 
 
 The goal here is twofold: 1. By telling you my plan, I will burden myself with the social pressure to carry it out, and 2. Maybe you will find some of these ideas useful, and use them to go make yourself a fortune.
 
-[[[ Tell Joe Reader what the post is about here ]]]
-
 ## But Solutions Need Problems!
 
 I don't right now have a product, or any idea of a clear market demand.  So, where do I find a pool of customers, and a product that solves a problem for those customers?
