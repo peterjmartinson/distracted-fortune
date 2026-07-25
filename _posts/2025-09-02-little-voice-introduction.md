@@ -3,6 +3,7 @@ layout: post
 title: "Beyond Logic:  How to Listen to your Little Voice"
 date: 2025-09-02
 permalink: /beyond-logic-how-to-listen-to-your-little-voice/
+featured_image: ""
 ---
 
 My youngest boy has been obsessed with the British band Muse recently, much to our chagrin because we want him to obsess over classical music.  But, no, he takes his violin out, and uses it as an air guitar to play [_Uprising_](https://youtu.be/w8KQmps-Sog?feature=shared).  He used to have a small toy acoustic guitar, which he smashed last week.  Now he wants an electric guitar.
