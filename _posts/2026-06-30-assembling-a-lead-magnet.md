@@ -9,28 +9,26 @@ tags:
   - Writing
 categories:
   - Article
-featured_image: ""
+featured_image: "front_image_beer_tasting.jpg"
 ---
 
-A "lead magnet" is some kind of gift you give people for signing up.
+A "lead magnet" is the bribe you give someone for handing over their email address.
 
-Like the "$5 for signing up with Draft Kings!!" you're supposed to bet with.
+It's the $5 bonus DraftKings throws into your account so you'll try a wager. It's the free sample on a toothpick at Costco that convinces you to buy a four-pound bag of frozen potstickers. It’s the preview chapter at the back of a paperback that gets you to buy the sequel.
 
-Or, the worm the fish gets to eat for the price of getting hooked and cooked.
+You get the idea: a small, immediate win in exchange for a little trust.
 
-Or, the peanut butter the mouse gets to lick before getting smashed in the mouse trap.
+I'm building a lead magnet for Distracted Fortune.
 
-You get the idea.
+The plan is to take 3-5 of the most essential articles on this site and bundle them into a clean, printable PDF starter guide - a field guide for getting out of your own way.
 
-So I'm building a lead magnet for Distracted Fortune!
+But before I package it up, I need your help deciding what actually belongs in it.
 
-The way it works is, I'm going to pick 3-5 articles from my blog, the ones I think are most important for new subscribers, and offer them as a nice PDF in return for joining my email list.  I'll make those specific articles go dark on the website, so you can only get them by signing up.
-
-Don't worry, I'll send the PDF to you first, so you can print it up for your coffee table.
-
-Below, I'll list a few of the contenders, along with a quick summary of each.  If you would be so kind, please leave a comment below with the articles YOU would like to have gotten in an introductory PDF.  What I think is useful may not be what you think is useful.
+Below I'll list a few of the contenders, along with a quick summary of each.  If you would be so kind, please leave a comment below with the top 3 articles YOU would like to have gotten in an introductory PDF.
 
 Here we go!
+
+## The List
 
 1. [Why You Wait Until the Last Minute, and How to Get Back to Work](https://distractedfortune.com/why-you-wait-until-the-last-minute-and-how-to-get-back-to-work/)
 
@@ -64,8 +62,14 @@ Sometimes you need a nudge to get yourself to do the right thing.  That nudge ma
 
 We all have a "little voice".  It's not the one that barks criticisms from inside your head all day.  It's the one most of us rarely listen to, but almost always gives good advice.  This article helps you tune your listening in to that quiet, good one.
 
-Those are my best articles, at least the ones I tend to reference most.  Once I finalize the list of 3-5 of these for the lead magnet, I'll get them off the website, and only offer them as a PDF for new subscribers.
+## Time to Choose
 
-Please drop a comment, or an email, that list your favorite subset of these.
+What I think is foundational isn't always what actually hits home for a reader.
+
+So before I lock this layout in, I want your input: Which 3 to 5 articles above were the most useful to you?
+
+Leave a quick comment with your numbers below. If there's an article I missed that completely changed how you approach your workday, tell me that too.
+
+I'll compile the top picks into the starter guide and drop the finished PDF in your inbox as soon as it's formatted.
 
 _If you liked this article, please subscribe and share with one friend_
