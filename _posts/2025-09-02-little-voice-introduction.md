@@ -4,71 +4,81 @@ title: "Beyond Logic:  How to Listen to your Little Voice"
 date: 2025-09-02
 permalink: /beyond-logic-how-to-listen-to-your-little-voice/
 ---
-Once upon a time, I fancied myself a weather man.  I had my own weekly segment called "[The LPAC Weather Report](LINK)".  In that video segment, I would comment on several topics I thought were connected - traditional weather, earthquakes, solar activity, cosmic rays, volcanoes, general astronomy.  Most of my days back then were focused on finding material to report, especially coincidences between various phenomena.
 
-I began to experience almost a spiritual connection with the world around me, like I was in direct communication with nature.
+My youngest boy has been obsessed with the British band Muse recently, much to our chagrin because we want him to obsess over classical music.  But, no, he takes his violin out, and uses it as an air guitar to play [_Uprising_](https://youtu.be/w8KQmps-Sog?feature=shared).  He used to have a small toy acoustic guitar, which he smashed last week.  Now he wants an electric guitar.
 
-For example, in August 2011 I did [an episode on earthquake forecasting and solar flares](LINK).  While composing the script, I suddenly heard something like a large garbage truck outside the office.  The thing was so loud and rumbly that the building shook a little bit.  But then it struck me - I jumped up and ran outside to find the parking lot empty.  We'd just been hit by a real earthquake, in northern Virginia!
+Unplugged, an electric guitar is almost inaudible.  Unless you are close by, you can't hear it.  However, plug it into the proper amplification, and the guitar's sound can fill a large city block.
 
-How did the World know what I was working on!?
+Human beings play the part of amplifier as well, to an instrument that I call the _Little Voice_.
 
-Needless to say, my script for the upcoming episode got a lot more spicy after that.
+This article presents what the Little Voice is, what I think its origin is, and how to use it.  Once you understand that last part, you will become unstoppable.
 
-Those days are long gone, but recently I experienced a yearning for that childlike, immediate, intimate connection I'd felt back then.
+## What is the Little Voice?
 
-A few weeks ago, I picked up a book called "[The Artist's Way](LINK)" by Julia Cameron.  This was the original source for the concept of [Morning Pages](LINK), about which I've written in the past, but I'd never actually read the book.
+When you are talking to a good liar, but you can tell they're lying, how do you know?  A good liar will never come out and say "I'm lying, sucker!", and won't give away any obvious clues.
 
-The simple act of reading this wonderful book struck me with the same feelings I'd longed for.  Her descriptions of how to rekindle creativity have allowed me to both believe ... but blah blah.
+It's hard to put your finger on the "tell", or the unconscious mannerism or combination of facts, that gives away the lie.
+
+For another example, when viewing an AI generated image, you just can tell it's not real.  What in the image gave it away?  Usually, after studying the picture a bit, you can find what actually tipped you off - uniformly unfocused lights, too many knuckles on the hand, face is too symmetrical, etc.  But when you felt that tug that says "wait, this isn't real...", it wasn't the result of logical deduction.  It was almost an unconscious thought.
+
+The rule of thumb here is, if you think a person or image is lying, you're probably right!
+
+That hunch you feel is the presence of the _Little Voice_.
+
+## The Little Voice is Quiet
+
+As we go about our days, conscious thoughts hold reign.  "Ugly pants", "I need to email my boss", "Pick up some toothpaste before getting home", "ugh, that stinks", and so forth.
+
+That Little Voice is there too, just too drowned out to hear.
+
+But if you can quiet down the loud voices and listen, you can hear that little guy, giving you all kinds of great ideas.
+
+Sometimes you might experience this is while reading, or while meditating (if you do that kind of thing), while praying, or while dreaming.
+
+For example, maybe one day you were pounding on a problem you found hard to solve, like a math problem or where to sit your Mom during Thanksgiving.  Upon waking up the next day, you realize that the solution came to you in a dream.  That's your Little Voice too.
+
+Your Little Voice is what gives you your next great idea, helps you out of tough situations, and comes up with great punchlines to jokes.  It's the true source of your creativity.
+
+## Who is the Little Voice?
+
+The concepts of the "conscious" and the "subconscious" mind are pretty standard in modern culture.  You can think of the Little Voice as messages that get through to your conscious observation from your subconscious mind.
+
+While you're going about your day, your subconscious is working out of sight.  It takes whatever information you give it, like when you read a book, take a class, or watch a movie, and then it tries to make sense of it.  The products of that work pop into your mind, as ideas.
+
+So, is the Little Voice, your voice?
+
+I read a great book recently, [_The Artist's Way_](https://www.amazon.com/Artists-Way-25th-Anniversary/dp/0143129252) by Julia Cameron, all about how to reawaken your creativity.  Reading that book is really what got me all excited about the Little Voice, though I'd had this concept from years ago.  In it, Cameron suggests that that Little Voice is actually the voice of God.  Then, she waves her hands a bunch to say you don't have to believe in a great, bearded gentleman in the sky for her methods to work.
+
+But I think she's not wrong.  I think it's one way that God expresses His love for His creation - he talks to us, and helps us.
+
+At the very least, it's a playful, childlike part of you, that pipes up when you are listening for it.
+
+Whoever that voice belongs to, when you hear it, you should follow its advice.
+
+## Learn to tune in that Little Voice
+
+Here are a few techniques that I use to hear my own Little Voice better.  Maybe some of them will work for you.
+
+1. Walking
+
+A simple ten-minute walk fills that playful side of you with new sensations and helps you quiet the noise.
+
+2. Praying
+
+An ancient way to listen to that voice, the ultimate goal of prayer is to listen for the voice of God.
+
+3. [Morning Pages](https://distractedfortune.com/unlock-your-subconscious-the-power-of-morning-pages/)
+
+This practice helps you squeeze out all the "pus-thoughts" to clear a space for creativity.
+
+4. Taking Action
+
+This is the most critical step. Cameron describes the voice like a curious child—you must follow its whims to show that you're listening and encourage it to keep talking.
+
+Like the electric guitar, that Little Voice inside you is tiny and quiet.  It is only through you that its will can be made manifest.  You are the amplifier.  Let that Little Voice sing.
+
+_If you liked this article, please leave a comment below, share it with someone you know, and get on my email list!_
 
 
-Her description of how to rekindle creativity has been a bang-on reflection of what I felt back in the Weather Man days.  That description has led me to a much more clear understanding of what I felt, and allowed me to knit together some other things I've learned along the way.
-
-This article is about that!
-
-## The Little Voice
-
-Most of my thoughts -- and probably yours too --  are in the form of "I have to do X," or "You look like Y," or, even more likely, "You idiot!  You forgot to do Z!"
-
-That's the typical voice of your inner monologue.  We all have it, and to varying degrees, we all recognize it.  It's usually loud, and overbearing, and might sound just like one of your parents.  Most of the time, for me, it's the voice of the monster, the [Inner Critic](LINK).
-
-Sometimes, though, a much quieter, kinder voice speaks up.  I find that smaller voice tends to get steamrolled by the inner monologue.  When I recognize and listen to that whisper, and follow its advice, I tend to be led in a much better direction.
-
-For our purposes here, this quieter voice will be henceforth called the _Little Voice_.
-
-For example, the little voice is usually first recognized as such when you hear someone tell a lie.  The words a person says, themselves, don't betray the lie, but *something* does.  A little feeling hits you as you listen, and you know "this schmuck is lying to me!"  That's the Little Voice!
-
-The little voice is my own construct.  Below, I'll describe a few of what I believe are descriptions of the same phenomenon, but constructed in different ways.  We'll start with Cameron's
-
-## The Voice of God
-
-Cameron establishes early on the belief, which is necessary for any creative recovery, that not only is Man designed to be creative and do creative acts, but that this creativity flows from God.
-
-God _wants_ us to be creative.
-
-She plays down to some extent the idea that you, also, must believe in God in order to be creative.  But, to Cameron, creativity lights into our minds almost like a gift given from a higher power.  We are the conduit of creativity.
-
-Her book is filled with exercises designed to help us recognize and coax that connection.  It's this connection that represents itself as a quiet little voice.
-
-Reading Cameron's book, I was reminded of another metaphor for the same idea.
-
-## Geometry
-
-Back in the weatherman days, I worked for Lyndon LaRouche.  LaRouche was an economist and political leader who wrote way more than any mortal has a right to write.
-
-One of his books we treated like a textbook -- "So, You Wish to Learn All About Economics...".  I personally taught several class series on this book.  One of the chapters that always stuck out as cute to me, was on the source of economic progress.
-
-LaRouche first presents the common view of where economic value comes from.  It comes from the Horny Hand of Labor, according to Karl Marx!  It comes from little creatures under the floorboards, according to Jeremy Bentham.  It comes directly from the landlord's land, according to the physiocrat François Quesnay.  It comes from the Invisible hand of the Market, according to Adam Smith.
-
-Then, in contrast to these quasi-occult beliefs, LaRouche presents his own view.  He sets up the image of a room with a closed door.  There's someone inside that room you never see, but you can send notes back and forth by sliding them under the door.  The messages you get out of the room tend to be a little cryptic, but sometimes they answer a problem you're trying to solve.  After some trial and error, you find that the guy behind the door is especially talented at geometry
 
 
-
-## The Artist's Way
-
-When I was a kid, I read a book called "[Drawing on the Right Side of the Brain](LINK)", by Betty Edwards.  I was already interested in learning to draw, and well this looked like a good book on the subject.
-
-The book changed my life.
-
-While trying to figure out how to establish that mind-nature connection again, I figured I'd read the book again.  I went to the library, found the latest edition on the shelf, and saw another book on the shelf that tugged at my curiosity -- "[The Artist's Way](LINK)" by Julia Cameron.  I talked about Cameron and her book in a past article, on [writing Morning Pages](LINK).  This book introduced the practice to the world audience, and I'd never given Cameron the due respect to actually read the book.  So I checked it out too.
-
-Well, now I can say [The Artist's Way](LINK) has changed my life as well.
