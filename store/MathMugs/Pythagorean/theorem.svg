@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
+   sodipodi:docname="theorem.svg"
+   inkscape:export-filename="theorem.png"
+   inkscape:export-xdpi="342.09"
+   inkscape:export-ydpi="342.09"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.45334038"
+     inkscape:cx="118.01287"
+     inkscape:cy="555.87371"
+     inkscape:window-width="1920"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer5"
+     showguides="true" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Main Image"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#d42a20;stroke:#000000;stroke-width:1.40518"
+       id="rect1"
+       width="91.717422"
+       height="91.717316"
+       x="104.28551"
+       y="-20.170073"
+       transform="rotate(25.322205)"
+       inkscape:label="Red Square" />
+    <rect
+       style="fill:#0e638e;stroke:#000000;stroke-width:1.39567"
+       id="rect3"
+       width="83.147324"
+       height="83.147324"
+       x="63.426334"
+       y="148.5"
+       inkscape:label="Blue Square" />
+    <rect
+       style="fill:#fac22b;stroke:#000000;stroke-width:1.40518"
+       id="rect4"
+       width="39.228371"
+       height="39.228249"
+       x="24.435837"
+       y="109.27653"
+       inkscape:label="Yellow Square" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="Math"
+     transform="translate(3.9409318)">
+    <rect
+       style="fill:#fac22b;stroke:#000000;stroke-width:1.21548"
+       id="rect2"
+       width="14.073029"
+       height="14.073029"
+       x="51.117954"
+       y="252.67497"
+       inkscape:label="Yellow square" />
+    <rect
+       style="fill:#0e638e;stroke:#000000;stroke-width:1.21548"
+       id="rect2-5"
+       width="14.073029"
+       height="14.073029"
+       x="95.041138"
+       y="252.95619"
+       inkscape:label="Blue square" />
+    <rect
+       style="fill:#d42a20;stroke:#000000;stroke-width:1.21548"
+       id="rect2-5-2"
+       width="14.073029"
+       height="14.073029"
+       x="137.39325"
+       y="252.61519"
+       inkscape:label="Red square" />
+    <g
+       id="g2"
+       inkscape:label="plus"
+       transform="matrix(1.4051787,0,0,1.4051787,-6.1447107,-84.107124)">
+      <path
+         style="fill:#fac22b;stroke:#000000;stroke-width:0.865"
+         d="m 57.327905,244.85232 h 7.597674 v 0"
+         id="path2" />
+      <path
+         style="fill:#fac22b;stroke:#000000;stroke-width:0.865"
+         d="m 61.126742,248.65116 v -7.59768 0"
+         id="path2-7" />
+    </g>
+    <g
+       id="g3"
+       inkscape:label="equals"
+       transform="matrix(1.4051787,0,0,1.4051787,42.394263,-65.962836)">
+      <path
+         style="fill:#fac22b;stroke:#000000;stroke-width:0.865"
+         d="m 54.565115,230.34767 h 5.87093"
+         id="path3" />
+      <path
+         style="fill:#fac22b;stroke:#000000;stroke-width:0.865"
+         d="m 54.565115,233.10164 h 5.87093"
+         id="path3-6" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="text" />
+</svg>

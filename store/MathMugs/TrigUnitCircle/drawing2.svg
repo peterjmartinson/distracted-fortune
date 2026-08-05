@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
+   sodipodi:docname="drawing2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.4681257"
+     inkscape:cx="379.05474"
+     inkscape:cy="352.14968"
+     inkscape:window-width="1920"
+     inkscape:window-height="1062"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3"
+     showguides="true" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     sodipodi:insensitive="true">
+    <circle
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="94.975121"
+       cy="119.12439"
+       r="41.990894" />
+    <path
+       style="display:none;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none;stroke-opacity:1"
+       d="M 94.975121,31.358009 V 119.12439 H 160.39442"
+       id="path2"
+       sodipodi:nodetypes="ccc" />
+    <g
+       id="g6"
+       inkscape:transform-center-x="-26.108056"
+       inkscape:transform-center-y="-37.391437"
+       transform="rotate(145.76082,94.756508,118.95437)">
+      <path
+         style="display:none;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none"
+         d="m 52.457123,181.45214 0.527102,-62.32775 h 30.35418 11.636716"
+         id="path4"
+         sodipodi:nodetypes="cccc" />
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none"
+         id="path12"
+         transform="rotate(-145.76082,94.973397,118.98634)"
+         sodipodi:type="arc"
+         sodipodi:cx="94.975121"
+         sodipodi:cy="119.12439"
+         sodipodi:rx="11.714195"
+         sodipodi:ry="11.714195"
+         sodipodi:start="5.682792"
+         sodipodi:end="0"
+         sodipodi:arc-type="arc"
+         d="m 104.64066,112.50626 a 11.714195,11.714195 0 0 1 2.04866,6.61813"
+         sodipodi:open="true" />
+    </g>
+    <path
+       style="display:none;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none"
+       d="M 94.975121,43.424377 Z"
+       id="path7" />
+    <path
+       style="display:none;fill:none;stroke:#000000;stroke-width:0.865;stroke-dasharray:none"
+       d="m 129.608,95.247054 v 23.877336 0"
+       id="path8"
+       inkscape:label="sine" />
+    <path
+       style="display:none;fill:none;stroke:#000000;stroke-width:0.846902;stroke-linecap:butt;stroke-linejoin:miter"
+       d="M 94.967514,43.419213 145.61794,118.51839"
+       id="path15" />
+    <path
+       style="display:none;fill:none;stroke:#000000;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter"
+       d="m 95.344111,119.19216 50.624349,-0.004"
+       id="path16" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Lines"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <path
+       style="fill:none;stroke:#fac22b;stroke-width:0.865;stroke-linecap:butt"
+       d="M 129.86904,95.436042 95.155339,119.06218"
+       id="path14"
+       inkscape:label="Unit"
+       inkscape:transform-center-x="17.012397"
+       inkscape:transform-center-y="11.596465" />
+    <path
+       style="fill:none;stroke:#d42a20;stroke-width:0.865;stroke-linecap:round"
+       d="M 129.608,95.247054 V 119.12439"
+       id="path3"
+       inkscape:label="Sine" />
+    <path
+       style="fill:none;stroke:#d42a20;stroke-width:0.864236;stroke-linecap:round"
+       d="M 95.344111,119.19216 129.6088,119.124"
+       id="path5"
+       inkscape:label="Cosine" />
+    <path
+       style="fill:none;stroke:#d42a20;stroke-width:0.891463;stroke-linecap:round;stroke-linejoin:miter"
+       d="M 146.80207,119.99003 129.82333,95.099792"
+       id="path9"
+       inkscape:label="Tangent"
+       inkscape:transform-center-x="-8.5182783"
+       inkscape:transform-center-y="12.351658" />
+    <path
+       style="fill:#0e638e;stroke:#0e638e;stroke-width:0.865;stroke-linecap:round"
+       d="M 94.974409,43.424855 129.82459,95.101649"
+       id="path10"
+       inkscape:label="Cotangent"
+       inkscape:transform-center-x="-17.311487"
+       inkscape:transform-center-y="25.66914" />
+    <path
+       style="fill:#0e638e;stroke:#0e638e;stroke-width:0.867981;stroke-linecap:round"
+       d="m 146.80209,119.98902 -51.844358,0.0725"
+       id="path11"
+       inkscape:label="Secant" />
+    <path
+       style="fill:#0e638e;stroke:#0e638e;stroke-width:0.870337;stroke-linecap:round"
+       d="M 94.975121,43.424379 V 120.06141"
+       id="path13"
+       inkscape:label="Cosecant" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Words">
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#0e638e;stroke:#fac22b;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       x="108.02209"
+       y="-57.716194"
+       id="text16"
+       transform="rotate(56.403722)"
+       inkscape:transform-center-x="-14.73788"
+       inkscape:transform-center-y="20.994701"
+       inkscape:label="cotangent"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="fill:#0e638e;stroke:none;stroke-width:0.865;-inkscape-font-specification:cmr10;font-family:cmr10;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.64444444px"
+         x="108.02209"
+         y="-57.716194">Cotangent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#d42a20;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter"
+       x="156.23555"
+       y="-56.961067"
+       id="text17"
+       inkscape:label="tangent"
+       transform="rotate(56.011009)"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;fill:#d42a20;stroke-width:0.865"
+         x="156.23555"
+         y="-56.961067">Tangent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#d42a20;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       x="-114.14561"
+       y="128.04828"
+       id="text18"
+       inkscape:label="sine"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         style="font-size:5.64444px;stroke-width:0.865;fill:#d42a20;-inkscape-font-specification:cmr10;font-family:cmr10;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+         x="-114.14561"
+         y="128.04828">Sine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#0e638e;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       x="114.97937"
+       y="125.13399"
+       id="text19"
+       inkscape:label="secant"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="font-size:5.64444px;stroke-width:0.865;-inkscape-font-specification:cmr10;font-family:cmr10;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+         x="114.97937"
+         y="125.13399">Secant</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#0e638e;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+       x="-105.71847"
+       y="93.41272"
+       id="text20"
+       inkscape:label="cosecant"
+       transform="rotate(-90)"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="font-size:5.64444px;stroke-width:0.865;-inkscape-font-specification:cmr10;font-family:cmr10;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+         x="-105.71847"
+         y="93.41272">Cosecant</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#d42a20;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter"
+       x="107.66159"
+       y="118.00136"
+       id="text21"
+       inkscape:label="cosine"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;fill:#d42a20;stroke-width:0.865"
+         x="107.66159"
+         y="118.00136">Cosine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:cmr10;-inkscape-font-specification:cmr10;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:none;stroke-width:0.865;stroke-linecap:butt;stroke-linejoin:miter"
+       x="112.51219"
+       y="104.07411"
+       id="text22"
+       inkscape:label="unit"><tspan
+         sodipodi:role="line"
+         id="tspan22"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:cmr10;-inkscape-font-specification:cmr10;fill:#000000;stroke-width:0.865"
+         x="112.51219"
+         y="104.07411">1</tspan></text>
+  </g>
+</svg>
