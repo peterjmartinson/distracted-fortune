@@ -1,0 +1,69 @@
+\documentclass[17pt]{memoir}
+\usepackage{amsmath,amssymb}
+\pagestyle{empty}
+\begin{document}
+
+\Large
+
+\begin{center}
+  \textbf{Law of Quadratic Reciprocity}
+\end{center}
+
+Let $p, q$ be odd primes and $p \neq q$
+
+define \textbf{Legendre Notation} as
+
+\[
+\left( \frac{p}{q} \right) =
+  \begin{cases}
+    1 & \text{if}\ x^2 \equiv p\ \text{mod}\ q\ \text{for some}\ x \in \mathbb{Z} \\
+    -1 & \text{otherwise}
+  \end{cases}
+\]
+
+Then
+
+\[
+\left( \frac{p}{q} \right) \left( \frac{q}{p} \right)
+= (-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+\]
+
+\bigskip
+\begin{flushright}
+  \textit{- Karl Friedrich Gauss (1801)}
+\end{flushright}
+
+\newpage
+
+
+\begin{center}
+  \textbf{Law of Quadratic Reciprocity}
+\end{center}
+
+Let $p, q$ be odd primes and $p \neq q$
+
+Let $pRq$ mean $x^2 \equiv p$ mod $q$ for some $x \in \mathbb{Z}$
+
+Let $pNq$ mean $x^2 \not\equiv p$ mod $q$ for all $x \in \mathbb{Z}$
+
+\medskip
+\textbf{Case I}
+
+If $p = 1 + 4n$, for some $n \in \mathbb{Z}$
+
+then either $pRq$ and $qRp$ or $pNq$ and $qNp$
+
+\medskip
+\textbf{Case II}
+
+If $p = 3 + 4m$, $q = 3 + 4n$ for some $m,n \in \mathbb{Z}$
+
+then either $pRq$ and $qNp$ or $pRq$ and $qNp$
+
+\bigskip
+\begin{flushright}
+  \textit{- Karl Friedrich Gauss (1801)}
+\end{flushright}
+
+
+\end{document}
