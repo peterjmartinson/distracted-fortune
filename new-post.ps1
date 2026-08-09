@@ -95,6 +95,26 @@ if ($PostType -eq "Article") {
 # ── git branch ────────────────────────────────────────────────────────────────
 
 Write-Host ""
+Write-Host "Performing git status check and pulling latest changes..." -ForegroundColor Cyan
+
+$Status = git status --porcelain
+if ($Status) {
+    Write-Host "Warning: Your working directory has uncommitted changes:" -ForegroundColor Yellow
+    Write-Host $Status
+    $ContinueDirty = Read-Host "Do you want to continue anyway? [y/N]"
+    if ($ContinueDirty -notmatch '^[Yy]$') {
+        Write-Host "Aborting new post wizard." -ForegroundColor Red
+        exit 1
+    }
+}
+
+$DefaultBranch = (git symbolic-ref --short refs/remotes/origin/HEAD 2>$null) -replace 'origin/', ''
+if (-not $DefaultBranch) { $DefaultBranch = "main" }
+
+Write-Host "Checking out $DefaultBranch and pulling latest..." -ForegroundColor Green
+git checkout $DefaultBranch
+git pull
+
 Write-Host "Creating branch: $Branch" -ForegroundColor Green
 git checkout -b $Branch
 
@@ -108,6 +128,7 @@ title: "$FullTitle"
 date: $DateFront
 permalink: /$Kebab/
 excerpt: "$Excerpt"
+publish_post: true
 tags:
 $($TagsYaml.TrimEnd())
 category:
@@ -138,6 +159,7 @@ featured_image: front_image.png
 title: "$FullTitle"
 date: $DateFront
 email_subject: "$EmailSubject"
+publish_post: true
 categories:
   - Newsletter
 ---
@@ -162,4 +184,5 @@ Dear Reader,
 
 # ── open vim ─────────────────────────────────────────────────────────────────
 
-vim "$Folder/$FileName"
+$TargetFilePath = if ($PostType -eq "Article") { "$Folder/$FileName" } else { "$Folder/draft.md" }
+vim "$TargetFilePath"
