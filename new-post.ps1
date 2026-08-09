@@ -129,6 +129,7 @@ date: $DateFront
 permalink: /$Kebab/
 excerpt: "$Excerpt"
 publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 tags:
 $($TagsYaml.TrimEnd())
 category:
@@ -160,6 +161,7 @@ title: "$FullTitle"
 date: $DateFront
 email_subject: "$EmailSubject"
 publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 categories:
   - Newsletter
 ---
