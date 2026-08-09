@@ -82,3 +82,45 @@ export async function buildNewsletterEmail(postDir) {
   const body = await markdownToHtml(parsed.content);
   return { subject, body };
 }
+
+/**
+ * Check if a file (or post directory containing draft.md) has publish_post: true.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ * @returns {boolean}
+ */
+export function shouldPublishPost(fileOrDir) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) return false;
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  const parsed = matter(raw);
+  const val = parsed.data.publish_post;
+  return val === true || val === 'true';
+}
+
+/**
+ * Update the publish_post flag in a markdown file frontmatter to false.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ */
+export function flipPublishFlag(fileOrDir) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) return;
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  if (/publish_post:\s*(true|"true"|'true')/i.test(raw)) {
+    const updated = raw.replace(/publish_post:\s*(true|"true"|'true')/i, 'publish_post: false');
+    fs.writeFileSync(mdPath, updated, 'utf8');
+  } else {
+    const parsed = matter(raw);
+    parsed.data.publish_post = false;
+    const updated = matter.stringify(parsed.content, parsed.data);
+    fs.writeFileSync(mdPath, updated, 'utf8');
+  }
+}
+

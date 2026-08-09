@@ -11,7 +11,12 @@ import fs from 'fs';
 import axios from 'axios';
 import { findPostDirsFromFiles, findArticleFilesFromFiles } from './find-post-dirs.js';
 import { buttondownClient } from './buttondown-client.js';
-import { buildArticleEmailFromFile, buildNewsletterEmail } from './buttondown-sync.js';
+import {
+  buildArticleEmailFromFile,
+  buildNewsletterEmail,
+  shouldPublishPost,
+  flipPublishFlag,
+} from './buttondown-sync.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -63,13 +68,13 @@ async function handleMerge() {
   } else {
     allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
   }
-  const articleFiles = findArticleFilesFromFiles(allFiles);
-  const newsletterDirs = findPostDirsFromFiles(allFiles).filter((d) =>
-    d.startsWith('content/newsletters/'),
-  );
+  const articleFiles = findArticleFilesFromFiles(allFiles).filter((f) => shouldPublishPost(f));
+  const newsletterDirs = findPostDirsFromFiles(allFiles)
+    .filter((d) => d.startsWith('content/newsletters/'))
+    .filter((d) => shouldPublishPost(d));
 
   if (articleFiles.length === 0 && newsletterDirs.length === 0) {
-    console.log('No article or newsletter changes detected in push.');
+    console.log('No article or newsletter changes with publish_post: true detected in push.');
     return;
   }
 
@@ -78,6 +83,8 @@ async function handleMerge() {
     const { subject, body } = await buildArticleEmailFromFile(filePath, SITE_URL);
     const draft = await buttondown.createDraftEmail(subject, body);
     console.log(`Created Buttondown draft for article ${filePath}: ${draft.absolute_url || draft.id}`);
+    flipPublishFlag(filePath);
+    console.log(`Flipped publish_post flag to false for article: ${filePath}`);
   }
 
   for (const dir of newsletterDirs) {
@@ -85,6 +92,8 @@ async function handleMerge() {
     const { subject, body } = await buildNewsletterEmail(dir);
     const draft = await buttondown.createDraftEmail(subject, body);
     console.log(`Created Buttondown draft for newsletter ${dir}: ${draft.absolute_url || draft.id}`);
+    flipPublishFlag(dir);
+    console.log(`Flipped publish_post flag to false for newsletter: ${dir}`);
   }
 }
 
