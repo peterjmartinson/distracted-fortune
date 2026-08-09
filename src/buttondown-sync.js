@@ -102,6 +102,52 @@ export function shouldPublishPost(fileOrDir) {
 }
 
 /**
+ * Extract metadata for Buffer social media update from a markdown file or newsletter directory.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ * @param {string} [siteUrl] - optional site base URL for constructing full permalink URLs
+ * @returns {{ title: string, excerpt: string, publishTime: string|null, url: string|null, text: string }}
+ */
+export function getBufferMetadata(fileOrDir, siteUrl) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) {
+    return { title: '', excerpt: '', publishTime: null, url: null, text: '' };
+  }
+
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  const parsed = matter(raw);
+  const front = parsed.data;
+
+  const isNewsletter = fileOrDir.includes('newsletters');
+  const title = front.title || front.email_subject || (isNewsletter ? 'New newsletter' : 'New post');
+  const excerpt = front.excerpt || '';
+  const publishTime = front.publish_time ? String(front.publish_time) : null;
+  const permalink = front.permalink || null;
+  const url = (permalink && siteUrl) ? siteUrl.replace(/\/$/, '') + permalink : null;
+
+  let text;
+  if (isNewsletter) {
+    text = excerpt ? `New newsletter: ${title} - ${excerpt}` : `New newsletter: ${title}`;
+    if (url) text += ` ${url}`;
+  } else {
+    if (excerpt && url) {
+      text = `New post: ${title} - ${excerpt} ${url}`;
+    } else if (excerpt) {
+      text = `New post: ${title} - ${excerpt}`;
+    } else if (url) {
+      text = `New post: ${title} ${url}`;
+    } else {
+      text = `New post: ${title}`;
+    }
+  }
+
+  return { title, excerpt, publishTime, url, text };
+}
+
+/**
  * Update the publish_post flag in a markdown file frontmatter to false.
  *
  * @param {string} fileOrDir - path to markdown file or directory containing draft.md
@@ -123,4 +169,5 @@ export function flipPublishFlag(fileOrDir) {
     fs.writeFileSync(mdPath, updated, 'utf8');
   }
 }
+
 

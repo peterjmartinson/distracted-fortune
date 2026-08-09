@@ -129,6 +129,7 @@ date: ${DATE_FRONT}
 permalink: /${KEBAB}/
 excerpt: "${EXCERPT}"
 publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 tags:
 ${TAGS_YAML}category:
   - ${SECOND_CAT}
@@ -148,6 +149,7 @@ title: "${FULL_TITLE}"
 date: ${DATE_FRONT}
 email_subject: "${EMAIL_SUBJECT}"
 publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 categories:
   - Newsletter
 ---
