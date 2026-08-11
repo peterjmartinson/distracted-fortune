@@ -48,6 +48,24 @@ export function buildArticleEmail(frontmatter, wpPostUrl) {
 }
 
 /**
+ * Build Buttondown email content for a Jekyll article in `_posts/`.
+ * Reads front matter from the file, constructs the full article URL from
+ * siteUrl + permalink, and delegates to buildArticleEmail.
+ *
+ * @param {string} filePath - path to the `_posts/YYYY-MM-DD-slug.md` file
+ * @param {string} siteUrl - site base URL, e.g. "https://distractedfortune.com"
+ * @returns {Promise<{ subject: string, body: string }>}
+ */
+export async function buildArticleEmailFromFile(filePath, siteUrl) {
+  const raw = fs.readFileSync(filePath, 'utf8');
+  const parsed = matter(raw);
+  const front = parsed.data;
+  const permalink = front.permalink || '/';
+  const articleUrl = siteUrl.replace(/\/$/, '') + permalink;
+  return buildArticleEmail(front, articleUrl);
+}
+
+/**
  * Build Buttondown email content for a newsletter.
  * Converts the full draft.md body to HTML.
  *
@@ -64,3 +82,92 @@ export async function buildNewsletterEmail(postDir) {
   const body = await markdownToHtml(parsed.content);
   return { subject, body };
 }
+
+/**
+ * Check if a file (or post directory containing draft.md) has publish_post: true.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ * @returns {boolean}
+ */
+export function shouldPublishPost(fileOrDir) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) return false;
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  const parsed = matter(raw);
+  const val = parsed.data.publish_post;
+  return val === true || val === 'true';
+}
+
+/**
+ * Extract metadata for Buffer social media update from a markdown file or newsletter directory.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ * @param {string} [siteUrl] - optional site base URL for constructing full permalink URLs
+ * @returns {{ title: string, excerpt: string, publishTime: string|null, url: string|null, text: string }}
+ */
+export function getBufferMetadata(fileOrDir, siteUrl) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) {
+    return { title: '', excerpt: '', publishTime: null, url: null, text: '' };
+  }
+
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  const parsed = matter(raw);
+  const front = parsed.data;
+
+  const isNewsletter = fileOrDir.includes('newsletters');
+  const title = front.title || front.email_subject || (isNewsletter ? 'New newsletter' : 'New post');
+  const excerpt = front.excerpt || '';
+  const publishTime = front.publish_time ? String(front.publish_time) : null;
+  const permalink = front.permalink || null;
+  const url = (permalink && siteUrl) ? siteUrl.replace(/\/$/, '') + permalink : null;
+
+  let text;
+  if (isNewsletter) {
+    text = excerpt ? `New newsletter: ${title} - ${excerpt}` : `New newsletter: ${title}`;
+    if (url) text += ` ${url}`;
+  } else {
+    if (excerpt && url) {
+      text = `New post: ${title} - ${excerpt} ${url}`;
+    } else if (excerpt) {
+      text = `New post: ${title} - ${excerpt}`;
+    } else if (url) {
+      text = `New post: ${title} ${url}`;
+    } else {
+      text = `New post: ${title}`;
+    }
+  }
+
+  return { title, excerpt, publishTime, url, text };
+}
+
+/**
+ * Update the publish_post flag in a markdown file frontmatter to false.
+ *
+ * @param {string} fileOrDir - path to markdown file or directory containing draft.md
+ */
+export function flipPublishFlag(fileOrDir) {
+  const mdPath = fs.existsSync(fileOrDir) && fs.statSync(fileOrDir).isDirectory()
+    ? path.join(fileOrDir, 'draft.md')
+    : fileOrDir;
+
+  if (!fs.existsSync(mdPath)) return;
+  const raw = fs.readFileSync(mdPath, 'utf8');
+  if (/publish_post:\s*(true|"true"|'true')/i.test(raw)) {
+    const updated = raw.replace(/publish_post:\s*(true|"true"|'true')/i, 'publish_post: false');
+    fs.writeFileSync(mdPath, updated, 'utf8');
+  } else {
+    const parsed = matter(raw);
+    parsed.data.publish_post = false;
+    const updated = matter.stringify(parsed.content, parsed.data);
+    fs.writeFileSync(mdPath, updated, 'utf8');
+  }
+}
+
+

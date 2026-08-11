@@ -1,0 +1,89 @@
+\documentclass[17pt]{memoir}
+\usepackage{amssymb,amsmath,bm}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\pagestyle{empty}
+\begin{document}
+
+% \begin{center}
+%   \textbf{Law of Quadratic Reciprocity}
+% \end{center}
+
+Let $p, q$ be distinct odd primes, and define the following symbols:
+
+\medskip
+\begin{table}[h]
+\centering
+  \begin{tabular}{l|l}
+  $p\boldsymbol{R}q$ & $x^2 \equiv p\pmod q$ for some $x \in \mathbb{Z}$ \\
+   &  $p$ is a \textbf{\textit{quadratic residue}} of $q$ \\
+   \hline
+  $p\boldsymbol{N}q$ & $x^2 \not\equiv p\pmod q$ for all $x \in \mathbb{Z}$ \\
+   &  $p$ is a \textbf{\textit{quadratic nonresidue}} of $q$ \\
+  \end{tabular}
+\end{table}
+
+\medskip
+\textbf{Case I}
+
+If $p = 1 + 4n$, for some $n \in \mathbb{Z}$
+
+then either $pRq$ and $qRp$ or $pNq$ and $qNp$
+
+\medskip
+\textbf{Case II}
+
+If $p = 3 + 4m$ and $q = 3 + 4n$ for some $m,n \in \mathbb{Z}$
+
+then either $pRq$ and $qNp$ or $pNq$ and $qRp$
+
+\bigskip
+\begin{flushright}
+  \textit{--- Carl Friedrich Gauss (1801)}
+\end{flushright}
+
+\newpage
+
+% \begin{center}
+%   \textbf{Law of Quadratic Reciprocity}
+% \end{center}
+
+\arrayrulewidth=2pt
+\hspace*{-1cm}
+\begin{tabular}{@{}l@{\hskip 8mm}l|cccccccccccccc@{}}
+% \begin{tabular}{@{}ll|cccccccccccccc@{}}
+                     &                          & \multicolumn{14}{c}{$\boldsymbol{q}$}                                                                                                                                                                                                                                                                                                                                                                                \\[5mm]
+                     &                          & 3                         & 5                         & 7                         & 11                        & 13                        & 17                        & 19                        & 23                        & 29                        & 31                        & 37                        & 41                        & 43                        & 47                        \\
+\hline
+                     & 3                        & --  & N                         & N                         & \textbf{R} & \textbf{R} & N                         & N                         & \textbf{R} & N                         & N                         & \textbf{R} & N                         & N                         & \textbf{R} \\
+                     & 5                        & N                         & --  & N                         & \textbf{R} & N                         & N                         & \textbf{R} & N                         & \textbf{R} & \textbf{R} & N                         & \textbf{R} & N                         & N                         \\
+                     & 7                        & \textbf{R} & N                         & --  & N                         & N                         & N                         & \textbf{R} & N                         & \textbf{R} & \textbf{R} & \textbf{R} & N                         & N                         & \textbf{R} \\
+                     & 11                       & N                         & \textbf{R} & \textbf{R} & --  & N                         & N                         & \textbf{R} & N                         & N                         & N                         & \textbf{R} & N                         & \textbf{R} & N                         \\
+                     & 13                       & \textbf{R} & N                         & N                         & N                         & --  & \textbf{R} & N                         & \textbf{R} & \textbf{R} & N                         & N                         & N                         & \textbf{R} & N                         \\
+                     & 17                       & N                         & N                         & N                         & N                         & \textbf{R} & --  & \textbf{R} & N                         & N                         & N                         & N                         & N                         & \textbf{R} & \textbf{R} \\
+                     & 19                       & \textbf{R} & \textbf{R} & N                         & N                         & N                         & \textbf{R} & --  & N                         & N                         & \textbf{R} & N                         & N                         & N                         & N                         \\
+                     & 23                       & N                         & N                         & \textbf{R} & \textbf{R} & \textbf{R} & N                         & \textbf{R} & --  & \textbf{R} & N                         & N                         & \textbf{R} & \textbf{R} & N                         \\
+                     & 29                       & N                         & \textbf{R} & \textbf{R} & N                         & \textbf{R} & N                         & N                         & \textbf{R} & --  & N                         & N                         & N                         & N                         & N                         \\
+                     & 31                       & \textbf{R} & \textbf{R} & N                         & \textbf{R} & N                         & N                         & N                         & \textbf{R} & N                         & --  & N                         & \textbf{R} & \textbf{R} & N                         \\
+                     & 37                       & \textbf{R} & N                         & \textbf{R} & \textbf{R} & N                         & N                         & N                         & N                         & N                         & N                         & --  & \textbf{R} & N                         & \textbf{R} \\
+                     & 41                       & N                         & \textbf{R} & N                         & N                         & N                         & N                         & N                         & \textbf{R} & N                         & \textbf{R} & \textbf{R} & --  & \textbf{R} & N                         \\
+                     & 43                       & \textbf{R} & N                         & \textbf{R} & N                         & \textbf{R} & \textbf{R} & \textbf{R} & N                         & N                         & N                         & N                         & \textbf{R} & --  & N                         \\
+\multirow{-14}{*}{$\boldsymbol{p}$} & 47                       & N                         & N                         & N                         & \textbf{R} & N                         & \textbf{R} & \textbf{R} & \textbf{R} & N                         & \textbf{R} & \textbf{R} & N                         & \textbf{R} & -- 
+\end{tabular}
+
+\medskip
+
+\quad\quad\quad\quad\quad \textbf{R} $\rightarrow$ {\large $p$ is a quadratic residue of $q$}
+
+\quad\quad\quad\quad\quad N $\rightarrow$ {\large $p$ is a quadratic nonresidue of $q$}
+
+\newpage
+
+\Large
+\begin{center}
+  \textbf{Quadratic Reciprocity}
+
+  by distractedfortune.com
+\end{center}
+
+\end{document}

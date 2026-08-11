@@ -1,0 +1,21 @@
+<footer class="site-footer h-card" style="text-align: center; padding: 2rem 0;">
+  <data class="u-url" href="{{ '/' | relative_url }}"></data>
+
+  <div class="wrapper">
+    <div style="margin-bottom: 0.5rem;">
+      <a href="{{ '/' | relative_url }}" style="font-size: 1.5rem; font-weight: 700; text-decoration: none;">
+        {%- if site.author -%}
+          {{ site.author | escape }}
+        {%- else -%}
+          {{ site.title | escape }}
+        {%- endif -%}
+      </a>
+    </div>
+    {%- if site.description -%}
+      <p style="color: #666; font-size: 0.95rem; margin: 0.5rem 0;">{{- site.description | escape -}}</p>
+    {%- endif -%}
+    <p style="font-size: 0.85rem; color: #888; margin-top: 0.75rem;">
+      &copy; {{ 'now' | date: "%Y" }} Distracted Fortune. All rights reserved.
+    </p>
+  </div>
+</footer>

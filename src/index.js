@@ -2,22 +2,23 @@
  * Main sync script entry point.
  *
  * Usage:
- *   node src/index.js pr     # run on pull_request opened/synchronize/reopened
  *   node src/index.js merge  # run on push to main (post-merge Buttondown emails)
  *
- * Reads GITHUB_EVENT_PATH for PR/push info, GITHUB_TOKEN for GitHub API calls.
- * Requires WP_URL, WP_USER, WP_APP_PASSWORD in environment (pr mode only).
- * Requires BUTTONDOWN_API_KEY in environment (merge mode only).
+ * Reads GITHUB_EVENT_PATH for push info, GITHUB_TOKEN for GitHub API calls.
+ * Requires BUTTONDOWN_API_KEY and SITE_URL in environment.
  */
 import fs from 'fs';
-import path from 'path';
 import axios from 'axios';
-import matter from 'gray-matter';
-import { wpClient } from './wp-client.js';
-import { createOrUpdateDraftFromDir } from './sync.js';
-import { findPostDirsFromFiles } from './find-post-dirs.js';
+import { findPostDirsFromFiles, findArticleFilesFromFiles } from './find-post-dirs.js';
 import { buttondownClient } from './buttondown-client.js';
-import { buildArticleEmail, buildNewsletterEmail } from './buttondown-sync.js';
+import { bufferClient } from './buffer-client.js';
+import {
+  buildArticleEmailFromFile,
+  buildNewsletterEmail,
+  shouldPublishPost,
+  getBufferMetadata,
+  flipPublishFlag,
+} from './buttondown-sync.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -29,118 +30,6 @@ if (!GITHUB_EVENT_PATH || !fs.existsSync(GITHUB_EVENT_PATH)) {
 
 const event = JSON.parse(fs.readFileSync(GITHUB_EVENT_PATH, 'utf8'));
 
-function makePrHelpers(token, owner, repo) {
-  const headers = {
-    Authorization: `token ${token}`,
-    Accept: 'application/vnd.github.v3+json',
-  };
-  return {
-    async readMapping(prNumber) {
-      const url = `https://api.github.com/repos/${owner}/${repo}/issues/${prNumber}/comments`;
-      const res = await axios.get(url, { headers });
-      for (const c of res.data.reverse()) {
-        const m =
-          c.body &&
-          c.body.match(
-            /<!-- wp-sync[\s\S]*?post_id:\s*(\d+)[\s\S]*?post_url:\s*(\S+)[\s\S]*?-->/i,
-          );
-        if (m) return { post_id: parseInt(m[1], 10), post_url: m[2] };
-      }
-      return null;
-    },
-    async writeMapping(prNumber, postId, postUrl, slug, date) {
-      const url = `https://api.github.com/repos/${owner}/${repo}/issues/${prNumber}/comments`;
-      const body = [
-        `WP draft created: ${postUrl}`,
-        '',
-        `<!-- wp-sync`,
-        `post_id: ${postId}`,
-        `post_url: ${postUrl}`,
-        `post_slug: ${slug || ''}`,
-        `post_date: ${date || ''}`,
-        `-->`,
-      ].join('\n');
-      await axios.post(url, { body }, { headers });
-    },
-    async commentOnPR(prNumber, message) {
-      const url = `https://api.github.com/repos/${owner}/${repo}/issues/${prNumber}/comments`;
-      await axios.post(url, { body: message }, { headers });
-    },
-  };
-}
-
-async function handlePR() {
-  const pr = event.pull_request;
-  if (!pr) {
-    console.log('No pull_request in event.');
-    return;
-  }
-
-  const WP_URL = process.env.WP_URL;
-  const WP_USER = process.env.WP_USER;
-  const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD;
-
-  if (!WP_URL || !WP_USER || !WP_APP_PASSWORD) {
-    console.error('Missing WP_URL, WP_USER, or WP_APP_PASSWORD in environment.');
-    process.exit(1);
-  }
-
-  const wp = wpClient({ wpUrl: WP_URL, user: WP_USER, appPassword: WP_APP_PASSWORD });
-
-  const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-  const filesUrl = `https://api.github.com/repos/${owner}/${repo}/pulls/${pr.number}/files`;
-  const filesRes = await axios.get(filesUrl, {
-    headers: { Authorization: `token ${GITHUB_TOKEN}`, Accept: 'application/vnd.github.v3+json' },
-  });
-  const files = filesRes.data.map((f) => f.filename);
-  const allDirs = findPostDirsFromFiles(files);
-
-  // Newsletters are not synced to WordPress — only articles go to WP on PR.
-  const postDirs = allDirs.filter((d) => d.startsWith('content/posts/'));
-
-  if (postDirs.length === 0) {
-    console.log('No article draft.md changes detected (newsletters are skipped for WP sync).');
-    return;
-  }
-  console.log('Article dirs to sync to WP:', postDirs);
-  const prHelpers = makePrHelpers(GITHUB_TOKEN, owner, repo);
-  for (const postDir of postDirs) {
-    await createOrUpdateDraftFromDir(postDir, pr.number, wp, prHelpers);
-  }
-}
-
-/**
- * Look up the WordPress post URL for a commit by finding the PR that introduced
- * it and reading the wp-sync mapping stored in PR comments.
- *
- * @param {string} sha
- * @param {string} owner
- * @param {string} repo
- * @param {{ readMapping: Function }} prHelpers
- * @returns {Promise<string|null>}
- */
-async function lookupWpPostUrl(sha, owner, repo, prHelpers) {
-  try {
-    const url = `https://api.github.com/repos/${owner}/${repo}/commits/${sha}/pulls`;
-    const res = await axios.get(url, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-        Accept: 'application/vnd.github.v3+json',
-      },
-    });
-    const prs = res.data;
-    if (!prs || prs.length === 0) {
-      console.warn(`No PRs found for commit ${sha}`);
-      return null;
-    }
-    const mapping = await prHelpers.readMapping(prs[0].number);
-    return mapping ? mapping.post_url : null;
-  } catch (e) {
-    console.error(`Failed to look up PR for commit ${sha}: ${e.message}`);
-    return null;
-  }
-}
-
 async function handleMerge() {
   const BUTTONDOWN_API_KEY = process.env.BUTTONDOWN_API_KEY;
   if (!BUTTONDOWN_API_KEY) {
@@ -148,9 +37,27 @@ async function handleMerge() {
     process.exit(1);
   }
 
+  const SITE_URL = process.env.SITE_URL;
+  if (!SITE_URL) {
+    console.error('Missing SITE_URL in environment.');
+    process.exit(1);
+  }
+
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
   const buttondown = buttondownClient({ apiKey: BUTTONDOWN_API_KEY });
-  const prHelpers = makePrHelpers(GITHUB_TOKEN, owner, repo);
+
+  const BUFFER_ACCESS_TOKEN = process.env.BUFFER_ACCESS_TOKEN;
+  const BUFFER_PROFILE_IDS_RAW = process.env.BUFFER_PROFILE_IDS;
+  const bufferProfileIds = BUFFER_PROFILE_IDS_RAW
+    ? BUFFER_PROFILE_IDS_RAW.split(',').map((s) => s.trim()).filter(Boolean)
+    : [];
+
+  let buffer = null;
+  if (BUFFER_ACCESS_TOKEN && bufferProfileIds.length > 0) {
+    buffer = bufferClient({ accessToken: BUFFER_ACCESS_TOKEN });
+  } else {
+    console.warn('[Buffer] BUFFER_ACCESS_TOKEN or BUFFER_PROFILE_IDS missing. Skipping Buffer social media sync.');
+  }
 
   // Collect all changed files. Merge commits have empty added/modified arrays
   // in the push event payload, so prefer the GitHub Compare API. Fall back to
@@ -176,52 +83,72 @@ async function handleMerge() {
   } else {
     allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
   }
-  const dirs = findPostDirsFromFiles(allFiles);
+  const articleFiles = findArticleFilesFromFiles(allFiles).filter((f) => shouldPublishPost(f));
+  const newsletterDirs = findPostDirsFromFiles(allFiles)
+    .filter((d) => d.startsWith('content/newsletters/'))
+    .filter((d) => shouldPublishPost(d));
 
-  if (dirs.length === 0) {
-    console.log('No content draft.md changes detected in push.');
+  if (articleFiles.length === 0 && newsletterDirs.length === 0) {
+    console.log('No article or newsletter changes with publish_post: true detected in push.');
     return;
   }
-  console.log('Content dirs changed on merge:', dirs);
 
-  const headSha = event.after || (event.head_commit && event.head_commit.id);
+  for (const filePath of articleFiles) {
+    console.log(`Processing article: ${filePath}`);
+    const { subject, body } = await buildArticleEmailFromFile(filePath, SITE_URL);
+    const draft = await buttondown.createDraftEmail(subject, body);
+    console.log(`Created Buttondown draft for article ${filePath}: ${draft.absolute_url || draft.id}`);
 
-  for (const dir of dirs) {
-    const isNewsletter = dir.startsWith('content/newsletters/');
-
-    if (isNewsletter) {
-      const { subject, body } = await buildNewsletterEmail(dir);
-      const draft = await buttondown.createDraftEmail(subject, body);
-      console.log(`Created Buttondown draft for newsletter ${dir}: ${draft.absolute_url || draft.id}`);
-    } else {
-      // Article: retrieve the WP post URL from the merged PR's comment mapping.
-      const wpPostUrl = headSha
-        ? await lookupWpPostUrl(headSha, owner, repo, prHelpers)
-        : null;
-
-      if (!wpPostUrl) {
-        console.warn(`Could not find WP post URL for ${dir} — skipping Buttondown email.`);
-        continue;
+    if (buffer) {
+      try {
+        const { text, publishTime } = getBufferMetadata(filePath, SITE_URL);
+        const bufferRes = await buffer.createUpdate({
+          profileIds: bufferProfileIds,
+          text,
+          scheduledAt: publishTime,
+        });
+        console.log(`Queued Buffer update for article ${filePath}: ${bufferRes.buffer_count || 'success'}`);
+      } catch (e) {
+        console.error(`Failed to queue Buffer update for article ${filePath}: ${e.message}`);
       }
-
-      const mdPath = path.join(dir, 'draft.md');
-      const raw = fs.readFileSync(mdPath, 'utf8');
-      const front = matter(raw).data;
-      const { subject, body } = buildArticleEmail(front, wpPostUrl);
-      const draft = await buttondown.createDraftEmail(subject, body);
-      console.log(`Created Buttondown draft for article ${dir}: ${draft.absolute_url || draft.id}`);
     }
+
+    flipPublishFlag(filePath);
+    console.log(`Flipped publish_post flag to false for article: ${filePath}`);
+  }
+
+  for (const dir of newsletterDirs) {
+    console.log(`Processing newsletter: ${dir}`);
+    const { subject, body } = await buildNewsletterEmail(dir);
+    const draft = await buttondown.createDraftEmail(subject, body);
+    console.log(`Created Buttondown draft for newsletter ${dir}: ${draft.absolute_url || draft.id}`);
+
+    if (buffer) {
+      try {
+        const { text, publishTime } = getBufferMetadata(dir, SITE_URL);
+        const bufferRes = await buffer.createUpdate({
+          profileIds: bufferProfileIds,
+          text,
+          scheduledAt: publishTime,
+        });
+        console.log(`Queued Buffer update for newsletter ${dir}: ${bufferRes.buffer_count || 'success'}`);
+      } catch (e) {
+        console.error(`Failed to queue Buffer update for newsletter ${dir}: ${e.message}`);
+      }
+    }
+
+    flipPublishFlag(dir);
+    console.log(`Flipped publish_post flag to false for newsletter: ${dir}`);
   }
 }
 
+
 async function run() {
   const mode = process.argv[2];
-  if (mode === 'pr') {
-    await handlePR();
-  } else if (mode === 'merge') {
+  if (mode === 'merge') {
     await handleMerge();
   } else {
-    console.error('Unknown mode. Use "pr" or "merge".');
+    console.error('Unknown mode. Use "merge".');
     process.exit(1);
   }
 }

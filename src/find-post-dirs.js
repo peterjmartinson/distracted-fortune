@@ -13,3 +13,14 @@ export function findPostDirsFromFiles(files) {
   }
   return Array.from(set);
 }
+
+/**
+ * Returns an array of `_posts/` file paths that match the Jekyll naming
+ * convention `_posts/YYYY-MM-DD-slug.md`.
+ *
+ * @param {string[]} files - list of file paths from a push/compare diff
+ * @returns {string[]}
+ */
+export function findArticleFilesFromFiles(files) {
+  return files.filter((f) => /^_posts\/\d{4}-\d{2}-\d{2}-.+\.md$/.test(f));
+}

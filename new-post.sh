@@ -67,13 +67,16 @@ PASCAL=$(to_pascal "$SHORT_TITLE_RAW")
 KEBAB=$(to_kebab "$SHORT_TITLE_RAW")
 DATE_FOLDER=$(date +%Y%m%d)
 DATE_FRONT=$(date +%Y-%m-%dT13:00:00-05:00)
+DATE_TITLE=$(date +%Y-%m-%d)
 
 if [ "$POST_TYPE" = "Article" ]; then
-  FOLDER="content/posts/${DATE_FOLDER}_${PASCAL}"
+  FOLDER="_posts"
+  FILE_NAME="${DATE_TITLE}-${KEBAB}.md"
   BRANCH="feature/${KEBAB}"
 else
-  # Newsletter: separate content lane — no WP workflow triggered for now
+  # Newsletter: separate content lane
   FOLDER="content/newsletters/${DATE_FOLDER}_${PASCAL}"
+  FILE_NAME="draft.md"
   BRANCH="newsletter/${KEBAB}"
   EMAIL_SUBJECT="[Distracted Fortune] Raw Thoughts On ${SHORT_TITLE_RAW}"
 fi
@@ -92,6 +95,24 @@ fi
 # ── git branch ────────────────────────────────────────────────────────────────
 
 echo ""
+echo "Performing git status check and pulling latest changes..."
+
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Warning: Your working directory has uncommitted changes:"
+  git status --porcelain
+  read -rp "Do you want to continue anyway? [y/N]: " CONTINUE_DIRTY
+  if [[ ! "$CONTINUE_DIRTY" =~ ^[Yy]$ ]]; then
+    echo "Aborting new post wizard."
+    exit 1
+  fi
+fi
+
+DEFAULT_BRANCH=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@origin/@@' || echo "main")
+echo "Checking out $DEFAULT_BRANCH and pulling latest..."
+git checkout "$DEFAULT_BRANCH"
+git pull
+
+echo ""
 echo "Creating branch: $BRANCH"
 git checkout -b "$BRANCH"
 
@@ -100,50 +121,48 @@ git checkout -b "$BRANCH"
 mkdir -p "$FOLDER"
 
 if [ "$POST_TYPE" = "Article" ]; then
-  cat > "${FOLDER}/draft.md" <<EOF
+  cat > "${FOLDER}/${FILE_NAME}" <<EOF
 ---
+layout: post
 title: "${FULL_TITLE}"
 date: ${DATE_FRONT}
+permalink: /${KEBAB}/
 excerpt: "${EXCERPT}"
+publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 tags:
-${TAGS_YAML}categories:
-  - Article
+${TAGS_YAML}category:
   - ${SECOND_CAT}
 featured_image: front_image.png
 ---
 
 EOF
 
-  cat > "${FOLDER}/images.yml" <<EOF
-images:
-  - file: front_image.png
-    caption: "A short caption describing what is shown in the image."
-    alt: "A brief description of the image for screen readers."
-    credit: "Photographer or source name"
-EOF
-
   echo ""
-  echo "Created: $FOLDER/draft.md"
-  echo "Created: $FOLDER/images.yml"
+  echo "Created: $FOLDER/$FILE_NAME"
   echo ""
 else
-  # Newsletter: minimal front matter — no excerpt, tags, featured_image, or images.yml
-  cat > "${FOLDER}/draft.md" <<EOF
+  # Newsletter: minimal front matter
+  cat > "${FOLDER}/${FILE_NAME}" <<EOF
 ---
 title: "${FULL_TITLE}"
 date: ${DATE_FRONT}
 email_subject: "${EMAIL_SUBJECT}"
+publish_post: true
+# publish_time: "YYYY-MM-DD HH:MM"
 categories:
   - Newsletter
 ---
 
+Dear Reader,
+
 EOF
 
   echo ""
-  echo "Created: $FOLDER/draft.md"
+  echo "Created: $FOLDER/$FILE_NAME"
   echo ""
 fi
 
 # ── open vim ─────────────────────────────────────────────────────────────────
 
-vim "${FOLDER}/draft.md"
+vim "${FOLDER}/${FILE_NAME}"
