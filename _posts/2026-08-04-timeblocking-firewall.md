@@ -10,7 +10,6 @@ tags:
 category:
   - Self Improvement
 featured_image: /assets/post-images/front_image_fire_rated_wall.jpg
-featured: true
 ---
 
 Now and then, I look back at my day and panic.
