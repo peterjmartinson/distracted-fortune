@@ -82,6 +82,23 @@ async function handleMerge() {
   } else {
     allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
   }
+
+  const sha = process.env.GITHUB_SHA || event.after;
+  if (allFiles.length === 0 && GITHUB_TOKEN && sha) {
+    try {
+      const headers = {
+        Authorization: `token ${GITHUB_TOKEN}`,
+        Accept: 'application/vnd.github.v3+json',
+      };
+      const url = `https://api.github.com/repos/${owner}/${repo}/commits/${sha}`;
+      const res = await axios.get(url, { headers });
+      allFiles = (res.data.files || [])
+        .filter((f) => f.status === 'added' || f.status === 'modified')
+        .map((f) => f.filename);
+    } catch (e) {
+      console.warn(`Commit API failed (${e.message}).`);
+    }
+  }
   const articleFiles = findArticleFilesFromFiles(allFiles).filter((f) => shouldPublishPost(f));
   const newsletterDirs = findPostDirsFromFiles(allFiles)
     .filter((d) => d.startsWith('content/newsletters/'))
