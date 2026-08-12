@@ -17,7 +17,6 @@ import {
   buildNewsletterEmail,
   shouldPublishPost,
   getBufferMetadata,
-  flipPublishFlag,
 } from './buttondown-sync.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
@@ -112,9 +111,6 @@ async function handleMerge() {
         console.error(`Failed to queue Buffer update for article ${filePath}: ${e.message}`);
       }
     }
-
-    flipPublishFlag(filePath);
-    console.log(`Flipped publish_post flag to false for article: ${filePath}`);
   }
 
   for (const dir of newsletterDirs) {
@@ -136,9 +132,6 @@ async function handleMerge() {
         console.error(`Failed to queue Buffer update for newsletter ${dir}: ${e.message}`);
       }
     }
-
-    flipPublishFlag(dir);
-    console.log(`Flipped publish_post flag to false for newsletter: ${dir}`);
   }
 }
 

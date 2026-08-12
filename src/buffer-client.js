@@ -1,22 +1,22 @@
 import axios from 'axios';
 
 /**
- * Creates a Buffer API client instance.
+ * Creates a Buffer API client instance using Buffer's GraphQL API.
  *
- * @param {{ accessToken: string }} config
+ * @param {{ accessToken: string, _httpClient?: object }} config
  * @returns {{ createUpdate: (options: { profileIds: string[], text: string, scheduledAt?: string, shorten?: boolean }) => Promise<any> }}
  */
-export function bufferClient({ accessToken }) {
+export function bufferClient({ accessToken, _httpClient = axios }) {
   if (!accessToken) {
     throw new Error('bufferClient requires an accessToken.');
   }
 
   return {
     /**
-     * Post/schedule a social media update to target profile IDs.
+     * Post/schedule a social media update to target channel/profile IDs via GraphQL.
      *
      * @param {{ profileIds: string[], text: string, scheduledAt?: string, shorten?: boolean }} options
-     * @returns {Promise<any>} Response from Buffer API
+     * @returns {Promise<any>} Summary object with buffer_count and response results
      */
     async createUpdate({ profileIds, text, scheduledAt, shorten = false }) {
       if (!profileIds || profileIds.length === 0) {
@@ -26,24 +26,50 @@ export function bufferClient({ accessToken }) {
         throw new Error('createUpdate requires text content.');
       }
 
-      const params = new URLSearchParams();
+      const mutation = `
+        mutation CreatePost($channelId: String!, $text: String!, $scheduledAt: String) {
+          createPost(channelId: $channelId, text: $text, scheduledAt: $scheduledAt) {
+            id
+          }
+        }
+      `.trim();
+
+      const results = [];
       for (const profileId of profileIds) {
-        params.append('profile_ids[]', profileId);
-      }
-      params.append('text', text);
-      if (scheduledAt) {
-        params.append('scheduled_at', scheduledAt);
-      }
-      params.append('shorten', shorten ? 'true' : 'false');
+        const variables = {
+          channelId: profileId,
+          text,
+        };
+        if (scheduledAt) {
+          variables.scheduledAt = scheduledAt;
+        }
 
-      const response = await axios.post('https://api.bufferapp.com/1/updates/create.json', params, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
+        const response = await _httpClient.post(
+          'https://api.buffer.com/graphql',
+          {
+            query: mutation,
+            variables,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
 
-      return response.data;
+        if (response.data && response.data.errors && response.data.errors.length > 0) {
+          const errorMessages = response.data.errors.map((e) => e.message).join('; ');
+          throw new Error(`Buffer GraphQL Error: ${errorMessages}`);
+        }
+
+        results.push(response.data);
+      }
+
+      return {
+        buffer_count: results.length,
+        results,
+      };
     },
   };
 }

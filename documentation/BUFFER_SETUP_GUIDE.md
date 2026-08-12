@@ -78,6 +78,6 @@ The response will be a JSON array of profiles. Copy the `id` field from each pro
 
 When a blog article or newsletter is merged into `main` with `publish_post: true` in its frontmatter:
 - The GitHub Actions workflow extracts the title, excerpt, and URL.
-- It formats a post update and sends a POST request to Buffer API (`/1/updates/create.json`).
+- It formats a post update and sends a POST request to Buffer's GraphQL API (`https://api.buffer.com/graphql`) using the `createPost` mutation.
 - If `publish_time: "YYYY-MM-DD HH:MM"` is set in the frontmatter, Buffer schedules the post for that exact time. If omitted, Buffer queues it according to your account's posting schedule.
 - The workflow then auto-flips `publish_post: false` in git and commits the update.
