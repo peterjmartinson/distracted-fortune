@@ -8,6 +8,7 @@
  * Requires BUTTONDOWN_API_KEY and SITE_URL in environment.
  */
 import fs from 'fs';
+import path from 'path';
 import axios from 'axios';
 import { findPostDirsFromFiles, findArticleFilesFromFiles } from './find-post-dirs.js';
 import { buttondownClient } from './buttondown-client.js';
@@ -17,6 +18,7 @@ import {
   buildNewsletterEmail,
   shouldPublishPost,
   getBufferMetadata,
+  flipPublishFlag,
 } from './buttondown-sync.js';
 
 const GITHUB_EVENT_PATH = process.env.GITHUB_EVENT_PATH;
@@ -73,14 +75,14 @@ async function handleMerge() {
       const url = `https://api.github.com/repos/${owner}/${repo}/compare/${before}...${after}`;
       const res = await axios.get(url, { headers });
       allFiles = (res.data.files || [])
-        .filter((f) => f.status === 'added' || f.status === 'modified')
+        .filter((f) => f.status !== 'removed')
         .map((f) => f.filename);
     } catch (e) {
       console.warn(`Compare API failed (${e.message}), falling back to commit file lists.`);
-      allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
+      allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || []), ...(c.renamed || [])]);
     }
   } else {
-    allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || [])]);
+    allFiles = (event.commits || []).flatMap((c) => [...(c.added || []), ...(c.modified || []), ...(c.renamed || [])]);
   }
 
   const sha = process.env.GITHUB_SHA || event.after;
@@ -93,13 +95,19 @@ async function handleMerge() {
       const url = `https://api.github.com/repos/${owner}/${repo}/commits/${sha}`;
       const res = await axios.get(url, { headers });
       allFiles = (res.data.files || [])
-        .filter((f) => f.status === 'added' || f.status === 'modified')
+        .filter((f) => f.status !== 'removed')
         .map((f) => f.filename);
     } catch (e) {
       console.warn(`Commit API failed (${e.message}).`);
     }
   }
-  const articleFiles = findArticleFilesFromFiles(allFiles).filter((f) => shouldPublishPost(f));
+  const articleFiles = [
+    ...findArticleFilesFromFiles(allFiles),
+    ...findPostDirsFromFiles(allFiles)
+      .filter((d) => d.startsWith('content/posts/'))
+      .map((d) => path.join(d, 'draft.md')),
+  ].filter((f) => shouldPublishPost(f));
+
   const newsletterDirs = findPostDirsFromFiles(allFiles)
     .filter((d) => d.startsWith('content/newsletters/'))
     .filter((d) => shouldPublishPost(d));
@@ -128,6 +136,8 @@ async function handleMerge() {
         console.error(`Failed to queue Buffer update for article ${filePath}: ${e.message}`);
       }
     }
+
+    flipPublishFlag(filePath);
   }
 
   for (const dir of newsletterDirs) {
@@ -149,6 +159,8 @@ async function handleMerge() {
         console.error(`Failed to queue Buffer update for newsletter ${dir}: ${e.message}`);
       }
     }
+
+    flipPublishFlag(dir);
   }
 }
 
