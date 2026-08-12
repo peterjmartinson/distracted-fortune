@@ -44,7 +44,7 @@ test('should_deduplicate_the_same_draft_file', () => {
 
 function filesFromCompareApi(compareFiles) {
   return compareFiles
-    .filter((f) => f.status === 'added' || f.status === 'modified')
+    .filter((f) => f.status !== 'removed')
     .map((f) => f.filename);
 }
 
@@ -72,6 +72,17 @@ test('should_detect_post_draft_modified_via_compare_api', () => {
   ]);
   const dirs = findPostDirsFromFiles(files);
   assert.deepEqual(dirs, ['content/posts/my-post']);
+});
+
+test('should_detect_renamed_article_or_newsletter_via_compare_api', () => {
+  const files = filesFromCompareApi([
+    { filename: '_posts/2026-08-12-act-first.md', status: 'renamed' },
+    { filename: 'content/newsletters/20260812_New/draft.md', status: 'renamed' },
+  ]);
+  const articleFiles = findArticleFilesFromFiles(files);
+  const dirs = findPostDirsFromFiles(files);
+  assert.deepEqual(articleFiles, ['_posts/2026-08-12-act-first.md']);
+  assert.deepEqual(dirs, ['content/newsletters/20260812_New']);
 });
 
 // ---------------------------------------------------------------------------

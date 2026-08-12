@@ -98,7 +98,9 @@ export function shouldPublishPost(fileOrDir) {
   const raw = fs.readFileSync(mdPath, 'utf8');
   const parsed = matter(raw);
   const val = parsed.data.publish_post;
-  return val === true || val === 'true';
+  if (val === true || val === 'true') return true;
+  if (typeof val === 'string' && ['true', 'yes'].includes(val.trim().toLowerCase())) return true;
+  return false;
 }
 
 /**
@@ -159,8 +161,8 @@ export function flipPublishFlag(fileOrDir) {
 
   if (!fs.existsSync(mdPath)) return;
   const raw = fs.readFileSync(mdPath, 'utf8');
-  if (/publish_post:\s*(true|"true"|'true')/i.test(raw)) {
-    const updated = raw.replace(/publish_post:\s*(true|"true"|'true')/i, 'publish_post: false');
+  if (/publish_post\s*:\s*(true|"true"|'true')/i.test(raw)) {
+    const updated = raw.replace(/publish_post\s*:\s*(true|"true"|'true')/i, 'publish_post: false');
     fs.writeFileSync(mdPath, updated, 'utf8');
   } else {
     const parsed = matter(raw);
