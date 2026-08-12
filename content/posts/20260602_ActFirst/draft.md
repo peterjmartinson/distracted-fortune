@@ -1,0 +1,106 @@
+---
+title: "Act First, the Feeling will Follow"
+date: 2026-06-02T13:00:00-05:00
+excerpt: "We all have our reasons to put it off until later, until it feels right.  Until you feel like the person you want to be.  Until the best time.  But the secret is to CHARGE!!"
+tags:
+  - adhd
+  - procrastination
+  - action
+categories:
+  - Article
+  - Self Improvement
+featured_image: Cavalry_Charge_on_the_Southern_Plains.jpg
+---
+
+The other day, I emailed a guy an invitation to a coffee meeting.  I can't remember the last time I did something like that.  It's out of the blue, a guy I don't know very well, financial type, with the goal of professional networking.
+
+No big deal?  High pressure?  It doesn't matter.  For me, it involved risk, and anything risky comes with excuses.
+
+I spent the morning considering whether it was the best time to email, and if I had earned the right to ask for the meeting.  Maybe he's too busy.  Maybe I should just wait until I see him out in the wild again.  Maybe I should have something specific to pitch.
+
+"CHARGE!" I heard in my head.
+
+Minutes later, the email was sent.
+
+It's not an uncommon problem, and especially applicable to those of us with ADHD, to put things off until a better time to act.  Procrastination.  And that procrastination, for me, usually leads to missed opportunities and disappointment in the future.
+
+"Do it, Do it right, Do it right now", my grandpa always used to say (according to my mom).  But what if it just doesn't feel like the right time?
+
+Most of the reasons you procrastinate boil down to only one reason - you're not confident you can pull it off and succeed.
+
+If that sounds like you, you're at the right place.
+
+In this article, I'm going to describe a method to make you start feeling that confidence.  The secret is - Act first.  The feeling will follow.
+
+## How Confidence is Actually Built
+
+Where does true confidence come from?  Don't they all look like Elaine's boss J. Peterman?  Just born with no fear, oozing with adventure.
+
+Maybe there are people like that in the real world, but that's not a sustainable archetype.  If you're not born with overwhelming confidence, that doesn't mean you'll never have it.
+
+Confidence doesn't come out of a can, or a special food, or something somebody says to you.  It's demonstrated to your cowering, little rat brain.
+
+Human beings are not animals.  [We're really three beings in one](https://distractedfortune.com/beast-rider-and-marshall-how-to-get-control-of-yourself/).  The lowest is what we might consider an animal, like a horse.  That horse gets the jitters when faced with something new or scary.  When you're trying to ride that steed through unknown territory, those jitters can propagate into you, and turn you right around.
+
+How do you teach an animal to charge into battle?  Tell him, "It will be ok"?  Hope for the best?  Nope.
+
+Imagine being a warrior's horse.  Horses aren't stupid - they run away from danger, like a line of infantry wielding swords.  You train the animal by banging swords while it's eating, riding it through smoke, making it smell blood so it's not freaked out smelling death on the battlefield.
+
+You provide the animal the *experience* of battle, without the danger of death.
+
+Would you say a warhorse has confidence?
+
+Our personal beast is the same way.  You can't reason with the beast, but the beast will respond to experience.
+
+The next level of being inside us is that Rider.  When you, the rider, perform a risky action, and (this is important) don't die, that teaches an important lesson to your steed.  Not dying means you could perform another action, and might not die.
+
+You are teaching the Beast that he can trust the Rider.
+
+You develop confidence by riding into battle, more and more situations that risk the kind of failure you want to build tolerance for.  In other words, [exposure therapy](https://distractedfortune.com/what-is-and-how-to-use-exposure-therapy/).
+
+## The "CHARGE!" Protocol
+
+The third level of being inside us is the Marshal.  The Marshal is the planner.  He defines the mission of the Rider, the same way the Rider defines the mission of the Beast.
+
+As the Marshal, you must design a campaign that drives your Rider into a simulated field of battle, over and over, so he builds his ability to control that panicked beast.
+
+
+The lesson for your rider is that you *must* ride into action *before* you feel confident enough to do so.  You build the tolerance through the experience of risk, and sometimes the failure that comes with it.
+
+You must act first, before you have the feeling.
+
+Here is how the Marshal designs that battle plan.
+
+### 1. Reduce the Gate to a Micro-Stride
+
+The Beast panics when the target looks like an insurmountable wall - like "reinventing my career" or "networking with high-level executives." The Marshal's job is to shrink the battlefield so small that the Beast doesn't register it as a threat until it's already happening.
+
+* **The Rule:** Don't commit to writing a whole presentation; commit to writing a single bullet point. Don't worry about how a coffee meeting will go; just commit to typing the recipient's name in the "To" field. Shrink the target until the resistance vanishes.
+
+### 2. Close the Window of Analysis
+
+If you give the Beast more than three seconds of idle time, it will inevitably sniff out a reason to bolt. It will manufacture an excuse, a sudden craving for distraction, or a sudden need to check your inbox. Once the Marshal sets the micro-stride, the Rider must apply immediate leg pressure.
+
+* **The Rule:** Count down from three and move. Do not check your calendar, do not re-read the draft for the fifth time, and under no circumstances stop to ask yourself if you "feel" ready. The moment you pause to analyze your internal state, the animal wins.
+
+### 3. Log the "Non-Death" Data
+
+The moment the action is taken, your internal nervous system will be hyper-vigilant, waiting for the sky to fall. When it doesn't, the Marshal must step in and explicitly log that data.
+
+* **The Rule:** Notice your heart rate stabilizing. Notice that you are still breathing. Look at the outbox. By consciously acknowledging that you took a risk and didn't die, you are actively training the Beast. You are teaching it that the smoke isn't fatal.
+
+## Ride Your Way Into Reality
+
+Let's go back to that coffee invitation I sent out of the blue.
+
+Did the guy reply? Did he say yes? Honestly, it doesn't even matter.
+
+The true victory wasn't in the outcome of the meeting; the victory was in the sending. The moment that email left my outbox, my Rider won. My internal warhorse took a full stride through the smoke of its own hesitation and realized the fire didn't burn its hooves. And a funny thing happened about ten minutes later - I actually started to feel confident. The feeling followed the action, exactly as promised.
+
+Courage and confidence are not the absolute absence of fear. Fear is just the Beast doing its biological job, trying to keep you safe in the most boring, restrictive way possible.
+
+Stop waiting for your cowering rat-brain to give you permission to be bold, or creative, or productive. It never will. It wants you to stay in the stable where it's warm, quiet, and completely stagnant.
+
+Listen for the Marshal. Tighten your grip on the reins. Apply the leg pressure.
+
+**CHARGE.**
