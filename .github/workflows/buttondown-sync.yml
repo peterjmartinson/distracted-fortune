@@ -1,12 +1,14 @@
 name: Buttondown Sync (create draft emails on merge)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - master
     paths:
       - '_posts/**'
+      - 'content/posts/**'
       - 'content/newsletters/**'
 
 permissions:
