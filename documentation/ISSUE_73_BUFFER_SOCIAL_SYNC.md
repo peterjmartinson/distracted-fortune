@@ -16,12 +16,11 @@ Articles and newsletters will use the following two keys:
 
 1. **Script Update (`src/index.js` or new module)**:
    - If `publish_post: true` is found in the merged post/newsletter, read `publish_time` along with the post's title, excerpt, and URL.
-   - Send a POST request to Buffer's API endpoint (`POST https://api.bufferapp.com/1/updates/create.json`) to create a scheduled update for each profile.
+   - Send a POST request to Buffer's GraphQL API (`POST https://api.buffer.com/graphql`) using the `createPost` mutation for each channel.
    - The payload should include:
-     - `profile_ids[]`: Array of connected profile IDs (X, LinkedIn, Facebook).
+     - `channelId`: Targeted channel/profile ID (X, LinkedIn, Facebook).
      - `text`: Structured message (e.g., `"New post: [Title] - [Excerpt] [URL]"`).
-     - `scheduled_at`: The datetime parsed from `publish_time`.
-     - `shorten`: `false` (to avoid double-shortening URLs).
+     - `scheduledAt`: The datetime parsed from `publish_time`.
 
 2. **Workflow secrets integration**:
    - `BUFFER_ACCESS_TOKEN`

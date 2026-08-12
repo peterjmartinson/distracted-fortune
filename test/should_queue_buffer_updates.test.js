@@ -75,3 +75,54 @@ test('bufferClient should validate parameters before sending API calls', async (
     /requires text content/
   );
 });
+
+test('bufferClient should send GraphQL request with createPost mutation and Bearer token', async () => {
+  const requests = [];
+  const fakeHttp = {
+    async post(url, data, options) {
+      requests.push({ url, data, options });
+      return { data: { data: { createPost: { id: 'post-123' } } } };
+    },
+  };
+
+  const client = bufferClient({ accessToken: 'test-access-token', _httpClient: fakeHttp });
+  const result = await client.createUpdate({
+    profileIds: ['channel-1', 'channel-2'],
+    text: 'Test post',
+    scheduledAt: '2026-08-12 13:00',
+  });
+
+  assert.equal(result.buffer_count, 2);
+  assert.equal(requests.length, 2);
+
+  assert.equal(requests[0].url, 'https://api.buffer.com/graphql');
+  assert.equal(requests[0].options.headers.Authorization, 'Bearer test-access-token');
+  assert.equal(requests[0].options.headers['Content-Type'], 'application/json');
+
+  assert.ok(requests[0].data.query.includes('createPost'));
+  assert.equal(requests[0].data.variables.channelId, 'channel-1');
+  assert.equal(requests[0].data.variables.text, 'Test post');
+  assert.equal(requests[0].data.variables.scheduledAt, '2026-08-12 13:00');
+
+  assert.equal(requests[1].data.variables.channelId, 'channel-2');
+});
+
+test('bufferClient should handle top-level errors array in GraphQL response', async () => {
+  const fakeHttp = {
+    async post() {
+      return {
+        data: {
+          errors: [{ message: 'Unauthorized or token invalid' }],
+        },
+      };
+    },
+  };
+
+  const client = bufferClient({ accessToken: 'invalid-token', _httpClient: fakeHttp });
+
+  await assert.rejects(
+    async () => client.createUpdate({ profileIds: ['channel-1'], text: 'Test' }),
+    /Buffer GraphQL Error: Unauthorized or token invalid/
+  );
+});
+
