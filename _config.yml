@@ -6,6 +6,13 @@ permalink: /:title/
 
 theme: minima
 
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+    - global-builtin
+    - color-functions
+
 header_pages:
 
 printful_store_url: "https://distractedfortune.printful.me"
