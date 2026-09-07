@@ -34,6 +34,38 @@ Instead of waking up and immediately falling into the digital rabbit hole of alg
 * **Targeted News Summaries:** Concise, high-signal briefs without clickbait or rage-bait.
 * **Ready to Print or Read:** Formatted crisp and clean as a single-page PDF that fits on standard 8.5x11 paper.
 
+## Sample Editions
+
+Check out real sample PDFs generated for morning delivery:
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0 2rem 0;">
+
+  <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; background: #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; color: #1a202c;">⚾ Daily Baseball Scores (MLB)</h3>
+      <p style="font-size: 0.95rem; color: #4a5568; line-height: 1.5; margin-bottom: 1rem;">
+        Yesterday's complete box scores, division standings, and an unvarnished <em>Mad Fan</em> post-game recap on the back.
+      </p>
+    </div>
+    <a href="{{ '/assets/post-images/MLB_scores_20260906.pdf' | relative_url }}" target="_blank" download style="display: inline-block; text-align: center; background-color: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; font-size: 0.95rem; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none;">
+      📄 Download MLB Scores Sample (PDF) &darr;
+    </a>
+  </div>
+
+  <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; background: #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,0.04); display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <h3 style="margin-top: 0; margin-bottom: 0.5rem; font-size: 1.15rem; color: #1a202c;">📰 MLB Morning News &amp; Trade Buzz</h3>
+      <p style="font-size: 0.95rem; color: #4a5568; line-height: 1.5; margin-bottom: 1rem;">
+        Curated beat reporting, roster moves, injury updates, and trade rumors tailored to your favorite teams without clickbait.
+      </p>
+    </div>
+    <a href="{{ '/assets/post-images/MLB_news_20260906.pdf' | relative_url }}" target="_blank" download style="display: inline-block; text-align: center; background-color: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; font-size: 0.95rem; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none;">
+      📄 Download MLB News Sample (PDF) &darr;
+    </a>
+  </div>
+
+</div>
+
 ## Make Technology Disappear
 
 By curating exactly what you want to see and delivering it as a single morning page, you reclaim your morning attention, eliminate screen withdrawal for kids, and start the day focused and grounded.
