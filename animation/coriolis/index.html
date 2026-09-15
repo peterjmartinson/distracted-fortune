@@ -1,0 +1,235 @@
+---
+layout: default
+permalink: /animation/coriolis/
+sitemap: false
+---
+
+<link rel="stylesheet" href="{{ '/assets/animations/coriolis/coriolis.css' | relative_url }}">
+
+<div class="coriolis-wrapper">
+  <header class="coriolis-header">
+    <h1 class="coriolis-title">Rotating Space Station Coriolis Effect</h1>
+    <p class="coriolis-subtitle">
+      Explore the counterintuitive physics of free fall inside a rotating habitat. 
+      See how jumping straight "up" toward the hub creates an apparent spinward curve due to conservation of angular momentum and the Coriolis effect.
+    </p>
+  </header>
+
+  <!-- Interactive Presets -->
+  <div class="coriolis-presets" id="coriolis-presets">
+    <button class="preset-btn active" data-preset="1km-earth">1 km Diameter Ring (1.0g)</button>
+    <button class="preset-btn" data-preset="small-centrifuge">Small 20m Centrifuge (Strong Coriolis)</button>
+    <button class="preset-btn" data-preset="stanford-torus">Stanford Torus (R = 895m)</button>
+    <button class="preset-btn" data-preset="moon-centrifuge">Lunar Gravity Habitat (0.166g)</button>
+    <button class="preset-btn" data-preset="spinward-throw">Spinward Throw (+45°)</button>
+    <button class="preset-btn" data-preset="antispinward-throw">Antispinward Throw (-45°)</button>
+  </div>
+
+  <!-- Main Simulation Area -->
+  <div class="sim-grid">
+    <!-- Viewports & Canvases -->
+    <div class="canvas-container-card">
+      <div class="canvas-view-toggles">
+        <div class="view-btn-group">
+          <button id="btn-view-both" class="view-toggle-btn active">Dual View</button>
+          <button id="btn-view-inertial" class="view-toggle-btn">Inertial Only</button>
+          <button id="btn-view-rotating" class="view-toggle-btn">Rotating Only</button>
+        </div>
+        <div class="speed-control">
+          <span>Sim Speed:</span>
+          <input type="range" id="slider-speed" class="control-slider" min="0.1" max="2.0" step="0.05" value="1.0" style="width: 90px;">
+          <span id="val-speed" class="control-value" style="font-size: 0.85rem;">1.00x</span>
+        </div>
+      </div>
+
+      <div class="canvases-wrapper" id="canvases-wrapper">
+        <!-- Inertial (Stationary Observer) Viewport -->
+        <div class="canvas-viewport viewport-inertial">
+          <div class="canvas-viewport-header">
+            <span class="badge"><span class="badge-dot inertial"></span> External Inertial Frame</span>
+            <span>Station Spins / Path is Straight</span>
+          </div>
+          <canvas id="canvas-inertial" class="sim-canvas"></canvas>
+        </div>
+
+        <!-- Rotating (Floor Inhabitant) Viewport -->
+        <div class="canvas-viewport viewport-rotating">
+          <div class="canvas-viewport-header">
+            <span class="badge"><span class="badge-dot rotating"></span> Habitat Rotating Frame</span>
+            <span>Floor Fixed / Path is Curved</span>
+          </div>
+          <canvas id="canvas-rotating" class="sim-canvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Playback Controls -->
+      <div class="playback-controls">
+        <div class="playback-btn-group">
+          <button id="btn-play-pause" class="sim-btn">⏸ Pause</button>
+          <button id="btn-step" class="sim-btn">⏭ Step</button>
+          <button id="btn-reset" class="sim-btn">↺ Reset</button>
+        </div>
+        <button id="btn-launch" class="sim-btn primary">🚀 Launch / Re-Jump</button>
+      </div>
+    </div>
+
+    <!-- Controls & Telemetry Sidebar -->
+    <div class="sim-controls-panel">
+      <!-- Habitat Parameters Card -->
+      <div class="control-card">
+        <div class="card-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          Station Geometry
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-radius" class="control-label">Habitat Radius (R)</label>
+            <span id="val-radius" class="control-value">500 m</span>
+          </div>
+          <input type="range" id="slider-radius" class="control-slider" min="10" max="2500" step="5" value="500">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-rpm" class="control-label">Rotation Rate (RPM)</label>
+            <span id="val-rpm" class="control-value">1.34 RPM</span>
+          </div>
+          <input type="range" id="slider-rpm" class="control-slider" min="0.1" max="10" step="0.01" value="1.338">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-gravity" class="control-label">Rim Artificial Gravity (g)</label>
+            <span id="val-gravity" class="control-value">1.00 g (9.8 m/s²)</span>
+          </div>
+          <input type="range" id="slider-gravity" class="control-slider" min="0.05" max="2.5" step="0.01" value="1.0">
+        </div>
+      </div>
+
+      <!-- Launch / Jumper Parameters Card -->
+      <div class="control-card">
+        <div class="card-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 3.5 7h7.5l-6 4.5 2.5 7.5-7.5-5.5-7.5 5.5 2.5-7.5-6-4.5h7.5z"/></svg>
+          Launch & Jumper
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-mass" class="control-label">Object / Jumper Mass</label>
+            <span id="val-mass" class="control-value">70 kg (154 lbs)</span>
+          </div>
+          <input type="range" id="slider-mass" class="control-slider" min="1" max="150" step="1" value="70">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-force" class="control-label">Launch Push Force</label>
+            <span id="val-force" class="control-value">1500 N</span>
+          </div>
+          <input type="range" id="slider-force" class="control-slider" min="100" max="4000" step="50" value="1500">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-velocity" class="control-label">Relative Launch Speed (v₀)</label>
+            <span id="val-velocity" class="control-value">3.0 m/s</span>
+          </div>
+          <input type="range" id="slider-velocity" class="control-slider" min="0.5" max="30" step="0.1" value="3.0">
+        </div>
+
+        <div class="control-group">
+          <div class="control-label-row">
+            <label for="slider-angle" class="control-label">Launch Direction (Angle)</label>
+            <span id="val-angle" class="control-value">0° (Straight Up)</span>
+          </div>
+          <input type="range" id="slider-angle" class="control-slider" min="-75" max="75" step="1" value="0">
+        </div>
+      </div>
+
+      <!-- Real-Time Telemetry & Impact Stats Card -->
+      <div class="telemetry-card">
+        <div class="card-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Flight Telemetry
+        </div>
+
+        <div class="telemetry-grid">
+          <div class="stat-box full-width">
+            <div class="stat-label">Landing Displacement on Floor</div>
+            <div id="stat-landing-offset" class="stat-val highlight-spinward">0.00 m</div>
+            <div id="stat-landing-dir" class="stat-sub">Spinward (+0.0°)</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Flight Duration</div>
+            <div id="stat-flight-time" class="stat-val">0.00 s</div>
+            <div class="stat-sub">Time until impact</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Apex Jump Height</div>
+            <div id="stat-apex" class="stat-val">0.00 m</div>
+            <div class="stat-sub">Above floor</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Rim Speed (v_rim)</div>
+            <div id="stat-rim-speed" class="stat-val">0.0 m/s</div>
+            <div class="stat-sub">Floor velocity</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Artificial Gravity</div>
+            <div id="stat-gravity" class="stat-val">1.00 g</div>
+            <div class="stat-sub">At the rim</div>
+          </div>
+
+          <div class="stat-box full-width">
+            <div class="stat-label">Total Inertial Speed (v_inertial)</div>
+            <div id="stat-inertial-speed" class="stat-val">0.0 m/s</div>
+            <div class="stat-sub">Vector sum of rim + jump velocity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Educational & Physics Explainer Section -->
+  <section class="explainer-section">
+    <h2>The Physics of Free Fall in Artificial Gravity</h2>
+    
+    <h3>1. The External Perspective (Inertial Frame)</h3>
+    <p>
+      To an observer floating outside the space station in microgravity, when you jump or throw an object from the floor, you are already moving sideways at the rim's tangential speed ($v_{\text{rim}} = \omega R$).
+    </p>
+    <p>
+      Once your feet leave the floor, <strong>no gravity or external forces act on you</strong> (assuming negligible air resistance). You travel in a <strong>perfectly straight line at constant velocity</strong> across the chord of the circle until the curved floor rotates back up to meet you.
+    </p>
+
+    <div class="math-formula">
+      \vec{r}(t) = \vec{r}_0 + (\vec{v}_{\text{rim}} + \vec{v}_{\text{rel}})\,t
+    </div>
+
+    <h3>2. The Internal Perspective (Rotating Frame & Coriolis Effect)</h3>
+    <p>
+      To an inhabitant standing inside the rotating cylinder, "down" is radially outward (centrifugal force). When you jump straight up toward the central hub:
+    </p>
+    <ul>
+      <li>You retain your initial linear speed ($v_{\text{rim}}$).</li>
+      <li>As your distance from the hub ($r$) decreases during your jump, the local floor beneath you requires less tangential speed ($\omega r$) to keep up.</li>
+      <li>Because your tangential velocity exceeds the rotational speed at smaller radii, you appear to accelerate <strong>spinward (forward)</strong>.</li>
+      <li>This apparent sideways deflection is the <strong>Coriolis acceleration</strong>: $\vec{a}_{\text{coriolis}} = -2(\vec{\omega} \times \vec{v}_{\text{rel}})$.</li>
+    </ul>
+
+    <h3>3. Answers to the 1 km Ring Question</h3>
+    <p>
+      In a $1\text{ km}$ diameter habitat ($R = 500\text{ m}$) spinning at $1.34\text{ RPM}$ to produce $1.0\text{g}$ of artificial gravity, a human jumping straight up at $3.0\text{ m/s}$ (approx. $0.46\text{ m}$ / $1.5\text{ ft}$ vertical leap) will be airborne for <strong>~0.61 seconds</strong> and will land approximately <strong>0.14 meters (5.5 inches) spinward (forward)</strong> of the spot they jumped from.
+    </p>
+    <p>
+      In smaller centrifuges (such as $R = 10\text{ m}$), the effect is vastly amplified—the jumper will land several meters ahead of their launch spot or may even trip if not prepared!
+    </p>
+  </section>
+</div>
+
+<script src="{{ '/assets/animations/coriolis/coriolis.js' | relative_url }}"></script>
