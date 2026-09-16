@@ -1,6 +1,6 @@
 /**
  * Coriolis Effect in a Rotating Space Habitat Simulator
- * Distracted Fortune Interactive Animation
+ * Distracted Fortune Interactive Animation - Sharp & High-Precision Canvas
  */
 
 (function () {
@@ -30,7 +30,7 @@
     
     // Animation control
     isPlaying: true,
-    isLaunched: false,
+    isLaunched: true,
     speedMultiplier: 1.0,
     viewMode: 'both',     // 'both', 'inertial', 'rotating'
     
@@ -41,7 +41,7 @@
   // Preset Configurations
   const PRESETS = {
     '1km-earth': {
-      name: '1 km Diameter Habitat (1.0g)',
+      name: '1 km Diameter Ring (1.0g)',
       radius: 500,
       gravityG: 1.0,
       mass: 70,
@@ -49,7 +49,7 @@
       launchAngleDeg: 0
     },
     'small-centrifuge': {
-      name: 'Small 20m Ring (Strong Coriolis)',
+      name: 'Small 20m Centrifuge (Strong Coriolis)',
       radius: 10,
       gravityG: 1.0,
       mass: 70,
@@ -57,7 +57,7 @@
       launchAngleDeg: 0
     },
     'stanford-torus': {
-      name: 'Stanford Torus (R = 895m, 1.0g)',
+      name: 'Stanford Torus (R = 895m)',
       radius: 895,
       gravityG: 1.0,
       mass: 70,
@@ -65,7 +65,7 @@
       launchAngleDeg: 0
     },
     'moon-centrifuge': {
-      name: 'Lunar Gravity Ring (0.166g, R = 200m)',
+      name: 'Lunar Gravity Habitat (0.166g)',
       radius: 200,
       gravityG: 0.166,
       mass: 70,
@@ -93,7 +93,7 @@
   // DOM Elements
   let elements = {};
 
-  // Setup Canvases & Contexts
+  // Canvases & Contexts
   let canvasInertial, ctxInertial;
   let canvasRotating, ctxRotating;
   let lastTimestamp = 0;
@@ -140,7 +140,7 @@
       btnViewRotating: document.getElementById('btn-view-rotating'),
       canvasesWrapper: document.getElementById('canvases-wrapper'),
 
-      // Preset Buttons Container
+      // Presets Container
       presetsContainer: document.getElementById('coriolis-presets'),
 
       // Telemetry Displays
@@ -161,16 +161,15 @@
   }
 
   function attachEventListeners() {
-    // Radius
+    // Radius Slider
     elements.sliderRadius.addEventListener('input', (e) => {
       state.radius = parseFloat(e.target.value);
-      // Keep Gravity fixed or update RPM
       state.omega = Math.sqrt((state.gravityG * 9.80665) / state.radius);
       state.rpm = (state.omega * 60) / (2 * Math.PI);
       updatePhysics();
     });
 
-    // RPM
+    // RPM Slider
     elements.sliderRpm.addEventListener('input', (e) => {
       state.rpm = parseFloat(e.target.value);
       state.omega = (state.rpm * 2 * Math.PI) / 60;
@@ -178,7 +177,7 @@
       updatePhysics();
     });
 
-    // Gravity (g)
+    // Gravity Slider
     elements.sliderGravity.addEventListener('input', (e) => {
       state.gravityG = parseFloat(e.target.value);
       state.omega = Math.sqrt((state.gravityG * 9.80665) / state.radius);
@@ -186,35 +185,34 @@
       updatePhysics();
     });
 
-    // Mass
+    // Mass Slider
     elements.sliderMass.addEventListener('input', (e) => {
       state.mass = parseFloat(e.target.value);
-      // Update vRel from force
       state.vRel = (state.force * state.impulseTime) / state.mass;
       updatePhysics();
     });
 
-    // Force
+    // Force Slider
     elements.sliderForce.addEventListener('input', (e) => {
       state.force = parseFloat(e.target.value);
       state.vRel = (state.force * state.impulseTime) / state.mass;
       updatePhysics();
     });
 
-    // Direct Relative Velocity
+    // Velocity Slider
     elements.sliderVelocity.addEventListener('input', (e) => {
       state.vRel = parseFloat(e.target.value);
       state.force = (state.mass * state.vRel) / state.impulseTime;
       updatePhysics();
     });
 
-    // Angle
+    // Launch Angle Slider
     elements.sliderAngle.addEventListener('input', (e) => {
       state.launchAngleDeg = parseFloat(e.target.value);
       updatePhysics();
     });
 
-    // Sim Speed Multiplier
+    // Speed Slider
     elements.sliderSpeed.addEventListener('input', (e) => {
       state.speedMultiplier = parseFloat(e.target.value);
       elements.valSpeed.textContent = state.speedMultiplier.toFixed(2) + 'x';
@@ -226,8 +224,8 @@
     // Step
     elements.btnStep.addEventListener('click', () => {
       state.isPlaying = false;
-      elements.btnPlayPause.textContent = '▶ Play';
-      stepSimulation(0.05);
+      elements.btnPlayPause.textContent = '▶ PLAY';
+      stepSimulation(0.04);
     });
 
     // Reset
@@ -240,7 +238,7 @@
       resetSimulation();
       state.isLaunched = true;
       state.isPlaying = true;
-      elements.btnPlayPause.textContent = '⏸ Pause';
+      elements.btnPlayPause.textContent = '⏸ PAUSE';
     });
 
     // View Toggles
@@ -294,7 +292,7 @@
 
   function togglePlayPause() {
     state.isPlaying = !state.isPlaying;
-    elements.btnPlayPause.textContent = state.isPlaying ? '⏸ Pause' : '▶ Play';
+    elements.btnPlayPause.textContent = state.isPlaying ? '⏸ PAUSE' : '▶ PLAY';
   }
 
   function updatePhysics(syncSliders = false) {
@@ -304,16 +302,16 @@
     // Angle in radians (0 is straight up towards center, positive is spinward, negative is antispinward)
     const angleRad = (state.launchAngleDeg * Math.PI) / 180;
 
-    // Launch coordinates in inertial frame (Launch from bottom at (0, -R))
-    // Rim velocity at bottom (0, -R) is in +X direction (counter-clockwise spin)
+    // In canvas coordinates (where +X is right, +Y is down):
+    // Floor launch pad is at bottom: (0, R)
+    // Upward jump toward center is in -Y direction
+    // CCW spin moves in +X direction at the bottom rim (0, R)
     const vRimX = state.vRim;
     const vRimY = 0;
 
-    // Relative velocity components
-    // +Y is toward the hub (upward from bottom rim)
-    // +X is in the direction of rotation (spinward)
+    // Relative launch velocity components
     const vRelX = state.vRel * Math.sin(angleRad);
-    const vRelY = state.vRel * Math.cos(angleRad);
+    const vRelY = -state.vRel * Math.cos(angleRad); // negative because jumping upwards toward center (0,0)
 
     // Total Inertial Velocity Vector at launch
     const v0x = vRimX + vRelX;
@@ -321,29 +319,30 @@
     const v0Total = Math.sqrt(v0x * v0x + v0y * v0y);
 
     // Analytic landing calculation:
-    // r(t) = (v0x * t, -R + v0y * t)
-    // |r(t)|^2 = R^2 => (v0x^2 + v0y^2)*t^2 - 2*R*v0y*t = 0
-    if (v0y > 0.0001 && v0Total > 0.0001) {
-      state.flightDuration = (2 * state.radius * v0y) / (v0Total * v0Total);
+    // r(t) = (v0x * t, R + v0y * t)
+    // |r(t)|^2 = R^2 => (v0x^2 + v0y^2)*t^2 + 2*R*v0y*t = 0
+    // Since v0y < 0:
+    if (v0y < -0.0001 && v0Total > 0.0001) {
+      state.flightDuration = (-2 * state.radius * v0y) / (v0Total * v0Total);
       
       // Apex calculations (at half flight time):
       const tApex = state.flightDuration / 2;
       const xApex = v0x * tApex;
-      const yApex = -state.radius + v0y * tApex;
+      const yApex = state.radius + v0y * tApex;
       const rMin = Math.sqrt(xApex * xApex + yApex * yApex);
       state.apexHeight = Math.max(0, state.radius - rMin);
 
       // Impact coordinates in Inertial Frame:
       const xImpact = v0x * state.flightDuration;
-      const yImpact = -state.radius + v0y * state.flightDuration;
-      const phiImpactInertial = Math.atan2(yImpact, xImpact); // radians from positive X axis
+      const yImpact = state.radius + v0y * state.flightDuration;
+      const phiImpactInertial = Math.atan2(yImpact, xImpact); // radians in canvas coords
 
-      // Angular position of the launch spot on the floor at impact time:
-      // Launch spot started at -PI/2 (bottom) and rotated counterclockwise by omega * t
-      const phiFloorAtImpact = -Math.PI / 2 + state.omega * state.flightDuration;
+      // Angular position of the launch pad on the floor at impact time:
+      // Launch pad starts at +PI/2 (bottom) and rotates CCW (decreasing angle: PI/2 - omega * t)
+      const phiFloorAtImpact = Math.PI / 2 - state.omega * state.flightDuration;
 
-      // Angular difference (projectile landing spot minus launch pad spot):
-      let deltaPhi = phiImpactInertial - phiFloorAtImpact;
+      // Angular difference (relative position on floor: positive = spinward / ahead of pad):
+      let deltaPhi = phiFloorAtImpact - phiImpactInertial;
       // Normalize to [-PI, PI]
       deltaPhi = ((deltaPhi + Math.PI) % (2 * Math.PI) + (2 * Math.PI)) % (2 * Math.PI) - Math.PI;
 
@@ -356,14 +355,14 @@
       state.landingOffsetDeg = 0;
     }
 
-    // Update UI Elements
+    // Update Slider Value Texts
     elements.valRadius.textContent = `${Math.round(state.radius)} m`;
     elements.valRpm.textContent = `${state.rpm.toFixed(2)} RPM`;
     elements.valGravity.textContent = `${state.gravityG.toFixed(2)} g (${(state.gravityG * 9.807).toFixed(1)} m/s²)`;
     elements.valMass.textContent = `${Math.round(state.mass)} kg (${Math.round(state.mass * 2.20462)} lbs)`;
     elements.valForce.textContent = `${Math.round(state.force)} N`;
     elements.valVelocity.textContent = `${state.vRel.toFixed(1)} m/s (${(state.vRel * 3.6).toFixed(1)} km/h)`;
-    elements.valAngle.textContent = `${state.launchAngleDeg > 0 ? '+' : ''}${state.launchAngleDeg}° ${state.launchAngleDeg > 0 ? '(Spinward)' : state.launchAngleDeg < 0 ? '(Antispinward)' : '(Straight Up)'}`;
+    elements.valAngle.textContent = `${state.launchAngleDeg > 0 ? '+' : ''}${state.launchAngleDeg}° ${state.launchAngleDeg > 0 ? '(SPINWARD)' : state.launchAngleDeg < 0 ? '(ANTISPINWARD)' : '(STRAIGHT UP)'}`;
 
     if (syncSliders) {
       elements.sliderRadius.value = state.radius;
@@ -382,7 +381,7 @@
       elements.sliderVelocity.value = state.vRel;
     }
 
-    // Update Telemetry Panel
+    // Update Telemetry Displays
     elements.statGravity.textContent = `${state.gravityG.toFixed(2)} g`;
     elements.statRimSpeed.textContent = `${state.vRim.toFixed(1)} m/s (${(state.vRim * 3.6).toFixed(0)} km/h)`;
     elements.statFlightTime.textContent = `${state.flightDuration.toFixed(2)} s`;
@@ -390,17 +389,17 @@
     elements.statInertialSpeed.textContent = `${v0Total.toFixed(1)} m/s`;
 
     const absOffset = Math.abs(state.landingOffsetM);
-    const offsetStr = absOffset < 100 ? `${absOffset.toFixed(2)} m` : `${Math.round(absOffset)} m`;
+    const offsetStr = absOffset < 10 ? `${absOffset.toFixed(3)} m (${(absOffset * 100).toFixed(1)} cm)` : `${absOffset.toFixed(2)} m`;
     elements.statLandingOffset.textContent = offsetStr;
 
-    if (Math.abs(state.landingOffsetM) < 0.01) {
-      elements.statLandingDir.textContent = 'Exact Launch Pad';
+    if (Math.abs(state.landingOffsetM) < 0.005) {
+      elements.statLandingDir.textContent = 'EXACT LAUNCH PAD';
       elements.statLandingOffset.className = 'stat-val';
     } else if (state.landingOffsetM > 0) {
-      elements.statLandingDir.textContent = `Spinward (Forward +${state.landingOffsetDeg.toFixed(1)}°)`;
+      elements.statLandingDir.textContent = `SPINWARD (+${state.landingOffsetDeg.toFixed(2)}°)`;
       elements.statLandingOffset.className = 'stat-val highlight-spinward';
     } else {
-      elements.statLandingDir.textContent = `Antispinward (Backward ${state.landingOffsetDeg.toFixed(1)}°)`;
+      elements.statLandingDir.textContent = `ANTISPINWARD (${state.landingOffsetDeg.toFixed(2)}°)`;
       elements.statLandingOffset.className = 'stat-val highlight-antispinward';
     }
   }
@@ -408,7 +407,7 @@
   function resetSimulation() {
     state.simTime = 0;
     state.stationAngle = 0;
-    state.isLaunched = true; // Auto-arm so playback shows flight
+    state.isLaunched = true;
   }
 
   function stepSimulation(dt) {
@@ -419,7 +418,7 @@
     if (state.simTime >= state.flightDuration) {
       state.simTime = state.flightDuration;
       state.isPlaying = false;
-      elements.btnPlayPause.textContent = '▶ Play';
+      elements.btnPlayPause.textContent = '▶ PLAY';
     }
   }
 
@@ -428,13 +427,13 @@
     [canvasInertial, canvasRotating].forEach(canvas => {
       const rect = canvas.getBoundingClientRect();
       if (rect.width > 0 && rect.height > 0) {
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
       }
     });
   }
 
-  // --- Animation Frame Loop ---
+  // --- Main Animation Frame Loop ---
   function animationLoop(timestamp) {
     if (!lastTimestamp) lastTimestamp = timestamp;
     const deltaSeconds = Math.min((timestamp - lastTimestamp) / 1000, 0.1);
@@ -447,8 +446,8 @@
       if (state.isLaunched && state.flightDuration > 0) {
         state.simTime += simDt;
         if (state.simTime >= state.flightDuration) {
-          // Loop animation smoothly after pause
-          if (state.simTime >= state.flightDuration + 1.2) {
+          // Pause briefly at landing then loop
+          if (state.simTime >= state.flightDuration + 1.0) {
             state.simTime = 0;
           }
         }
@@ -461,14 +460,14 @@
     requestAnimationFrame(animationLoop);
   }
 
-  // --- Calculation Helpers for Trajectories ---
+  // --- Coordinate Transformation Functions ---
   function getInertialCoordsAtTime(t) {
     const angleRad = (state.launchAngleDeg * Math.PI) / 180;
     const v0x = state.vRim + state.vRel * Math.sin(angleRad);
-    const v0y = state.vRel * Math.cos(angleRad);
+    const v0y = -state.vRel * Math.cos(angleRad);
 
     const x = v0x * t;
-    const y = -state.radius + v0y * t;
+    const y = state.radius + v0y * t;
     return { x, y };
   }
 
@@ -477,18 +476,16 @@
     const r = Math.sqrt(inertial.x * inertial.x + inertial.y * inertial.y);
     const phiInertial = Math.atan2(inertial.y, inertial.x);
 
-    // In rotating frame anchored to the launch pad (which starts at bottom -PI/2):
-    // The launch pad angle in inertial frame at time t is (-PI/2 + omega * t)
-    // Relative angle:
-    const phiRot = phiInertial - state.omega * t;
+    // In CCW rotation, the floor pad starts at PI/2 and angle decreases: phiPad = PI/2 - omega * t
+    // Projectile position relative to floor pad:
+    const phiRot = phiInertial + state.omega * t;
 
-    // Convert relative polar back to Cartesian (with launch pad at bottom 6 o'clock: -PI/2)
     const xRot = r * Math.cos(phiRot);
     const yRot = r * Math.sin(phiRot);
     return { x: xRot, y: yRot, r, phiRot };
   }
 
-  // --- Render Inertial Frame View ---
+  // --- Render External Inertial Frame ---
   function renderInertialFrame() {
     if (state.viewMode === 'rotating') return;
     const ctx = ctxInertial;
@@ -498,113 +495,103 @@
 
     const centerX = width / 2;
     const centerY = height / 2;
-    const scale = (Math.min(width, height) * 0.42) / state.radius;
+    // Maximize circle within canvas
+    const scale = (Math.min(width, height) * 0.465) / state.radius;
+    const dpr = window.devicePixelRatio || 1;
 
     ctx.save();
     ctx.translate(centerX, centerY);
 
-    // Draw Space Station Outer Ring & Floor
+    // Station Outer Ring
     ctx.beginPath();
     ctx.arc(0, 0, state.radius * scale, 0, 2 * Math.PI);
-    ctx.lineWidth = 6 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 4 * dpr;
+    ctx.strokeStyle = '#27354f';
     ctx.stroke();
 
-    // Habitat Interior Living Floor (Glow Ring)
+    // Habitat Inner Floor (Luminous rim)
     ctx.beginPath();
     ctx.arc(0, 0, (state.radius - 2) * scale, 0, 2 * Math.PI);
-    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 2 * dpr;
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.45)';
     ctx.stroke();
 
-    // Draw Spokes (Rotating with the station)
+    // Rotating Spokes (CCW)
     const numSpokes = 8;
-    ctx.lineWidth = 1 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = 'rgba(100, 116, 139, 0.35)';
+    ctx.lineWidth = 1 * dpr;
+    ctx.strokeStyle = 'rgba(71, 85, 105, 0.4)';
     for (let i = 0; i < numSpokes; i++) {
-      const spokeAngle = state.stationAngle + (i * 2 * Math.PI) / numSpokes;
+      // CCW in canvas coords: angle decreases
+      const spokeAngle = -state.stationAngle + (i * 2 * Math.PI) / numSpokes;
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.lineTo(Math.cos(spokeAngle) * state.radius * scale, Math.sin(spokeAngle) * state.radius * scale);
       ctx.stroke();
     }
 
-    // Central Hub
+    // Station Central Hub
     ctx.beginPath();
-    ctx.arc(0, 0, 8 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+    ctx.arc(0, 0, 6 * dpr, 0, 2 * Math.PI);
     ctx.fillStyle = '#64748b';
     ctx.fill();
 
-    // Spin Direction Indicator Arrow
-    drawRotationIndicator(ctx, state.radius * scale * 1.08, state.omega > 0);
+    // Spin Direction Indicator on outer ring
+    drawRotationArrow(ctx, state.radius * scale * 1.04, dpr);
 
-    // Draw Floor Launch Marker (Rotating with station)
-    // Launched from -PI/2 + state.stationAngle
-    const launchPadAngle = -Math.PI / 2 + state.stationAngle;
+    // Rotating Launch Pad on the floor
+    const launchPadAngle = Math.PI / 2 - state.stationAngle;
     const padX = Math.cos(launchPadAngle) * state.radius * scale;
     const padY = Math.sin(launchPadAngle) * state.radius * scale;
 
     ctx.beginPath();
-    ctx.arc(padX, padY, 5 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+    ctx.arc(padX, padY, 5 * dpr, 0, 2 * Math.PI);
     ctx.fillStyle = '#34d399';
     ctx.fill();
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = '#34d399';
-    ctx.stroke();
-    ctx.shadowBlur = 0;
 
-    // If Launched: Draw Complete Inertial Trajectory (Straight Chord)
+    // Flight Path in Inertial Frame (Straight Chord)
     if (state.flightDuration > 0) {
       const pStart = getInertialCoordsAtTime(0);
       const pEnd = getInertialCoordsAtTime(state.flightDuration);
 
+      // Complete path preview (dashed cyan)
       ctx.beginPath();
       ctx.moveTo(pStart.x * scale, pStart.y * scale);
       ctx.lineTo(pEnd.x * scale, pEnd.y * scale);
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.6)';
-      ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
-      ctx.setLineDash([4 * (window.devicePixelRatio || 1), 4 * (window.devicePixelRatio || 1)]);
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.setLineDash([4 * dpr, 4 * dpr]);
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Draw Landing Marker on outer ring
+      // Landing point on the ring
       ctx.beginPath();
-      ctx.arc(pEnd.x * scale, pEnd.y * scale, 6 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+      ctx.arc(pEnd.x * scale, pEnd.y * scale, 5 * dpr, 0, 2 * Math.PI);
       ctx.fillStyle = state.landingOffsetM >= 0 ? '#34d399' : '#f43f5e';
       ctx.fill();
 
-      // Current Projectile Position
+      // Covered trajectory so far (solid cyan)
       const currT = Math.min(state.simTime, state.flightDuration);
       const currentPos = getInertialCoordsAtTime(currT);
 
-      // Trajectory covered so far (solid cyan)
       ctx.beginPath();
       ctx.moveTo(pStart.x * scale, pStart.y * scale);
       ctx.lineTo(currentPos.x * scale, currentPos.y * scale);
       ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 3 * (window.devicePixelRatio || 1);
-      ctx.shadowColor = '#38bdf8';
-      ctx.shadowBlur = 10;
+      ctx.lineWidth = 2.5 * dpr;
       ctx.stroke();
-      ctx.shadowBlur = 0;
 
-      // Projectile Dot
+      // Projectile Marker
       ctx.beginPath();
-      ctx.arc(currentPos.x * scale, currentPos.y * scale, 7 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+      ctx.arc(currentPos.x * scale, currentPos.y * scale, 6 * dpr, 0, 2 * Math.PI);
       ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = '#38bdf8';
-      ctx.shadowBlur = 12;
       ctx.fill();
-      ctx.shadowBlur = 0;
     }
 
     ctx.restore();
-
-    // Canvas Overlay Info
-    drawCanvasBadge(ctx, 'Station Inertial View', 'True Straight-Line Flight', '#38bdf8');
+    drawCanvasOverlayTag(ctx, 'EXTERNAL INERTIAL FRAME', 'STRAIGHT CHORD PATH', '#38bdf8', dpr);
   }
 
-  // --- Render Rotating Frame View (Habitat Perspective) ---
+  // --- Render Habitat Rotating Frame ---
   function renderRotatingFrame() {
     if (state.viewMode === 'inertial') return;
     const ctx = ctxRotating;
@@ -614,29 +601,31 @@
 
     const centerX = width / 2;
     const centerY = height / 2;
-    const scale = (Math.min(width, height) * 0.42) / state.radius;
+    // Maximize circle within canvas
+    const scale = (Math.min(width, height) * 0.465) / state.radius;
+    const dpr = window.devicePixelRatio || 1;
 
     ctx.save();
     ctx.translate(centerX, centerY);
 
-    // Draw Fixed Habitat Circle (Anchored to Floor Observer)
+    // Fixed Station Circle
     ctx.beginPath();
     ctx.arc(0, 0, state.radius * scale, 0, 2 * Math.PI);
-    ctx.lineWidth = 6 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 4 * dpr;
+    ctx.strokeStyle = '#27354f';
     ctx.stroke();
 
-    // Habitat Living Surface Glow
+    // Habitat Floor Glow
     ctx.beginPath();
     ctx.arc(0, 0, (state.radius - 2) * scale, 0, 2 * Math.PI);
-    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = 'rgba(251, 191, 36, 0.4)';
+    ctx.lineWidth = 2 * dpr;
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
     ctx.stroke();
 
-    // Fixed Radial Grid / Sectors
+    // Fixed Floor Grid / Sectors
     const numGrid = 12;
-    ctx.lineWidth = 1 * (window.devicePixelRatio || 1);
-    ctx.strokeStyle = 'rgba(71, 85, 105, 0.25)';
+    ctx.lineWidth = 1 * dpr;
+    ctx.strokeStyle = 'rgba(71, 85, 105, 0.3)';
     for (let i = 0; i < numGrid; i++) {
       const angle = (i * 2 * Math.PI) / numGrid;
       ctx.beginPath();
@@ -647,26 +636,23 @@
 
     // Central Hub
     ctx.beginPath();
-    ctx.arc(0, 0, 8 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+    ctx.arc(0, 0, 6 * dpr, 0, 2 * Math.PI);
     ctx.fillStyle = '#64748b';
     ctx.fill();
 
-    // Launch Pad fixed at bottom (0, R) in Canvas coords => (0, state.radius * scale)
-    const padPadY = state.radius * scale;
+    // Fixed Launch Pad at bottom (0, R)
+    const padY = state.radius * scale;
     ctx.beginPath();
-    ctx.arc(0, padPadY, 6 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+    ctx.arc(0, padY, 5 * dpr, 0, 2 * Math.PI);
     ctx.fillStyle = '#34d399';
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = '#34d399';
     ctx.fill();
-    ctx.shadowBlur = 0;
 
-    // Apparent Floor Rotation Direction Indicator (to the right = Spinward)
-    drawFloorDirectionLabels(ctx, state.radius * scale);
+    // Floor Direction Indicators
+    drawRotatingFloorLabels(ctx, state.radius * scale, dpr);
 
-    // Draw Full Curved Rotating Coriolis Trajectory
+    // Curved Coriolis Trajectory in Rotating Frame
     if (state.flightDuration > 0) {
-      const steps = 120;
+      const steps = 140;
       ctx.beginPath();
       for (let i = 0; i <= steps; i++) {
         const t = (i / steps) * state.flightDuration;
@@ -674,20 +660,20 @@
         if (i === 0) ctx.moveTo(pt.x * scale, pt.y * scale);
         else ctx.lineTo(pt.x * scale, pt.y * scale);
       }
-      ctx.strokeStyle = 'rgba(251, 191, 36, 0.4)';
-      ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
-      ctx.setLineDash([4 * (window.devicePixelRatio || 1), 4 * (window.devicePixelRatio || 1)]);
+      ctx.strokeStyle = 'rgba(251, 191, 36, 0.35)';
+      ctx.lineWidth = 1.5 * dpr;
+      ctx.setLineDash([4 * dpr, 4 * dpr]);
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Landing Point Marker on the Floor
+      // Landing marker on the floor
       const ptEnd = getRotatingCoordsAtTime(state.flightDuration);
       ctx.beginPath();
-      ctx.arc(ptEnd.x * scale, ptEnd.y * scale, 6 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+      ctx.arc(ptEnd.x * scale, ptEnd.y * scale, 5 * dpr, 0, 2 * Math.PI);
       ctx.fillStyle = state.landingOffsetM >= 0 ? '#34d399' : '#f43f5e';
       ctx.fill();
 
-      // Trajectory covered so far (Solid Amber/Gold Curve)
+      // Trajectory covered so far (solid amber)
       const currT = Math.min(state.simTime, state.flightDuration);
       const currSteps = Math.max(2, Math.floor((currT / state.flightDuration) * steps));
       ctx.beginPath();
@@ -698,97 +684,91 @@
         else ctx.lineTo(pt.x * scale, pt.y * scale);
       }
       ctx.strokeStyle = '#fbbf24';
-      ctx.lineWidth = 3 * (window.devicePixelRatio || 1);
-      ctx.shadowColor = '#fbbf24';
-      ctx.shadowBlur = 10;
+      ctx.lineWidth = 2.5 * dpr;
       ctx.stroke();
-      ctx.shadowBlur = 0;
 
       // Projectile Dot in Rotating Frame
       const ptCurr = getRotatingCoordsAtTime(currT);
       ctx.beginPath();
-      ctx.arc(ptCurr.x * scale, ptCurr.y * scale, 7 * (window.devicePixelRatio || 1), 0, 2 * Math.PI);
+      ctx.arc(ptCurr.x * scale, ptCurr.y * scale, 6 * dpr, 0, 2 * Math.PI);
       ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = '#fbbf24';
-      ctx.shadowBlur = 12;
       ctx.fill();
-      ctx.shadowBlur = 0;
 
-      // Arc Displacement Indicator along the floor
-      drawLandingArc(ctx, state.radius * scale, ptEnd);
+      // Floor Displacement Arc
+      drawFloorOffsetArc(ctx, state.radius * scale, ptEnd, dpr);
     }
 
     ctx.restore();
-
-    // Canvas Overlay Info
-    drawCanvasBadge(ctx, 'Rotating Habitat View', 'Apparent Curved Coriolis Path', '#fbbf24');
+    drawCanvasOverlayTag(ctx, 'HABITAT ROTATING FRAME', 'CURVED CORIOLIS PATH', '#fbbf24', dpr);
   }
 
-  function drawRotationIndicator(ctx, r, isCCW) {
+  function drawRotationArrow(ctx, r, dpr) {
     ctx.save();
+    // Arc across bottom right (CCW spin moving right and upward)
+    const startAngle = 0.55 * Math.PI;
+    const endAngle = 0.35 * Math.PI;
+
     ctx.beginPath();
-    ctx.arc(0, 0, r, -0.6 * Math.PI, -0.2 * Math.PI, !isCCW);
-    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
+    ctx.arc(0, 0, r, startAngle, endAngle, true);
+    ctx.lineWidth = 1.5 * dpr;
     ctx.strokeStyle = 'rgba(56, 189, 248, 0.7)';
     ctx.stroke();
 
-    // Arrowhead
-    const arrowAngle = -0.2 * Math.PI;
-    const ax = Math.cos(arrowAngle) * r;
-    const ay = Math.sin(arrowAngle) * r;
+    // Arrowhead at endAngle
+    const ax = Math.cos(endAngle) * r;
+    const ay = Math.sin(endAngle) * r;
     ctx.beginPath();
-    ctx.moveTo(ax + 5, ay - 8);
+    ctx.moveTo(ax - 6 * dpr, ay + 3 * dpr);
     ctx.lineTo(ax, ay);
-    ctx.lineTo(ax - 8, ay - 3);
+    ctx.lineTo(ax + 2 * dpr, ay + 6 * dpr);
     ctx.fillStyle = '#38bdf8';
     ctx.fill();
 
-    ctx.font = `${10 * (window.devicePixelRatio || 1)}px sans-serif`;
-    ctx.fillStyle = '#94a3b8';
-    ctx.fillText('Spin Direction (CCW)', Math.cos(-0.4 * Math.PI) * (r + 15), Math.sin(-0.4 * Math.PI) * (r + 15));
+    ctx.font = `600 ${9 * dpr}px ui-monospace, monospace`;
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('SPIN (CCW)', Math.cos(0.45 * Math.PI) * (r + 14 * dpr), Math.sin(0.45 * Math.PI) * (r + 14 * dpr));
     ctx.restore();
   }
 
-  function drawFloorDirectionLabels(ctx, r) {
+  function drawRotatingFloorLabels(ctx, r, dpr) {
     ctx.save();
-    ctx.font = `${10 * (window.devicePixelRatio || 1)}px monospace`;
-    ctx.fillStyle = '#94a3b8';
+    ctx.font = `600 ${9 * dpr}px ui-monospace, monospace`;
+    ctx.fillStyle = '#64748b';
 
-    // Spinward (+X, right side of bottom)
-    ctx.fillText('Spinward ➔', 25 * (window.devicePixelRatio || 1), r + 20 * (window.devicePixelRatio || 1));
-    // Antispinward (-X, left side of bottom)
-    ctx.fillText('⬸ Antispinward', -115 * (window.devicePixelRatio || 1), r + 20 * (window.devicePixelRatio || 1));
-
+    // Spinward (+X, right side)
+    ctx.fillText('SPINWARD ➔', 18 * dpr, r + 14 * dpr);
+    // Antispinward (-X, left side)
+    ctx.fillText('⬸ ANTISPINWARD', -98 * dpr, r + 14 * dpr);
     ctx.restore();
   }
 
-  function drawLandingArc(ctx, r, ptEnd) {
+  function drawFloorOffsetArc(ctx, r, ptEnd, dpr) {
     ctx.save();
-    const padAngle = Math.PI / 2; // Bottom in standard canvas coords
+    const padAngle = Math.PI / 2;
     const endAngle = Math.atan2(ptEnd.y, ptEnd.x);
 
     ctx.beginPath();
-    ctx.arc(0, 0, r + 6 * (window.devicePixelRatio || 1), padAngle, endAngle, state.landingOffsetM < 0);
-    ctx.lineWidth = 3 * (window.devicePixelRatio || 1);
+    // In canvas coords, moving right (spinward) from bottom (PI/2) decreases angle toward 0
+    ctx.arc(0, 0, r + 4 * dpr, padAngle, endAngle, state.landingOffsetM >= 0);
+    ctx.lineWidth = 2.5 * dpr;
     ctx.strokeStyle = state.landingOffsetM >= 0 ? '#34d399' : '#f43f5e';
     ctx.stroke();
     ctx.restore();
   }
 
-  function drawCanvasBadge(ctx, title, subtitle, accentColor) {
-    const dpr = window.devicePixelRatio || 1;
+  function drawCanvasOverlayTag(ctx, title, subtitle, accentColor, dpr) {
     ctx.save();
-    ctx.font = `bold ${12 * dpr}px sans-serif`;
-    ctx.fillStyle = '#f8fafc';
-    ctx.fillText(title, 14 * dpr, 24 * dpr);
+    ctx.font = `700 ${10 * dpr}px ui-monospace, monospace`;
+    ctx.fillStyle = '#cbd5e1';
+    ctx.fillText(title, 12 * dpr, 20 * dpr);
 
-    ctx.font = `${10 * dpr}px sans-serif`;
+    ctx.font = `600 ${8.5 * dpr}px ui-monospace, monospace`;
     ctx.fillStyle = accentColor;
-    ctx.fillText(subtitle, 14 * dpr, 40 * dpr);
+    ctx.fillText(subtitle, 12 * dpr, 34 * dpr);
     ctx.restore();
   }
 
-  // Initialize once DOM is fully loaded
+  // Initialize once DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
