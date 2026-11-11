@@ -9,6 +9,7 @@ categories:
 featured_image: /assets/post-images/front_image_introduce-screamsheet.png
 ---
 
+*If you'd like to receive your own daily printable morning edition, you can [subscribe to Screamsheet here](https://distractedfortune.com/screamsheet/).*
 
 Mid-year 2025, my son became obsessed with Major League Baseball. He had started playing Little League the year before, and we had seen a couple of Phillies games, but suddenly he was hooked on the progress of the season. 
 
